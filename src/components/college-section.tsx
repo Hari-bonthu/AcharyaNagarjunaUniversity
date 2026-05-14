@@ -26,6 +26,16 @@ import {
   Wrench,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import campusImage from "@/assets/bgg1.jpg";
+import collegeArtsImage from "@/assets/Colleges/College_Arts.jpg";
+import collegeEngineeringImage from "@/assets/Colleges/College_Engineering.jpg";
+import collegePharmaImage from "@/assets/Colleges/College_Pharma.jpg";
+import collegePhysicalEducationImage from "@/assets/Colleges/College_PhysicalEducation.jpg";
+import collegeSciencesImage from "@/assets/Colleges/College_Sciences.jpg";
+import principalChLingaRajuImage from "@/assets/Principals/ChLingaRaju.jpg";
+import principalImage from "@/assets/Principals/principal.jpg";
+import principalProfMSureshKumarImage from "@/assets/Principals/principalprofmsureshkumar.jpg";
+import principalProfKVeeraiahImage from "@/assets/Principals/profkveeraiahgaaru.jpg";
 
 type Intent = "courses" | "research" | "updates" | "life";
 
@@ -49,6 +59,9 @@ type CollegeSummary = {
   tagline: string;
   details: string;
   icon: LucideIcon;
+  image: string;
+  principalImage: string;
+  principalName: string;
 };
 
 type StatItem = {
@@ -91,7 +104,7 @@ type School = {
   established: string;
   location: string;
   icon: LucideIcon;
-  /** Place an image at: public/colleges/<image>.jpg */
+  /** Bundled image asset resolved by Vite. */
   image: string;
   accent: string;
 };
@@ -104,6 +117,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Science. Curiosity. Impact.",
     details: "Research-led departments in life sciences, physical sciences and computational fields.",
     icon: FlaskConical,
+    image: collegeSciencesImage,
+    principalImage: principalProfMSureshKumarImage,
+    principalName: "Prof. M. Suresh Kumar",
   },
   {
     id: "engineering",
@@ -112,6 +128,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Innovate. Engineer. Lead.",
     details: "Programs across CSE, AI/ML, Data Science, ECE, EEE, Mechanical and Civil streams.",
     icon: Code2,
+    image: collegeEngineeringImage,
+    principalImage: principalProfKVeeraiahImage,
+    principalName: "Prof. K. Veeraiah",
   },
   {
     id: "arts-commerce-law",
@@ -120,6 +139,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Humanities, commerce and justice.",
     details: "A broad academic home for languages, social sciences, commerce, management and law.",
     icon: GraduationCap,
+    image: collegeArtsImage,
+    principalImage: principalImage,
+    principalName: "College Principal",
   },
   {
     id: "pharmacy",
@@ -128,6 +150,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Healing through science.",
     details: "Industry-aligned pharmacy education with modern laboratories and research pathways.",
     icon: Microscope,
+    image: collegePharmaImage,
+    principalImage: principalImage,
+    principalName: "College Principal",
   },
   {
     id: "architecture-planning",
@@ -136,6 +161,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Designing tomorrow's cities.",
     details: "Design, planning and sustainable built-environment programs.",
     icon: Building2,
+    image: campusImage,
+    principalImage: principalImage,
+    principalName: "College Principal",
   },
   {
     id: "physical-education-sports",
@@ -144,6 +172,9 @@ const colleges: CollegeSummary[] = [
     tagline: "Strength of body, spirit and mind.",
     details: "Physical education, coaching and sports sciences with active campus infrastructure.",
     icon: Trophy,
+    image: collegePhysicalEducationImage,
+    principalImage: principalChLingaRajuImage,
+    principalName: "Ch. Linga Raju",
   },
 ];
 
@@ -171,7 +202,7 @@ const schools: School[] = [
     established: "2007",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Wrench,
-    image: "/colleges/engineering.jpg",
+    image: collegeEngineeringImage,
     accent: "oklch(0.55 0.18 250)",
   },
   {
@@ -195,11 +226,11 @@ const schools: School[] = [
     established: "1976",
     location: "Main Campus, Nagarjuna Nagar",
     icon: FlaskConical,
-    image: "/colleges/sciences.jpg",
+    image: collegeSciencesImage,
     accent: "oklch(0.6 0.16 195)",
   },
   {
-    id: "arts",
+    id: "arts-commerce-law",
     category: "Arts, Commerce & Law",
     collegeName: "ANU College of Arts, Commerce & Law",
     shortName: "Arts & Law",
@@ -221,7 +252,7 @@ const schools: School[] = [
     established: "1976",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Palette,
-    image: "/colleges/arts.jpg",
+    image: collegeArtsImage,
     accent: "oklch(0.6 0.18 30)",
   },
   {
@@ -243,11 +274,11 @@ const schools: School[] = [
     established: "1982",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Pill,
-    image: "/colleges/pharmacy.jpg",
+    image: collegePharmaImage,
     accent: "oklch(0.6 0.16 150)",
   },
   {
-    id: "sports",
+    id: "physical-education-sports",
     category: "Physical Education & Sports",
     collegeName: "ANU College of Physical Education & Sports",
     shortName: "Sports Sciences",
@@ -263,11 +294,11 @@ const schools: School[] = [
     established: "1985",
     location: "Sports Complex, Nagarjuna Nagar",
     icon: Trophy,
-    image: "/colleges/sports.jpg",
+    image: collegePhysicalEducationImage,
     accent: "oklch(0.65 0.17 60)",
   },
   {
-    id: "architecture",
+    id: "architecture-planning",
     category: "Architecture & Planning",
     collegeName: "ANU College of Architecture & Planning",
     shortName: "Architecture",
@@ -283,7 +314,7 @@ const schools: School[] = [
     established: "2010",
     location: "Architecture Block, Nagarjuna Nagar",
     icon: Building2,
-    image: "/colleges/architecture.jpg",
+    image: campusImage,
     accent: "oklch(0.55 0.14 290)",
   },
 ];
@@ -638,7 +669,7 @@ export function CollegeSection() {
 
               <div className="mt-auto flex flex-col gap-3 pt-8 sm:flex-row">
                 <a
-                  href="#"
+                  href={`/colleges/${active.id}`}
                   className="group inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white transition-all hover:translate-y-[-1px]"
                   style={{
                     backgroundColor: active.accent,
@@ -683,112 +714,124 @@ export function CollegeSection() {
 
 export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: string }) {
   const college = getCollegePage(collegeId);
+  const heroStats = college.stats.slice(0, 4);
+  const featuredDepartments = college.departments.slice(0, 3);
+  const featuredFacilities = college.facilities.slice(0, 4);
 
   return (
     <section className="bg-white text-[#0B1F3A]">
-      <div className="relative min-h-[560px] overflow-hidden bg-[#071A33]">
-        <div className="absolute inset-0 bg-[#D1D5DB]" aria-hidden />
-        <div
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, rgba(255,255,255,0.5) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 75%, transparent 75%, transparent)",
-            backgroundSize: "34px 34px",
-          }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold uppercase tracking-[0.22em] text-[#0B1F3A]/35">
-          College Background Image
-        </div>
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,26,51,0.98),rgba(7,26,51,0.78),rgba(7,26,51,0.32)),linear-gradient(180deg,rgba(7,26,51,0.22),rgba(7,26,51,0.7))]" aria-hidden />
-
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-end px-6 pb-14 pt-28 lg:px-8">
-          <div className="max-w-3xl text-white">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F97316]">
-              Welcome to
-            </p>
-            <h1 className="mt-4 text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl">
+      <div className="bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.32),transparent_34%),linear-gradient(135deg,#071A33,#0B2D5A_54%,#0F766E)] text-white">
+        <div className="mx-auto grid min-h-[300px] max-w-7xl gap-6 px-6 py-9 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.72fr)] lg:items-center lg:px-8">
+          <div>
+            <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
               {college.name}
             </h1>
-            <p className="mt-5 text-xl font-medium text-white/90">{college.tagline}</p>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-white/72">
+            <p className="mt-3 max-w-2xl text-base font-medium text-white/90 md:text-lg">
+              {college.tagline}
+            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/72">
               {college.description}
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#departments"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#0B1F3A] transition-transform hover:-translate-y-0.5"
-              >
-                Explore Departments <ArrowRight className="h-4 w-4" />
-              </a>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#admissions"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A] transition-transform hover:-translate-y-0.5"
               >
-                Admissions <ArrowRight className="h-4 w-4" />
+                Apply Now <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#departments"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-white/10"
+              >
+                Browse Departments <ArrowRight className="h-4 w-4" />
               </a>
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {heroStats.map((stat) => {
+              const Icon = stat.icon;
+
+              return (
+                <div key={stat.label} className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur">
+                  <Icon className="h-5 w-5 text-[#FDBA74]" aria-hidden />
+                  <p className="mt-3 text-2xl font-semibold leading-none">{stat.value}</p>
+                  <p className="mt-1 text-xs font-medium text-white/72">{stat.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-        <TrustBar stats={college.stats} />
+      <nav className="sticky top-0 z-20 border-b border-black/10 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-6 py-3 text-sm font-semibold text-[#0B1F3A] lg:px-8">
+          <a href="#departments" className="whitespace-nowrap hover:text-[#F97316]">Departments</a>
+          <a href="#admissions" className="whitespace-nowrap hover:text-[#F97316]">Admissions</a>
+          <a href="#facilities" className="whitespace-nowrap hover:text-[#F97316]">Facilities</a>
+          <a href="#leadership" className="whitespace-nowrap hover:text-[#F97316]">Leadership</a>
+        </div>
+      </nav>
 
-        <section className="mt-16 grid gap-8 rounded-2xl bg-[#F8FAFC] p-6 md:grid-cols-[260px_1fr] md:p-8">
-          <ImagePlaceholder label="Principal Image" className="aspect-[4/5]" />
-          <div className="flex flex-col justify-center">
-            <SectionEyebrow>Principal / Dean</SectionEyebrow>
-            <h2 className="mt-3 text-3xl font-semibold">Message from the College Leadership</h2>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[#6B7280]">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <section id="leadership" className="scroll-mt-24 rounded-xl border border-black/10 bg-[#F8FAFC] p-4">
+          <div className="grid gap-4 md:grid-cols-[140px_1fr] md:items-center">
+            <img
+              src={college.principalImage}
+              alt={college.principalName}
+              className="h-32 w-32 rounded-xl object-cover object-top shadow-sm md:h-36 md:w-36"
+              loading="lazy"
+            />
+            <div>
+              <SectionEyebrow>Principal / Dean</SectionEyebrow>
+              <h2 className="mt-2 text-2xl font-semibold">Message from {college.principalName}</h2>
+              <p className="mt-3 max-w-4xl text-sm leading-6 text-[#6B7280]">
               Our focus is to create a disciplined, research-aware and student-friendly academic environment where
               learners gain confidence, skill and purpose.
-            </p>
-            <a href="#" className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#0B1F3A]">
-              Read full message <ArrowRight className="h-4 w-4" />
-            </a>
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="departments" className="mt-16 scroll-mt-24">
+        <section id="departments" className="mt-10 scroll-mt-24">
           <div className="flex items-end justify-between gap-5">
             <div>
               <SectionEyebrow>Departments</SectionEyebrow>
-              <h2 className="mt-3 text-3xl font-semibold">Choose your field of interest</h2>
+              <h2 className="mt-2 text-2xl font-semibold">Featured departments</h2>
             </div>
             <a href="#" className="hidden items-center gap-2 text-sm font-semibold text-[#0B1F3A] sm:inline-flex">
               View All Departments <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
-          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {college.departments.slice(0, 6).map((department) => (
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {featuredDepartments.map((department) => (
               <DepartmentPreview key={department.name} department={department} />
             ))}
           </div>
         </section>
 
-        <section className="mt-16">
-          <SectionEyebrow>Facilities</SectionEyebrow>
-          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {college.facilities.map((item) => (
-              <InfoTile key={item.title} item={item} compact />
-            ))}
+        <section id="admissions" className="mt-8 scroll-mt-24 rounded-lg bg-[#0B1F3A] px-6 py-6 text-white md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <h2 className="text-2xl font-semibold">Ready to take the next step?</h2>
+            <p className="mt-2 text-sm text-white/70">Start your admission journey or schedule a campus conversation.</p>
+          </div>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-0">
+            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A]">
+              Apply Now <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white">
+              Schedule Tour <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </section>
 
-        <section id="admissions" className="mt-8 scroll-mt-24 rounded-lg bg-[#0B1F3A] px-7 py-8 text-white md:flex md:items-center md:justify-between md:gap-8">
-          <div>
-            <h2 className="text-3xl font-semibold">Ready to take the next step?</h2>
-            <p className="mt-2 text-sm text-white/70">Start your admission journey or connect with the college office.</p>
-          </div>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-0">
-            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-6 py-3 text-sm font-semibold text-[#0B1F3A]">
-              Apply Now <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white">
-              Contact Us <ArrowRight className="h-4 w-4" />
-            </a>
+        <section id="facilities" className="mt-10 scroll-mt-24">
+          <SectionEyebrow>Facilities</SectionEyebrow>
+          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {featuredFacilities.map((item) => (
+              <InfoTile key={item.title} item={item} compact />
+            ))}
           </div>
         </section>
       </div>
@@ -870,18 +913,19 @@ function TrustBar({ stats }: { stats: StatItem[] }) {
 function InfoTile({ item, compact = false }: { item: PanelItem; compact?: boolean }) {
   const Icon = item.icon;
   return (
-    <article className={`group relative overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_18px_45px_-38px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-6"}`}>
+    <article className={`group relative overflow-hidden rounded-lg border border-black/10 bg-white shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-5"}`}>
       <span className="absolute inset-x-0 top-0 h-1 bg-[#F97316] opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FFF7ED] text-[#F97316]">
-        <Icon className="h-6 w-6" />
+      <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
+        <Icon className="h-5 w-5" />
       </span>
-      <h3 className="mt-4 text-base font-semibold text-[#0B1F3A]">{item.title}</h3>
-      <p className="mt-2 text-sm leading-6 text-[#6B7280]">{item.text}</p>
+      <h3 className="mt-3 text-sm font-semibold text-[#0B1F3A]">{item.title}</h3>
+      <p className="mt-1.5 text-xs leading-5 text-[#6B7280]">{item.text}</p>
     </article>
   );
 }
 
 function DepartmentPreview({ department }: { department: Department }) {
+  const Icon = department.icon;
   const departmentSlug = department.name
     .toLowerCase()
     .replace(/&/g, "and")
@@ -889,10 +933,17 @@ function DepartmentPreview({ department }: { department: Department }) {
     .replace(/(^-|-$)/g, "");
 
   return (
-    <a href={`/departments/${departmentSlug}`} className="group block h-full rounded-xl border border-black/10 bg-white p-3 shadow-[0_18px_45px_-38px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70">
-      <ImagePlaceholder label="Department" className="aspect-[16/10]" />
-      <h3 className="mt-4 text-base font-semibold text-[#0B1F3A]">{department.name}</h3>
-      <p className="mt-2 text-sm leading-6 text-[#6B7280]">{department.summary}</p>
+    <a href={`/departments/${departmentSlug}`} className="group flex min-h-32 gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
+        <Icon className="h-6 w-6" aria-hidden />
+      </span>
+      <span className="min-w-0">
+        <span className="block text-base font-semibold text-[#0B1F3A]">{department.name}</span>
+        <span className="mt-1.5 line-clamp-2 block text-sm leading-6 text-[#6B7280]">{department.summary}</span>
+        <span className="mt-3 inline-flex translate-y-1 items-center gap-1 text-xs font-semibold text-[#F97316] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+          Learn more <ArrowRight className="h-3.5 w-3.5" />
+        </span>
+      </span>
     </a>
   );
 }

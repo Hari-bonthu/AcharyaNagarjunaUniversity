@@ -1,120 +1,127 @@
-<<<<<<< HEAD
 import { useState } from "react";
-import { Bell, Calendar, FileText, ArrowUpRight, Sparkles, Search, ChevronRight, Quote } from "lucide-react";
-=======
 import {
   ArrowUpRight,
   Bell,
+  BookOpen,
+  Building2,
   Calendar,
   ChevronRight,
   FileText,
-  Quote,
+  GraduationCap,
+  Landmark,
+  Leaf,
   Search,
   Sparkles,
+  Users,
 } from "lucide-react";
-import { useState } from "react";
-import bgImage from "@/assets/bgg1.jpg";
->>>>>>> fa886b6 (A safe commit1)
 import vcImage from "@/assets/vice-chancellor.jpg";
+import bgImage from "@/assets/bgg1.jpg";
+import principalProfMSureshKumarImage from "@/assets/Principals/principalprofmsureshkumar.jpg";
+import principalProfKVeeraiahImage from "@/assets/Principals/profkveeraiahgaaru.jpg";
 
 type Item = {
   title: string;
   date: string;
-<<<<<<< HEAD
-  tag?: "New" | "Updated" | "Live";
-=======
   tag?: "New" | "Updated";
->>>>>>> fa886b6 (A safe commit1)
+  category: "All" | "Admissions" | "Exams" | "Results" | "Jobs" | "Academics";
   href?: string;
 };
 
 const notifications: Item[] = [
   {
-<<<<<<< HEAD
-    title: "Notification for Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security Departments (AY 2025–26)",
+    title: "Notification for Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security Departments (AY 2025-26)",
     date: "Apr 28, 2026",
     tag: "New",
-  },
-  { title: "B.Sc Honours in Fire and Industrial Safety — Admissions Open", date: "Apr 24, 2026" },
-  {
-    title: "B.Tech 2nd Year 1st & 2nd Sem and 3rd Year Examinations Time-Tables, July 2026",
-    date: "Apr 18, 2026",
-    tag: "Updated",
-  },
-  { title: "Revised Academic Calendar for PG Programmes 2026–27", date: "Apr 12, 2026" },
-];
-
-const events: Item[] = [
-  {
-    title: "Dept. of International Business Studies — International Conference on GTSCLM-2026 Highlights",
-    date: "May 06, 2026",
-    tag: "Live",
-  },
-  {
-    title: "Live telecast of South-West Zone Inter-University Weightlifting Championship for Women 2025–26",
-    date: "May 12, 2026",
-  },
-  { title: "National Workshop on AI for Sustainable Development", date: "May 20, 2026" },
-  { title: "Convocation Rehearsal — All Departments", date: "May 28, 2026" },
-];
-
-const results: Item[] = [
-  { title: "M.Sc. Bio-Technology I Semester Regular Examinations April-2026 Results", date: "Apr 26, 2026", tag: "New" },
-  {
-    title: "M.Voc Horticulture & Landscape Gardening I Semester Regular Examinations April-2026 Results",
-    date: "Apr 22, 2026",
-    tag: "New",
-  },
-  {
-    title: "M.Voc Food Processing & Quality Management I Semester Regular Examinations April-2026 Results",
-    date: "Apr 20, 2026",
-    tag: "New",
-  },
-  { title: "B.Com (Hons.) IV Semester Supplementary Results", date: "Apr 14, 2026" },
-];
-
-const tabs = [
-  { id: "notifications", label: "Notifications", icon: Bell, count: notifications.length, data: notifications },
-  { id: "events", label: "Events", icon: Calendar, count: events.length, data: events },
-  { id: "results", label: "Results", icon: FileText, count: results.length, data: results },
-] as const;
-
-type TabId = (typeof tabs)[number]["id"];
-
-function TagPill({ tag }: { tag?: Item["tag"] }) {
-  if (!tag) return null;
-  const styles: Record<string, string> = {
-    New: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-    Updated: "bg-amber-50 text-amber-700 ring-amber-600/20",
-    Live: "bg-rose-50 text-rose-700 ring-rose-600/20",
-  };
-  return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ring-inset ${styles[tag]}`}>
-      {tag === "Live" && <span className="mr-1 h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" />}
-=======
-    title:
-      "Notification for Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security Departments (AY 2025-26)",
-    date: "Apr 28, 2026",
-    tag: "New",
+    category: "Jobs",
   },
   {
     title: "B.Sc Honours in Fire and Industrial Safety - Admissions Open",
     date: "Apr 24, 2026",
+    category: "Admissions",
   },
   {
-    title:
-      "B.Tech 2nd Year 1st & 2nd Sem and 3rd Year Examinations Time-Tables, July 2026",
+    title: "B.Tech 2nd Year 1st & 2nd Sem and 3rd Year Examinations Time-Tables, July 2026",
     date: "Apr 18, 2026",
     tag: "Updated",
+    category: "Exams",
   },
   {
     title: "Revised Academic Calendar for PG Programmes 2026-27",
     date: "Apr 12, 2026",
+    category: "Academics",
   },
   {
     title: "M.Sc. Bio-Technology I Semester Regular Examinations April-2026 Results",
     date: "Apr 26, 2026",
     tag: "New",
+    category: "Results",
+  },
+  {
+    title: "M.Voc Horticulture & Landscape Gardening I Semester Results Published",
+    date: "Apr 22, 2026",
+    category: "Results",
+  },
+  {
+    title: "Admissions Counselling Schedule for PG Programmes Released",
+    date: "Apr 20, 2026",
+    tag: "Updated",
+    category: "Admissions",
+  },
+  {
+    title: "Pre Ph.D Examination Schedule, July 2026",
+    date: "Apr 16, 2026",
+    category: "Exams",
+  },
+];
+
+const announcementTabs = ["All", "Admissions", "Exams", "Results", "Jobs", "Academics"] as const;
+
+const aboutStats = [
+  { value: "50", label: "Years of Excellence" },
+  { value: "300", label: "Acres of Campus" },
+  { value: "5,000+", label: "Students Served" },
+  { value: "223", label: "Affiliated Colleges" },
+];
+
+const campusHighlights = [
+  {
+    title: "Green Campus",
+    text: "A broad 300-acre academic setting with natural spaces and room for student life.",
+    icon: Leaf,
+  },
+  {
+    title: "Research Spaces",
+    text: "Departments, labs and centres built for postgraduate learning and guided research.",
+    icon: Building2,
+  },
+  {
+    title: "Student Community",
+    text: "A lively university environment shaped by academics, clubs, sports and service.",
+    icon: Users,
+  },
+];
+
+const leaders = [
+  {
+    name: "Prof. K. Gangadhara Rao",
+    role: "Vice Chancellor",
+    image: vcImage,
+    quote: "Our vision is to strengthen higher education with integrity, relevance and public purpose.",
+    credentials: "Guiding ANU's academic direction, institutional growth and student-centred development.",
+  },
+  {
+    name: "Prof. K. Veeraiah",
+    role: "Engineering & Technology Leadership",
+    image: principalProfKVeeraiahImage,
+    quote: "Engineering education must connect technical depth with practical problem solving.",
+    credentials: "Leading professional education with a focus on industry readiness and innovation.",
+  },
+  {
+    name: "Prof. M. Suresh Kumar",
+    role: "Sciences Leadership",
+    image: principalProfMSureshKumarImage,
+    quote: "Research culture grows when curiosity, discipline and mentorship work together.",
+    credentials: "Supporting research-led learning across science departments and laboratory practice.",
   },
 ];
 
@@ -130,49 +137,27 @@ function TagPill({ tag }: { tag?: Item["tag"] }) {
     <span
       className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ring-inset ${styles[tag]}`}
     >
->>>>>>> fa886b6 (A safe commit1)
       {tag}
     </span>
   );
 }
 
-<<<<<<< HEAD
-export function WelcomeSection() {
-  const [active, setActive] = useState<TabId>("notifications");
-  const [query, setQuery] = useState("");
-
-  const current = tabs.find((t) => t.id === active)!;
-  const filtered = current.data.filter((i) => i.title.toLowerCase().includes(query.toLowerCase()));
-
-  return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[oklch(0.99_0.005_250)] to-background">
-      {/* Decorative background */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.4]">
-        <div className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[oklch(0.78_0.12_255)] blur-3xl" />
-        <div className="absolute top-40 right-0 h-96 w-96 rounded-full bg-[oklch(0.85_0.09_240)] blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 lg:grid-cols-12 lg:gap-12 lg:py-24">
-        {/* LEFT — Welcome / About */}
-        <div className="lg:col-span-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.32_0.12_260)]/20 bg-white/70 px-3 py-1 text-xs font-medium text-[oklch(0.32_0.12_260)] backdrop-blur">
-=======
 export function NotificationsSection() {
-  const pageSize = 3;
-  const [page, setPage] = useState(0);
-  const pageCount = Math.ceil(notifications.length / pageSize);
-  const visibleNotifications = notifications.slice(page * pageSize, page * pageSize + pageSize);
+  const [activeTab, setActiveTab] = useState<(typeof announcementTabs)[number]>("All");
+  const visibleNotifications = notifications
+    .filter((item) => activeTab === "All" || item.category === activeTab)
+    .slice(0, 5);
 
   return (
-    <section className="bg-[oklch(0.985_0.005_250)] py-16">
+    <section className="bg-[oklch(0.985_0.005_250)] py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.32_0.12_260)]/20 bg-white px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[oklch(0.32_0.12_260)]">
               <Bell className="h-3.5 w-3.5" aria-hidden />
               Notifications
             </span>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[oklch(0.22_0.06_265)] md:text-4xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[oklch(0.22_0.06_265)] md:text-3xl">
               Latest Announcements
             </h2>
           </div>
@@ -184,35 +169,60 @@ export function NotificationsSection() {
           </a>
         </div>
 
-        <div className="overflow-hidden rounded-3xl border border-border/70 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)]">
-          <div className="border-b border-border/60 bg-white px-5 py-4">
-            <div className="flex items-center gap-2 rounded-xl border border-border bg-[oklch(0.985_0.005_250)] px-3 py-2.5">
+        <div className="overflow-hidden rounded-2xl border border-border/70 bg-white shadow-[0_18px_50px_-34px_rgba(15,23,42,0.25)]">
+          <div className="grid gap-3 border-b border-border/60 bg-white px-4 py-3 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="flex items-center gap-2 rounded-lg border border-border bg-[oklch(0.985_0.005_250)] px-3 py-2">
               <Search className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
-                University notices, admissions, examinations and circulars
+                Showing {activeTab.toLowerCase()} alerts
               </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {announcementTabs.map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    activeTab === tab
+                      ? "border-[oklch(0.32_0.12_260)] bg-[oklch(0.32_0.12_260)] text-white"
+                      : "border-border bg-white text-[oklch(0.22_0.06_265)] hover:bg-[oklch(0.97_0.02_255)]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
           </div>
 
           <ul className="divide-y divide-border/60">
             {visibleNotifications.map((item, index) => {
-              const absoluteIndex = page * pageSize + index;
-              const Icon = absoluteIndex % 2 === 0 ? Bell : absoluteIndex % 3 === 0 ? Calendar : FileText;
+              const Icon =
+                item.category === "Admissions"
+                  ? GraduationCap
+                  : item.category === "Exams"
+                    ? Calendar
+                    : item.category === "Results"
+                      ? FileText
+                      : Bell;
 
               return (
                 <li key={item.title}>
                   <a
                     href={item.href ?? "#"}
-                    className="group grid grid-cols-[auto_1fr_auto] items-center gap-4 px-5 py-4 transition-colors hover:bg-[oklch(0.97_0.02_255)] sm:px-6"
+                    className="group grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 transition-colors hover:bg-[oklch(0.97_0.02_255)] sm:px-5"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.32_0.12_260)]/8 text-[oklch(0.32_0.12_260)]">
-                      <Icon className="h-5 w-5" aria-hidden />
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[oklch(0.32_0.12_260)]/8 text-[oklch(0.32_0.12_260)]">
+                      <Icon className="h-4 w-4" aria-hidden />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-sm font-medium leading-snug text-foreground group-hover:text-[oklch(0.32_0.12_260)] sm:text-base">
+                      <span className="block truncate text-sm font-medium leading-snug text-foreground group-hover:text-[oklch(0.32_0.12_260)]">
                         {item.title}
                       </span>
                       <span className="mt-1.5 flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="rounded-full bg-[oklch(0.96_0.01_260)] px-2 py-0.5 font-semibold text-[oklch(0.22_0.06_265)]">
+                          {item.category}
+                        </span>
                         {item.date}
                         <TagPill tag={item.tag} />
                       </span>
@@ -223,31 +233,6 @@ export function NotificationsSection() {
               );
             })}
           </ul>
-
-          <div className="flex flex-col gap-3 border-t border-border/60 bg-[oklch(0.985_0.005_250)] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-            <p className="text-xs font-medium text-muted-foreground">
-              Showing {page * pageSize + 1}-{Math.min((page + 1) * pageSize, notifications.length)} of{" "}
-              {notifications.length} announcements
-            </p>
-            <div className="flex items-center gap-2">
-              {Array.from({ length: pageCount }, (_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  aria-label={`Show announcements page ${index + 1}`}
-                  aria-current={page === index}
-                  onClick={() => setPage(index)}
-                  className={`h-8 min-w-8 rounded-md px-2 text-xs font-semibold transition-colors ${
-                    page === index
-                      ? "bg-[oklch(0.22_0.06_265)] text-white"
-                      : "border border-border bg-white text-[oklch(0.22_0.06_265)] hover:bg-[oklch(0.96_0.01_260)]"
-                  }`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -256,251 +241,153 @@ export function NotificationsSection() {
 
 export function WelcomeSection() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.985_0.005_250),white)]" aria-hidden />
-
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-20 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
-        <div className="lg:col-span-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.32_0.12_260)]/20 bg-white/80 px-3 py-1 text-xs font-medium text-[oklch(0.32_0.12_260)] backdrop-blur">
->>>>>>> fa886b6 (A safe commit1)
+    <section className="bg-white px-6 py-12 text-[#1a1a1a] lg:px-8 lg:py-14">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#0066cc]/20 bg-[#f5f9ff] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0066cc]">
             <Sparkles className="h-3.5 w-3.5" />
             Welcome to ANU
           </div>
 
-<<<<<<< HEAD
-          <h2 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-foreground md:text-5xl">
-=======
-          <h2 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl">
->>>>>>> fa886b6 (A safe commit1)
-            About the <span className="text-[oklch(0.32_0.12_260)]">University</span>
+          <h2 className="mt-3 text-3xl font-semibold leading-[1.1] tracking-tight md:text-4xl">
+            About the <span className="text-[#0066cc]">University</span>
           </h2>
+        </div>
 
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-            At <span className="font-semibold text-foreground">Acharya Nagarjuna University</span>, established in
-            1976, we have been committed to academic growth and excellence for over four decades. Spread across
-            <span className="font-semibold text-foreground"> 300 acres</span> between Vijayawada and Guntur, our
-            university offers a wide range of undergraduate, postgraduate, and research programs, serving a vibrant
-            community of over <span className="font-semibold text-foreground">5,000 students</span>.
-          </p>
+        <section className="mt-8">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] lg:items-stretch">
+            <figure className="overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-[0_18px_55px_-38px_rgba(15,23,42,0.35)]">
+              <img
+                src={bgImage}
+                alt="Acharya Nagarjuna University's 300-acre main campus near Guntur"
+                className="aspect-[21/9] h-full w-full object-cover"
+              />
+              <figcaption className="px-4 py-3 text-xs leading-5 text-[#666666]">
+                ANU's 300-acre main campus near Guntur brings together academic departments, research spaces,
+                student facilities and open green areas.
+              </figcaption>
+            </figure>
 
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Named after the great philosopher Acharya Nagarjuna, our institution draws inspiration from his timeless
-            wisdom and pursuit of truth. We believe that education is not just about knowledge, but about discovering
-            the truth within ourselves.
-          </p>
+            <div className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+              <h3 className="text-xl font-semibold leading-tight">Our Campus</h3>
+              <p className="mt-3 max-w-[560px] text-sm leading-6 text-[#666666]">
+                The campus gives students a complete university environment: classrooms, laboratories, libraries,
+                activity spaces and a setting designed for learning beyond the timetable.
+              </p>
+              <a href="#campus-tour" className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-[#0066cc] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#0052a3] hover:shadow-[0_8px_20px_-12px_rgba(0,102,204,0.8)]">
+                Schedule a campus tour <ArrowUpRight className="h-4 w-4" />
+              </a>
 
-<<<<<<< HEAD
-          {/* Quick stats */}
-          <div className="mt-10 grid grid-cols-3 gap-4">
-            {[
-              { v: "50+", l: "Years of Legacy" },
-              { v: "300", l: "Acre Campus" },
-              { v: "5,000+", l: "Students" },
-            ].map((s) => (
-              <div key={s.l} className="rounded-xl border border-border/60 bg-white/70 p-4 text-center backdrop-blur">
-                <p className="font-serif text-2xl font-bold text-[oklch(0.32_0.12_260)] md:text-3xl">{s.v}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{s.l}</p>
+              <div className="mt-5 grid gap-3">
+                {campusHighlights.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <article key={item.title} className="flex gap-3 rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-3">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white text-[#0066cc] ring-1 ring-[#eeeeee]">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-semibold">{item.title}</h4>
+                        <p className="mt-0.5 text-xs leading-5 text-[#666666]">{item.text}</p>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px] lg:items-start">
+          <article className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eaf3ff] text-[#0066cc]">
+              <Landmark className="h-5 w-5" aria-hidden />
+            </div>
+            <h3 className="mt-4 text-xl font-semibold leading-tight">Our Story</h3>
+            <p className="mt-3 max-w-[560px] text-sm leading-6 text-[#1a1a1a]">
+              Founded in <strong>1976</strong>, Acharya Nagarjuna University has spent nearly five decades expanding
+              access to higher education across Andhra Pradesh.
+            </p>
+            <p className="mt-2 max-w-[560px] text-sm leading-6 text-[#666666]">
+              From its main campus between Vijayawada and Guntur, ANU serves learners across undergraduate,
+              postgraduate and research programs.
+            </p>
+            <a href="#history" className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+              Explore our history <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </article>
+
+          <article className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eaf3ff] text-[#0066cc]">
+              <BookOpen className="h-5 w-5" aria-hidden />
+            </div>
+            <h3 className="mt-4 text-xl font-semibold leading-tight">Our Philosophy</h3>
+            <p className="mt-3 max-w-[560px] text-sm leading-6 text-[#1a1a1a]">
+              Named after the philosopher Acharya Nagarjuna, the university draws inspiration from his pursuit of
+              truth and disciplined inquiry.
+            </p>
+            <p className="mt-2 max-w-[560px] text-sm leading-6 text-[#666666]">
+              We believe education is not just knowledge acquisition. It is a path to discovering truth within
+              ourselves and applying it with responsibility.
+            </p>
+            <a href="#values" className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+              Learn our values <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </article>
+
+          <aside className="rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-5">
+            <h3 className="text-xl font-semibold leading-tight">Key Numbers</h3>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {aboutStats.map((stat) => (
+                <div key={stat.label} className="rounded-md bg-white p-3 ring-1 ring-[#eeeeee]">
+                  <strong className="block text-2xl font-semibold leading-none text-[#0066cc]">
+                    {stat.value}
+                  </strong>
+                  <span className="mt-1.5 block text-xs font-medium leading-4 text-[#666666]">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
+
+        <section className="mt-10 rounded-lg bg-[#f9f9f9] p-5 md:p-6">
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-white text-[#0066cc] ring-1 ring-[#eeeeee]">
+                <GraduationCap className="h-5 w-5" aria-hidden />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold leading-tight">Leadership &amp; Vision</h3>
+              <p className="mt-2 max-w-[560px] text-sm leading-6 text-[#666666]">
+                ANU's academic leadership connects institutional vision with colleges, departments and student
+                outcomes.
+              </p>
+            </div>
+            <a href="#leadership" className="inline-flex w-fit items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+              Meet the full leadership team <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {leaders.map((leader) => (
+              <article key={leader.name} className="rounded-lg border border-[#eeeeee] bg-white p-4 text-center shadow-[0_16px_42px_-40px_rgba(15,23,42,0.45)]">
+                <img
+                  src={leader.image}
+                  alt={leader.name}
+                  className="mx-auto h-24 w-24 rounded-full object-cover object-top ring-4 ring-[#eaf3ff]"
+                  loading="lazy"
+                />
+                <h4 className="mt-4 text-sm font-semibold">{leader.name}</h4>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#666666]">
+                  {leader.role}
+                </p>
+                <p className="mt-3 text-xs italic leading-5 text-[#0066cc]">"{leader.quote}"</p>
+                <p className="mt-3 text-xs leading-5 text-[#666666]">{leader.credentials}</p>
+              </article>
             ))}
           </div>
-
-          {/* VC + Quote combined card (matches sketch — image on top, content below) */}
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)]">
-            <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
-              {/* VC image with light gradient backdrop */}
-              <div className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-[oklch(0.95_0.04_255)] via-[oklch(0.92_0.06_250)] to-[oklch(0.88_0.09_245)] p-6 md:p-4">
-                {/* Decorative frame */}
-                <div aria-hidden className="absolute inset-6 rounded-2xl border border-white/60" />
-                <div aria-hidden className="absolute left-3 top-3 h-16 w-16 rounded-full bg-white/40 blur-2xl" />
-                <div aria-hidden className="absolute bottom-4 right-4 h-20 w-20 rounded-full bg-[oklch(0.78_0.12_255)]/30 blur-2xl" />
-                <img
-                  src={vcImage}
-                  alt="Prof. K. Gangadhara Rao, Vice Chancellor"
-                  className="relative z-10 h-56 w-auto object-contain drop-shadow-xl md:h-64"
-                />
-              </div>
-
-              {/* Content: title, quote, message */}
-              <div className="flex flex-col justify-center gap-4 p-6 md:p-8">
-=======
-          <div className="mt-8 max-w-2xl rounded-2xl border border-border/70 bg-white p-4 shadow-[0_16px_45px_-30px_rgba(15,23,42,0.3)]">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="flex items-center gap-4">
-                <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-[oklch(0.95_0.04_255)]">
-                  <img
-                    src={vcImage}
-                    alt="Prof. K. Gangadhara Rao, Vice Chancellor"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
->>>>>>> fa886b6 (A safe commit1)
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[oklch(0.32_0.12_260)]">
-                    Vice Chancellor
-                  </p>
-<<<<<<< HEAD
-                  <p className="mt-1 font-serif text-2xl font-semibold text-foreground">
-                    Prof. K. Gangadhara Rao
-                  </p>
-                </div>
-
-                <blockquote className="relative rounded-xl bg-[oklch(0.97_0.02_255)] p-4 pl-10">
-                  <Quote className="absolute left-3 top-3 h-5 w-5 text-[oklch(0.32_0.12_260)]/60" />
-                  <p className="font-serif text-base italic text-foreground">"Satye Sarvam Pratishitam"</p>
-                  <p className="mt-1 text-xs text-muted-foreground">— Everything is established in truth.</p>
-                </blockquote>
-
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  A heartfelt message from our Vice Chancellor on academic excellence, integrity, and the
-                  university's vision for the next decade.
-                </p>
-
-                <a
-                  href="#"
-                  className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-[oklch(0.32_0.12_260)] hover:underline"
-                >
-                  Read full message <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-=======
-                  <p className="mt-1 text-lg font-semibold text-foreground">
-                    Prof. K. Gangadhara Rao
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Academic excellence, integrity, and ANU's vision for the next decade.
-                  </p>
-                </div>
-              </div>
-
-              <div className="h-px bg-border sm:h-16 sm:w-px" aria-hidden />
-
-              <blockquote className="relative pl-8">
-                <Quote className="absolute left-0 top-0.5 h-5 w-5 text-[oklch(0.32_0.12_260)]/60" />
-                <p className="text-sm font-medium italic text-foreground">"Satye Sarvam Pratishitam"</p>
-                <p className="mt-1 text-xs text-muted-foreground">Everything is established in truth.</p>
-              </blockquote>
->>>>>>> fa886b6 (A safe commit1)
-            </div>
-          </div>
-        </div>
-
-<<<<<<< HEAD
-        {/* RIGHT — Dashboard */}
-        <div className="lg:col-span-4">
-          <div className="sticky top-6 overflow-hidden rounded-3xl border border-border/60 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)]">
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-border/60 bg-gradient-to-r from-[oklch(0.28_0.12_265)] to-[oklch(0.38_0.14_255)] px-5 py-4 text-white">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-80">Dashboard</p>
-                <h3 className="mt-0.5 text-lg font-semibold">Updates & Announcements</h3>
-              </div>
-              <div className="hidden items-center gap-1 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-medium backdrop-blur sm:inline-flex">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-300" />
-                Live
-              </div>
-            </div>
-
-            {/* Tabs */}
-            <div className="flex items-center gap-1 border-b border-border/60 bg-[oklch(0.985_0.005_250)] px-3 pt-3">
-              {tabs.map((t) => {
-                const Icon = t.icon;
-                const isActive = active === t.id;
-                return (
-                  <button
-                    key={t.id}
-                    onClick={() => setActive(t.id)}
-                    className={`group relative flex flex-1 items-center justify-center gap-2 rounded-t-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                      isActive
-                        ? "bg-white text-[oklch(0.32_0.12_260)]"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span>{t.label}</span>
-                    <span
-                      className={`ml-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold ${
-                        isActive
-                          ? "bg-[oklch(0.32_0.12_260)] text-white"
-                          : "bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      {t.count}
-                    </span>
-                    {isActive && (
-                      <span className="absolute inset-x-2 -bottom-px h-[2px] rounded-full bg-[oklch(0.32_0.12_260)]" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Search */}
-            <div className="border-b border-border/60 bg-white px-5 py-3">
-              <div className="flex items-center gap-2 rounded-lg border border-border bg-[oklch(0.985_0.005_250)] px-3 py-2">
-                <Search className="h-4 w-4 text-muted-foreground" />
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder={`Search ${current.label.toLowerCase()}...`}
-                  className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* List */}
-            <ul className="max-h-[420px] divide-y divide-border/60 overflow-y-auto bg-white">
-              {filtered.length === 0 ? (
-                <li className="px-5 py-10 text-center text-sm text-muted-foreground">No items found.</li>
-              ) : (
-                filtered.map((item, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={item.href ?? "#"}
-                      className="group flex items-start gap-3 px-5 py-4 transition-colors hover:bg-[oklch(0.97_0.02_255)]"
-                    >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[oklch(0.32_0.12_260)]/60 group-hover:bg-[oklch(0.32_0.12_260)]" />
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-3">
-                          <p className="text-sm font-medium leading-snug text-foreground group-hover:text-[oklch(0.32_0.12_260)]">
-                            {item.title}
-                          </p>
-                          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-[oklch(0.32_0.12_260)]" />
-                        </div>
-                        <div className="mt-1.5 flex items-center gap-2">
-                          <span className="text-xs text-muted-foreground">{item.date}</span>
-                          <TagPill tag={item.tag} />
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                ))
-              )}
-            </ul>
-
-            {/* Footer */}
-            <a
-              href="#"
-              className="flex items-center justify-between border-t border-border/60 bg-[oklch(0.985_0.005_250)] px-5 py-3 text-sm font-medium text-[oklch(0.32_0.12_260)] hover:bg-[oklch(0.97_0.02_255)]"
-            >
-              <span>View all {current.label.toLowerCase()}</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-=======
-        <div className="lg:col-span-6">
-          <div className="overflow-hidden rounded-3xl border border-border/70 bg-white shadow-[0_24px_70px_-35px_rgba(15,23,42,0.35)]">
-            <img
-              src={bgImage}
-              alt="Acharya Nagarjuna University campus"
-              className="aspect-[4/3] h-full w-full object-cover"
-            />
->>>>>>> fa886b6 (A safe commit1)
-          </div>
-        </div>
+        </section>
       </div>
     </section>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fa886b6 (A safe commit1)

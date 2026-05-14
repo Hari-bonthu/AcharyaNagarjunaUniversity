@@ -5,6 +5,7 @@ import { FacilitiesSection } from "./FacilitiesSection";
 import { FacultyPreview } from "./FacultyPreview";
 import { LearningGrid } from "./LearningGrid";
 import { ProgramsSection } from "./ProgramsSection";
+import { ResearchFocusSection } from "./ResearchFocusSection";
 import { SkillsSection } from "./SkillsSection";
 import { UpdatesMini } from "./UpdatesMini";
 import { getDepartmentPage } from "./department-data";
@@ -15,13 +16,9 @@ export function DepartmentPage({ departmentId }: { departmentId: string }) {
   return (
     <main className="bg-background">
       <DepartmentHero department={department} />
-      <LearningGrid items={department.learning} />
       <ProgramsSection programs={department.programs} />
-      <SkillsSection items={department.skills} />
-      <FacilitiesSection items={department.facilities} />
       <FacultyPreview faculty={department.faculty} />
-      <CareerSection items={department.careers} />
-      <UpdatesMini updates={department.updates} />
+      <ResearchFocusSection items={department.researchFocus} />
       <CTASection department={department} />
     </main>
   );

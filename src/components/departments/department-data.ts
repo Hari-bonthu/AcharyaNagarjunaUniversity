@@ -41,6 +41,14 @@ export type UpdateItem = {
   tag: string;
 };
 
+export type ResearchFocusItem = {
+  title: string;
+  text: string;
+  icon: LucideIcon;
+  lead: string;
+  projects: string;
+};
+
 export type DepartmentPageData = {
   id: string;
   name: string;
@@ -53,6 +61,7 @@ export type DepartmentPageData = {
   skills: DepartmentCardItem[];
   facilities: DepartmentCardItem[];
   faculty: FacultyItem[];
+  researchFocus: ResearchFocusItem[];
   careers: DepartmentCardItem[];
   updates: UpdateItem[];
 };
@@ -178,6 +187,50 @@ export const departmentPages: Record<string, DepartmentPageData> = {
         name: "Dr. K. Anitha Devi",
         role: "Assistant Professor",
         focus: "Networks, cloud computing",
+      },
+    ],
+    researchFocus: [
+      {
+        title: "Computer Vision & Image Processing",
+        text: "Medical imaging, object detection, satellite image analysis and real-time video understanding.",
+        icon: Brain,
+        lead: "Dr. K. Anitha Devi",
+        projects: "3 active projects",
+      },
+      {
+        title: "Natural Language Processing",
+        text: "Low-resource language models, sentiment analysis and document understanding for regional languages.",
+        icon: Code2,
+        lead: "Dr. P. Lakshmi Narayana",
+        projects: "4 active projects",
+      },
+      {
+        title: "Distributed Systems & Cloud",
+        text: "Fault-tolerant architectures, edge computing, resource scheduling and IoT infrastructure.",
+        icon: Network,
+        lead: "Prof. V. Ramachandra Rao",
+        projects: "2 active projects",
+      },
+      {
+        title: "Cybersecurity & Privacy",
+        text: "Intrusion detection, cryptographic protocols, privacy-preserving ML and network forensics.",
+        icon: ShieldCheck,
+        lead: "Dr. K. Anitha Devi",
+        projects: "2 active projects",
+      },
+      {
+        title: "Human-Computer Interaction",
+        text: "Accessible interfaces, gesture-based input and intelligent assistive systems.",
+        icon: Users,
+        lead: "Dr. P. Lakshmi Narayana",
+        projects: "2 active projects",
+      },
+      {
+        title: "Bioinformatics & Health Tech",
+        text: "Genomic data analysis, disease prediction models and clinical decision support systems.",
+        icon: Database,
+        lead: "Dr. B. Srinivasa Rao",
+        projects: "3 active projects",
       },
     ],
     careers: [

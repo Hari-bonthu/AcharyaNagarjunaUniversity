@@ -12,6 +12,8 @@ import {
   Building2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import campusImage from "@/assets/bgg1.jpg";
+import phdImage from "@/assets/images/phd.jpg";
 
 type School = {
   id: string;
@@ -24,7 +26,7 @@ type School = {
   established: string;
   location: string;
   icon: LucideIcon;
-  /** Place an image at: public/colleges/<image>.jpg */
+  /** Bundled image asset resolved by Vite. */
   image: string;
   accent: string; // oklch token
 };
@@ -53,7 +55,7 @@ const schools: School[] = [
     established: "2007",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Wrench,
-    image: "/colleges/engineering.jpg",
+    image: campusImage,
     accent: "oklch(0.55 0.18 250)",
   },
   {
@@ -77,7 +79,7 @@ const schools: School[] = [
     established: "1976",
     location: "Main Campus, Nagarjuna Nagar",
     icon: FlaskConical,
-    image: "/colleges/sciences.jpg",
+    image: phdImage,
     accent: "oklch(0.6 0.16 195)",
   },
   {
@@ -103,7 +105,7 @@ const schools: School[] = [
     established: "1976",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Palette,
-    image: "/colleges/arts.jpg",
+    image: campusImage,
     accent: "oklch(0.6 0.18 30)",
   },
   {
@@ -125,7 +127,7 @@ const schools: School[] = [
     established: "1982",
     location: "Main Campus, Nagarjuna Nagar",
     icon: Pill,
-    image: "/colleges/pharmacy.jpg",
+    image: phdImage,
     accent: "oklch(0.6 0.16 150)",
   },
   {
@@ -145,7 +147,7 @@ const schools: School[] = [
     established: "1985",
     location: "Sports Complex, Nagarjuna Nagar",
     icon: Trophy,
-    image: "/colleges/sports.jpg",
+    image: campusImage,
     accent: "oklch(0.65 0.17 60)",
   },
   {
@@ -165,7 +167,7 @@ const schools: School[] = [
     established: "2010",
     location: "Architecture Block, Nagarjuna Nagar",
     icon: Building2,
-    image: "/colleges/architecture.jpg",
+    image: campusImage,
     accent: "oklch(0.55 0.14 290)",
   },
 ];
