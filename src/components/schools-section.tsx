@@ -49,8 +49,7 @@ const schools: School[] = [
       "B.Tech EEE",
       "B.Tech Mechanical",
       "B.Tech Civil",
-      "M.Tech (All Specializations)",
-      "Ph.D Engineering",
+      
     ],
     established: "2007",
     location: "Main Campus, Nagarjuna Nagar",

@@ -99,6 +99,7 @@ const MENU: MenuItem[] = [
         items: [
           { label: "Arts, Commerce & Law", href: "/colleges/arts-commerce-law" },
           { label: "Sciences", href: "/colleges/sciences" },
+          { label: "Physical Education & Sports", href: "/colleges/physical-education-sports" },
           { label: "Engineering", href: "/colleges/engineering" },
           { label: "Pharmacy", href: "/colleges/pharmacy" },
           { label: "Architecture & Planning", href: "/colleges/architecture-planning" },

@@ -335,44 +335,275 @@ const stats = [
   { value: "150+", label: "Faculty Members" },
 ];
 
-const departments: Department[] = [
-  {
-    name: "Biochemistry",
-    summary: "Understanding life at the molecular level.",
-    icon: Network,
-    color: "text-blue-600",
-  },
-  {
-    name: "Biotechnology",
-    summary: "Innovating solutions for a better future.",
-    icon: Leaf,
-    color: "text-emerald-600",
-  },
-  {
-    name: "Botany & Microbiology",
-    summary: "Exploring plants, microbes and their applications.",
-    icon: Sprout,
-    color: "text-green-600",
-  },
-  {
-    name: "Chemistry",
-    summary: "Creating new materials and transforming possibilities.",
-    icon: FlaskConical,
-    color: "text-orange-600",
-  },
-  {
-    name: "Computer Science",
-    summary: "Building intelligent systems and digital solutions.",
-    icon: Code2,
-    color: "text-sky-600",
-  },
-  {
-    name: "Electronics & Instrumentation",
-    summary: "Designing technology that connects the world.",
-    icon: Microscope,
-    color: "text-violet-600",
-  },
-];
+const departmentsByCollege: Record<string, Department[]> = {
+  sciences: [
+    {
+      name: "Food and Nutritional Science",
+      summary: "Nutrition, food science and health research.",
+      icon: Leaf,
+      color: "text-green-600",
+    },
+    {
+      name: "Mathematics",
+      summary: "Pure and applied mathematical sciences.",
+      icon: BookOpen,
+      color: "text-blue-600",
+    },
+    {
+      name: "Physics",
+      summary: "Matter, energy and advanced physics research.",
+      icon: Microscope,
+      color: "text-cyan-600",
+    },
+    {
+      name: "Geology",
+      summary: "Earth sciences and geological exploration.",
+      icon: MapPin,
+      color: "text-yellow-700",
+    },
+    {
+      name: "Nano Technology",
+      summary: "Advanced nanoscience and applications.",
+      icon: Microscope,
+      color: "text-violet-600",
+    },
+    {
+      name: "Statistics",
+      summary: "Data analysis and statistical modeling.",
+      icon: Network,
+      color: "text-indigo-600",
+    },
+    {
+      name: "Electronics & Instrumentation",
+      summary: "Instrumentation and electronics systems.",
+      icon: Network,
+      color: "text-purple-600",
+    },
+    {
+      name: "Psychology",
+      summary: "Human behavior and mental sciences.",
+      icon: Users,
+      color: "text-pink-600",
+    },
+    {
+      name: "Zoology & Aquaculture",
+      summary: "Animal sciences and aquaculture studies.",
+      icon: Sprout,
+      color: "text-emerald-600",
+    },
+    {
+      name: "Bio Technology",
+      summary: "Biological innovation and genetic sciences.",
+      icon: FlaskConical,
+      color: "text-green-700",
+    },
+    {
+      name: "Chemistry",
+      summary: "Chemical sciences and laboratory research.",
+      icon: FlaskConical,
+      color: "text-orange-600",
+    },
+    {
+      name: "Computer Science & Engineering",
+      summary: "Software systems and computational technologies.",
+      icon: Code2,
+      color: "text-sky-600",
+    },
+    {
+      name: "Bio Chemistry",
+      summary: "Life sciences at molecular level.",
+      icon: Microscope,
+      color: "text-red-600",
+    },
+    {
+      name: "Botany and Microbiology",
+      summary: "Plant sciences and microorganisms.",
+      icon: Leaf,
+      color: "text-lime-600",
+    },
+  ],
+
+  "arts-commerce-law": [
+    {
+      name: "Dr. B.R. Ambedkar School of Legal Education and Research",
+      summary: "Legal education and judicial studies.",
+      icon: ScrollText,
+      color: "text-slate-700",
+    },
+    {
+      name: "Education",
+      summary: "Teaching methodologies and educational sciences.",
+      icon: GraduationCap,
+      color: "text-blue-600",
+    },
+    {
+      name: "Hindi",
+      summary: "Hindi language and literature studies.",
+      icon: BookOpen,
+      color: "text-orange-600",
+    },
+    {
+      name: "History and Archaeology",
+      summary: "Historical studies and archaeology research.",
+      icon: ScrollText,
+      color: "text-amber-700",
+    },
+    {
+      name: "Political Science and Public Administration",
+      summary: "Politics, governance and administration.",
+      icon: BriefcaseBusiness,
+      color: "text-indigo-600",
+    },
+    {
+      name: "Commerce & Business Administration",
+      summary: "Business, finance and management studies.",
+      icon: BriefcaseBusiness,
+      color: "text-green-700",
+    },
+    {
+      name: "Economics",
+      summary: "Economic systems and policy studies.",
+      icon: BriefcaseBusiness,
+      color: "text-yellow-700",
+    },
+    {
+      name: "English",
+      summary: "English language and literary studies.",
+      icon: BookOpen,
+      color: "text-sky-700",
+    },
+    {
+      name: "Journalism & Mass Communication",
+      summary: "Media, journalism and communication studies.",
+      icon: Bell,
+      color: "text-red-600",
+    },
+    {
+      name: "Telugu",
+      summary: "Telugu language and cultural studies.",
+      icon: BookOpen,
+      color: "text-pink-700",
+    },
+    {
+  name: "Mahayana Buddhist Studies",
+  summary: "Buddhist philosophy, culture and historical studies.",
+  icon: ScrollText,
+  color: "text-orange-700",
+},
+{
+  name: "MBA Hospital Administration",
+  summary: "Healthcare systems and hospital management.",
+  icon: BriefcaseBusiness,
+  color: "text-red-600",
+},
+{
+  name: "Department of Rural Development",
+  summary: "Rural growth, policy and development studies.",
+  icon: Users,
+  color: "text-green-700",
+},
+{
+  name: "Sociology and Social",
+  summary: "Society, communities and social sciences.",
+  icon: Users,
+  color: "text-pink-600",
+},
+{
+  name: "International Business Studies",
+  summary: "Global business and international trade.",
+  icon: BriefcaseBusiness,
+  color: "text-indigo-700",
+},
+{
+  name: "Department of Tourism and Hospitality Management",
+  summary: "Tourism, hospitality and service management.",
+  icon: MapPin,
+  color: "text-cyan-700",
+},
+{
+  name: "Human Resource Management",
+  summary: "Workforce planning and organizational management.",
+  icon: Users,
+  color: "text-violet-700",
+},
+  ],
+
+  engineering: [
+    {
+      name: "Computer Science and Engineering",
+      summary: "Software development and computing systems.",
+      icon: Code2,
+      color: "text-sky-600",
+    },
+    {
+      name: "Mechanical Engineering",
+      summary: "Machines, manufacturing and mechanics.",
+      icon: Wrench,
+      color: "text-gray-700",
+    },
+    {
+      name: "Electronics and Communication Engineering",
+      summary: "Communication systems and electronics.",
+      icon: Network,
+      color: "text-violet-600",
+    },
+    {
+      name: "Civil Engineering",
+      summary: "Infrastructure and structural engineering.",
+      icon: Building2,
+      color: "text-yellow-700",
+    },
+    {
+      name: "Basic Science and Humanities",
+      summary: "Core sciences and humanities foundation.",
+      icon: GraduationCap,
+      color: "text-indigo-600",
+    },
+    {
+      name: "Electrical and Electronics Engineering",
+      summary: "Electrical systems and power engineering.",
+      icon: Microscope,
+      color: "text-orange-600",
+    },
+  ],
+
+  pharmacy: [
+    {
+      name: "Pharmaceutical Analysis",
+      summary: "Drug quality and analytical techniques.",
+      icon: Pill,
+      color: "text-blue-600",
+    },
+    {
+      name: "Pharmaceutical Chemistry",
+      summary: "Medicinal and pharmaceutical chemistry.",
+      icon: FlaskConical,
+      color: "text-purple-600",
+    },
+    {
+      name: "Pharmaceutics",
+      summary: "Drug formulation and delivery systems.",
+      icon: Pill,
+      color: "text-pink-600",
+    },
+    {
+      name: "Pharmacology",
+      summary: "Drug action and biological systems.",
+      icon: Microscope,
+      color: "text-red-600",
+    },
+    {
+      name: "Industrial Pharmacy",
+      summary: "Pharmaceutical manufacturing and production.",
+      icon: Building2,
+      color: "text-green-700",
+    },
+  ],
+
+  "physical-education-sports": [],
+
+  "architecture-planning": [],
+};
 
 const pillars = [
   {
@@ -465,7 +696,7 @@ const collegePages: Record<string, CollegePageData> = Object.fromEntries(
         { value: "25+", label: "Labs", icon: FlaskConical },
         { value: "150+", label: "Faculty", icon: GraduationCap },
       ],
-      departments,
+      departments: departmentsByCollege[college.id] ?? [],
       facilities: [
         {
           title: "Advanced Labs",
@@ -715,7 +946,7 @@ export function CollegeSection() {
 
 export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: string }) {
   const college = getCollegePage(collegeId);
-  const featuredDepartments = college.departments.slice(0, 3);
+  const featuredDepartments = college.departments;
 
   return (
     <section className="bg-white text-[#0B1F3A]">
@@ -788,39 +1019,77 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
       </nav> */}
 
       <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
-        <section id="leadership" className="scroll-mt-24 rounded-xl border border-black/10 bg-[#F8FAFC] p-5 md:p-6">
-          <div className="grid gap-5 md:grid-cols-[180px_1fr] md:items-center lg:grid-cols-[200px_1fr]">
-            <img
-              src={college.principalImage}
-              alt={college.principalName}
-              className="h-44 w-full rounded-xl object-cover object-top shadow-sm md:h-48 lg:h-52"
-              loading="lazy"
-            />
-            <div>
-              <SectionEyebrow>Principal</SectionEyebrow>
-              <h2 className="mt-2 text-2xl font-semibold">Message from College Principal</h2>
-              <p className="mt-3 text-base font-semibold text-[#0B1F3A]">{college.principalName}</p>
-              <p className="mt-3 max-w-4xl text-sm leading-7 text-[#6B7280]">
-                Our focus is to create a disciplined, research-aware and student-friendly academic environment where
-                learners gain confidence, skill and purpose.
-              </p>
-            </div>
+        <section
+  id="leadership"
+  className="scroll-mt-24 overflow-hidden bg-white px-6 py-12 md:px-8 md:py-16"
+>
+  <div className="mx-auto max-w-5xl">
+    <div className="grid gap-8 lg:grid-cols-[280px_1fr] lg:items-center">
+      {/* Image Side */}
+      <div className="relative mx-auto w-full max-w-xs">
+        <div className="relative overflow-hidden rounded-[24px] border border-[#E2E8F0] shadow-[0_12px_40px_-10px_rgba(11,31,58,0.15)]">
+          <img
+            src={college.principalImage}
+            alt={college.principalName}
+            className="h-[360px] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/40 to-transparent px-5 py-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#60A5FA]">
+              Principal
+            </p>
+            <h3 className="mt-1.5 text-lg font-bold text-white">
+              {college.principalName}
+            </h3>
+            <p className="mt-0.5 text-xs text-blue-100">
+              {college.shortName}
+            </p>
           </div>
-        </section>
+        </div>
+      </div>
+
+      {/* Content Side */}
+      <div className="relative space-y-5">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#BFDBFE] bg-[#F0F9FF] px-3.5 py-1.5 w-fit">
+          <GraduationCap className="h-3.5 w-3.5 text-[#3B82F6]" />
+          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1E40AF]">
+            Leadership Message
+          </span>
+        </div>
+
+        <div>
+          <h2 className="text-3xl font-bold leading-tight text-[#0B1F3A] md:text-3.5xl">
+            Message from Our Principal
+          </h2>
+        </div>
+
+        <div className="space-y-3 border-l-4 border-[#F97316] pl-5">
+          <p className="text-base font-semibold leading-7 text-[#1F2937]">
+            {college.description || 'Our institution is committed to building an academic environment rooted in excellence, discipline, innovation and student growth.'}
+          </p>
+          <p className="text-sm leading-6 text-[#6B7280]">
+            We continuously strive to empower learners with knowledge, research opportunities and values that prepare them to contribute meaningfully to society.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <section id="departments" className="mt-10 scroll-mt-24">
           <div className="flex items-end justify-between gap-5">
             <div>
               <SectionEyebrow>Departments</SectionEyebrow>
-              <h2 className="mt-2 text-2xl font-semibold">Featured departments</h2>
+              <h2 className="mt-2 text-2xl font-semibold">Academic departments</h2>
+              <p className="mt-1 text-sm text-[#6B7280]">
+  {college.departments.length} Departments
+</p>
             </div>
-            <a href="#" className="hidden items-center gap-2 text-sm font-semibold text-[#0B1F3A] sm:inline-flex">
-              View All Departments <ArrowRight className="h-4 w-4" />
-            </a>
+            
           </div>
 
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
-            {featuredDepartments.map((department) => (
+<div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">            {featuredDepartments.map((department) => (
               <DepartmentPreview key={department.name} department={department} />
             ))}
           </div>

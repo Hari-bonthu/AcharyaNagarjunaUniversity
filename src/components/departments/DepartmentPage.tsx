@@ -6,7 +6,6 @@ import { FacultyPreview } from "./FacultyPreview";
 import { ProgramsSection } from "./ProgramsSection";
 import { ResearchFocusSection } from "./ResearchFocusSection";
 import type { DepartmentPageData } from "./department-data";
-
 export function DepartmentPage({
   department,
 }: {
@@ -17,7 +16,9 @@ export function DepartmentPage({
       <DepartmentHero department={department} />
 
       <section id="programs">
-        <ProgramsSection programs={department.programs} />
+        <ProgramsSection
+  programs={department.programs}
+/>
       </section>
 
       <section id="faculty">
