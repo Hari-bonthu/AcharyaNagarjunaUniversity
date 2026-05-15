@@ -1,7 +1,17 @@
 import { SectionShell } from "./section-shell";
 import type { DepartmentCardItem } from "./department-data";
 
-export function CareerSection({ items }: { items: DepartmentCardItem[] }) {
+export function CareerSection({
+  items,
+  careers,
+}: {
+  items?: DepartmentCardItem[];
+  careers?: DepartmentCardItem[];
+}) {
+  const list = items ?? careers ?? [];
+
+  if (!list.length) return null;
+
   return (
     <SectionShell
       eyebrow="Student path"
@@ -9,7 +19,7 @@ export function CareerSection({ items }: { items: DepartmentCardItem[] }) {
       className="bg-[oklch(0.985_0.004_250)]"
     >
       <div className="grid gap-4 md:grid-cols-4">
-        {items.map((item) => {
+        {list.map((item) => {
           const Icon = item.icon;
           return (
             <article

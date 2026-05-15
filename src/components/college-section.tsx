@@ -720,51 +720,72 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
   return (
     <section className="bg-white text-[#0B1F3A]">
       <div className="relative overflow-hidden text-white">
-        <img
-          src={college.image}
-          alt={`${college.name} campus`}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div
-          className="absolute inset-0 bg-[linear-gradient(112deg,rgba(7,26,51,0.64)_0%,rgba(11,45,90,0.52)_42%,rgba(15,118,110,0.32)_100%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto grid min-h-[380px] max-w-7xl gap-6 px-6 py-12 lg:min-h-[460px] lg:px-8">
-          <div className="self-end pb-1 lg:pb-2">
-            <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-              {college.name}
-            </h1>
-            <p className="mt-3 max-w-2xl text-base font-medium text-white/90 md:text-lg">
-              {college.tagline}
-            </p>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/72">
-              {college.description}
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#admissions"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A] transition-transform hover:-translate-y-0.5"
-              >
-                Apply Now <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#departments"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-white/10"
-              >
-                Browse Departments <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
+
+  <img
+    src={college.image}
+    alt={`${college.name} campus banner`}
+    className="absolute inset-0 h-full w-full object-cover"
+  />
+
+  <div
+    className="absolute inset-0 bg-[linear-gradient(110deg,rgba(7,20,40,0.9)_0%,rgba(10,35,70,0.76)_45%,rgba(15,118,110,0.28)_100%)]"
+    aria-hidden
+  />
+
+  <div
+    className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.18),transparent_30%)]"
+    aria-hidden
+  />
+
+  <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-end gap-10 px-6 py-14 lg:px-8 lg:py-20">
+
+    <div className="max-w-4xl">
+
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#FDBA74] backdrop-blur-sm">
+        {college.shortName}
       </div>
 
-      <nav className="sticky top-0 z-20 border-b border-black/10 bg-white/95 backdrop-blur">
+      <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight md:text-6xl">
+        {college.name}
+      </h1>
+
+      <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
+        {college.tagline}
+      </p>
+
+      <p className="mt-4 text-sm font-semibold tracking-wide text-[#FDBA74] md:text-base">
+        {college.description}
+      </p>
+
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#departments"
+          className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-3 text-sm font-semibold text-[#0B1F3A] transition hover:bg-[#fb923c]"
+        >
+          Browse Departments
+          <ArrowRight className="h-4 w-4" />
+        </a>
+
+        <a
+          href="#admissions"
+          className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+        >
+          Apply Now
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      {/* <nav className="sticky top-0 z-20 border-b border-black/10 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-6 py-3 text-sm font-semibold text-[#0B1F3A] lg:px-8">
           <a href="#departments" className="whitespace-nowrap hover:text-[#F97316]">Departments</a>
           <a href="#admissions" className="whitespace-nowrap hover:text-[#F97316]">Admissions</a>
           <a href="#leadership" className="whitespace-nowrap hover:text-[#F97316]">Leadership</a>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <section id="leadership" className="scroll-mt-24 rounded-xl border border-black/10 bg-[#F8FAFC] p-5 md:p-6">

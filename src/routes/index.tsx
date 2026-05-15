@@ -160,8 +160,8 @@ function BannerCarousel() {
         <CarouselContent className="-ml-0">
           {bannerImages.map((banner, index) => (
             <CarouselItem key={banner.src} className="pl-0">
-              <div className="relative h-[220px] w-full overflow-hidden bg-[oklch(0.12_0.03_260)] sm:h-[340px] lg:h-[500px] xl:h-[540px]">
-                <img
+<div className="relative w-full min-h-[60vh] overflow-hidden bg-[oklch(0.12_0.03_260)] sm:min-h-[70vh] lg:min-h-[68vh]">
+                  <img
                   src={banner.src}
                   alt={banner.alt}
                   className="absolute inset-0 h-full w-full object-cover object-center"

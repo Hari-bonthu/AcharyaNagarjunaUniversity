@@ -13,7 +13,7 @@ export function FacilitiesSection({ items }: { items: DepartmentCardItem[] }) {
   return (
     <SectionShell
       eyebrow="Facilities / labs"
-      title="World-class infrastructure for learning"
+      title="Infrastructure for learning"
       className="bg-white"
     >
       <p className="mb-6 max-w-3xl text-sm leading-6 text-slate-600">

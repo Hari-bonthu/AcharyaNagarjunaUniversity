@@ -5,19 +5,34 @@ import { FacilitiesSection } from "./FacilitiesSection";
 import { FacultyPreview } from "./FacultyPreview";
 import { ProgramsSection } from "./ProgramsSection";
 import { ResearchFocusSection } from "./ResearchFocusSection";
-import { getDepartmentPage } from "./department-data";
+import type { DepartmentPageData } from "./department-data";
 
-export function DepartmentPage({ departmentId }: { departmentId: string }) {
-  const department = getDepartmentPage(departmentId);
-
+export function DepartmentPage({
+  department,
+}: {
+  department: DepartmentPageData;
+}) {
   return (
     <main className="bg-background">
       <DepartmentHero department={department} />
-      <ProgramsSection programs={department.programs} />
-      <FacultyPreview faculty={department.faculty} />
-      <CTASection department={department} />
-      <FacilitiesSection items={department.facilities.slice(0, 4)} />
-      <ResearchFocusSection items={department.researchFocus} />
+
+      <section id="programs">
+        <ProgramsSection programs={department.programs} />
+      </section>
+
+      <section id="faculty">
+        <FacultyPreview faculty={department.faculty} />
+      </section>
+
+      <section id="facilities">
+        <FacilitiesSection items={department.facilities.slice(0, 4)} />
+      </section>
+
+      <section id="research">
+        <ResearchFocusSection items={department.researchFocus} />
+      </section>
+
+      
     </main>
   );
 }

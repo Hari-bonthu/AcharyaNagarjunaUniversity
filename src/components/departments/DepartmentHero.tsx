@@ -1,4 +1,4 @@
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import collegeArchitectureImage from "@/assets/Colleges/College_Architecture.jpeg";
 import collegeArtsImage from "@/assets/Colleges/College_Arts.jpg";
 import collegeEngineeringImage from "@/assets/Colleges/College_Engineering.jpg";
@@ -7,7 +7,11 @@ import collegePhysicalEducationImage from "@/assets/Colleges/College_PhysicalEdu
 import collegeSciencesImage from "@/assets/Colleges/College_Sciences.jpg";
 import type { DepartmentPageData } from "./department-data";
 
-export function DepartmentHero({ department }: { department: DepartmentPageData }) {
+export function DepartmentHero({
+  department,
+}: {
+  department: DepartmentPageData;
+}) {
   const bannerImageByCollege: Record<string, string> = {
     "ANU College of Sciences": collegeSciencesImage,
     "ANU College of Engineering & Technology": collegeEngineeringImage,
@@ -16,44 +20,73 @@ export function DepartmentHero({ department }: { department: DepartmentPageData 
     "ANU College of Physical Education & Sports": collegePhysicalEducationImage,
     "ANU College of Architecture & Planning": collegeArchitectureImage,
   };
-  const bannerImage = bannerImageByCollege[department.college] ?? collegeSciencesImage;
+
+  const bannerImage =
+    bannerImageByCollege[department.college] ?? collegeSciencesImage;
+
+  const stats = [
+    { label: "Programs", value: String(department.programs.length) },
+    { label: "Faculty", value: String(department.faculty.length) },
+    { label: "Research Areas", value: String(department.researchFocus.length) },
+  ];
 
   return (
-    <section className="relative overflow-hidden text-white">
-      <img src={bannerImage} alt={`${department.name} banner`} className="absolute inset-0 h-full w-full object-cover" />
+    <section className="relative isolate overflow-hidden text-white">
+      <img
+        src={bannerImage}
+        alt={`${department.name} campus banner`}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
       <div
-        className="absolute inset-0 bg-[linear-gradient(112deg,rgba(7,26,51,0.7)_0%,rgba(11,45,90,0.56)_42%,rgba(15,118,110,0.36)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(110deg,rgba(7,20,40,0.9)_0%,rgba(10,35,70,0.76)_45%,rgba(15,118,110,0.28)_100%)]"
         aria-hidden
       />
-      <div className="relative mx-auto grid min-h-[340px] max-w-7xl gap-6 px-6 py-12 lg:min-h-[420px] lg:px-8">
-        <div className="self-end pb-1 lg:pb-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#FDBA74]">
+
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.18),transparent_30%)]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-end gap-10 px-6 py-14 lg:grid-cols-[1.4fr_0.6fr] lg:px-8 lg:py-20">
+        <div className="max-w-4xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#FDBA74] backdrop-blur-sm">
+            <Sparkles className="h-3.5 w-3.5" />
             {department.college}
-          </p>
-          <h1 className="mt-3 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
+          </div>
+
+          <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight md:text-6xl">
             {department.name}
           </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base">
+
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
             {department.purpose}
           </p>
-          <p className="mt-2 text-sm font-semibold text-[#FDBA74] md:text-base">
+
+          <p className="mt-4 text-sm font-semibold tracking-wide text-[#FDBA74] md:text-base">
             {department.heroLine}
           </p>
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#curriculum"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A] transition-colors hover:bg-[#fb923c]"
+              href="#programs"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-3 text-sm font-semibold text-[#0B1F3A] transition hover:bg-[#fb923c]"
             >
-              Apply Now <ArrowRight className="h-4 w-4" />
+              Explore Programs
+              <ArrowRight className="h-4 w-4" />
             </a>
+
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
-              Contact Department <Mail className="h-4 w-4" />
+              Contact Department
+              <Mail className="h-4 w-4" />
             </a>
           </div>
         </div>
+
+        
       </div>
     </section>
   );

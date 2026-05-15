@@ -253,7 +253,50 @@ export function WelcomeSection() {
             About the <span className="text-[#0066cc]">University</span>
           </h2>
         </div>
+      <section className="mt-4">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] lg:items-stretch">
+            <figure className="overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-[0_18px_55px_-38px_rgba(15,23,42,0.35)]">
+              <img
+                src={bgImage}
+                alt="Acharya Nagarjuna University's 300-acre main campus near Guntur"
+                className="aspect-[21/9] h-full w-full object-cover"
+              />
+              <figcaption className="px-4 py-3 text-xs leading-5 text-[#666666]">
+                ANU's 300-acre main campus near Guntur brings together academic departments, research spaces,
+                student facilities and open green areas.
+              </figcaption>
+            </figure>
 
+            <div className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+              <h3 className="text-xl font-semibold leading-tight">Our Campus</h3>
+              <p className="mt-2.5 max-w-[560px] text-sm leading-6 text-[#666666]">
+                The campus gives students a complete university environment: classrooms, laboratories, libraries,
+                activity spaces and a setting designed for learning beyond the timetable.
+              </p>
+              <a href="#campus-tour" className="mt-3 inline-flex items-center justify-center gap-2 rounded-md bg-[#0066cc] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#0052a3] hover:shadow-[0_8px_20px_-12px_rgba(0,102,204,0.8)]">
+                Schedule a campus tour <ArrowUpRight className="h-4 w-4" />
+              </a>
+
+              <div className="mt-4 grid gap-2.5">
+                {campusHighlights.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <article key={item.title} className="flex gap-3 rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-3">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white text-[#0066cc] ring-1 ring-[#eeeeee]">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-semibold">{item.title}</h4>
+                        <p className="mt-0.5 text-xs leading-5 text-[#666666]">{item.text}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
         <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_300px] lg:items-stretch">
           <article className="flex h-full flex-col rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eaf3ff] text-[#0066cc]">
@@ -306,50 +349,7 @@ export function WelcomeSection() {
           </aside>
         </div>
 
-        <section className="mt-4">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] lg:items-stretch">
-            <figure className="overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-[0_18px_55px_-38px_rgba(15,23,42,0.35)]">
-              <img
-                src={bgImage}
-                alt="Acharya Nagarjuna University's 300-acre main campus near Guntur"
-                className="aspect-[21/9] h-full w-full object-cover"
-              />
-              <figcaption className="px-4 py-3 text-xs leading-5 text-[#666666]">
-                ANU's 300-acre main campus near Guntur brings together academic departments, research spaces,
-                student facilities and open green areas.
-              </figcaption>
-            </figure>
-
-            <div className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
-              <h3 className="text-xl font-semibold leading-tight">Our Campus</h3>
-              <p className="mt-2.5 max-w-[560px] text-sm leading-6 text-[#666666]">
-                The campus gives students a complete university environment: classrooms, laboratories, libraries,
-                activity spaces and a setting designed for learning beyond the timetable.
-              </p>
-              <a href="#campus-tour" className="mt-3 inline-flex items-center justify-center gap-2 rounded-md bg-[#0066cc] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#0052a3] hover:shadow-[0_8px_20px_-12px_rgba(0,102,204,0.8)]">
-                Schedule a campus tour <ArrowUpRight className="h-4 w-4" />
-              </a>
-
-              <div className="mt-4 grid gap-2.5">
-                {campusHighlights.map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <article key={item.title} className="flex gap-3 rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-3">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white text-[#0066cc] ring-1 ring-[#eeeeee]">
-                        <Icon className="h-4 w-4" aria-hidden />
-                      </span>
-                      <div>
-                        <h4 className="text-sm font-semibold">{item.title}</h4>
-                        <p className="mt-0.5 text-xs leading-5 text-[#666666]">{item.text}</p>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
+        
 
         <section className="mt-10 rounded-lg bg-[#f9f9f9] p-5 md:p-6">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">

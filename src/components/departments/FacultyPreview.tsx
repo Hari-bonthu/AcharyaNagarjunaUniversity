@@ -4,42 +4,84 @@ import { getFacultySlugByName } from "@/data/facultyProfiles";
 import { SectionShell } from "./section-shell";
 import type { FacultyItem } from "./department-data";
 
+const facultyImages = Object.values(
+  import.meta.glob("../../assets/faculty/*.{jpg,jpeg,png,webp}", {
+    eager: true,
+    import: "default",
+  }),
+) as string[];
+
 export function FacultyPreview({ faculty }: { faculty: FacultyItem[] }) {
+  const featuredFaculty = faculty.slice(0, 3);
+
   return (
-    <SectionShell eyebrow="Faculty snapshot" title="Guidance from experienced teachers">
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_auto] md:items-stretch">
-        {faculty.slice(0, 3).map((member) => {
-          const facultySlug = getFacultySlugByName(member.name);
-          const initial = member.name.split(" ").slice(-1)[0].charAt(0);
+    <SectionShell
+      eyebrow="Faculty"
+      title="Learn from mentors with academic depth and practical perspective"
+      className="bg-white"
+    >
+      <div className="mb-5 flex justify-end">
+        <Link
+          to="/faculty"
+          className="inline-flex items-center gap-2 rounded-md border border-[oklch(0.22_0.06_265)] bg-white px-5 py-3 text-sm font-semibold text-[oklch(0.22_0.06_265)] transition hover:bg-[oklch(0.97_0.01_260)]"
+        >
+          View All Faculty
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-3">
+        {featuredFaculty.map((member) => {
+          const facultySlug =
+            getFacultySlugByName(member.name) ?? "prof-v-ramachandra-rao";
+          const demoImage = facultyImages.length
+            ? facultyImages[featuredFaculty.indexOf(member) % facultyImages.length]
+            : "";
+
+          const initial =
+            member.name
+              .trim()
+              .split(" ")
+              .slice(-1)[0]
+              ?.charAt(0)
+              .toUpperCase() ?? "F";
 
           return (
             <Link
               key={member.name}
               to="/faculty/$facultySlug"
-              params={{ facultySlug: facultySlug ?? "prof-v-ramachandra-rao" }}
-              className="group rounded-lg bg-white p-6 shadow-[0_18px_45px_-40px_oklch(0.22_0.06_265/0.45)] ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_52px_-36px_oklch(0.22_0.06_265/0.55)]"
+              params={{ facultySlug }}
+              className="group rounded-2xl border border-slate-200 bg-[oklch(0.995_0.002_260)] p-5 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-md"
             >
-              <div className="grid grid-cols-[112px_1fr] items-center gap-4">
-                <div className="flex h-[142px] w-full items-center justify-center rounded-md bg-[oklch(0.91_0.01_260)] text-3xl font-bold text-[oklch(0.22_0.06_265)] transition-colors group-hover:bg-[oklch(0.52_0.14_45)] group-hover:text-white">
-                  {initial}
-                </div>
+              <div className="grid grid-cols-[92px_1fr] gap-4">
+                {demoImage ? (
+                  <img
+                    src={demoImage}
+                    alt={member.name}
+                    className="h-[112px] w-[92px] rounded-2xl object-cover object-top"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-[112px] w-[92px] items-center justify-center rounded-2xl bg-[oklch(0.92_0.01_260)] text-3xl font-black text-[oklch(0.22_0.06_265)] transition group-hover:bg-[oklch(0.52_0.14_45)] group-hover:text-white">
+                    {initial}
+                  </div>
+                )}
+
                 <div className="min-w-0">
-                  <h3 className="text-base font-semibold leading-6 text-[oklch(0.22_0.06_265)]">
+                  <h3 className="text-base font-bold leading-6 text-slate-900">
                     {member.name}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-[oklch(0.52_0.14_45)]">{member.role}</p>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{member.focus}</p>
+                  <p className="mt-1 text-sm font-medium text-[oklch(0.52_0.14_45)]">
+                    {member.role}
+                  </p>
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
+                    {member.focus}
+                  </p>
                 </div>
               </div>
             </Link>
           );
         })}
-        <Link
-          to="/faculty"
-          className="flex min-h-28 items-center justify-center gap-2 rounded-lg border border-[oklch(0.22_0.06_265)] bg-white px-4 py-4 text-sm font-semibold text-[oklch(0.22_0.06_265)] transition-colors hover:bg-[oklch(0.97_0.01_260)]"
-        >
-          View All Faculty <ArrowRight className="h-4 w-4" />
-        </Link>
       </div>
     </SectionShell>
   );

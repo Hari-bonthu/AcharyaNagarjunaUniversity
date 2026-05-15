@@ -227,15 +227,7 @@ const MENU: MenuItem[] = [
           { label: "Incubators", href: "#" },
         ],
       },
-      {
-        title: "QUALITY & ACCREDITATION",
-        items: [
-          { label: "IQAC", href: "#" },
-          { label: "SSR", href: "#" },
-          { label: "NAAC", href: "#" },
-          { label: "Awards & Recognitions", href: "#" },
-        ],
-      },
+      
     ],
   },
   {
@@ -254,6 +246,8 @@ const MENU: MenuItem[] = [
           { label: "NIRF", href: "#" },
           { label: "IQAC", href: "#" },
           { label: "SSR", href: "#" },
+          { label: "NAAC", href: "#" },
+          { label: "Awards & Recognitions", href: "#" },
         ],
       },
       {
