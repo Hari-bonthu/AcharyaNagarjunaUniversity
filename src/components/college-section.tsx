@@ -28,6 +28,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import campusImage from "@/assets/bgg1.jpg";
 import collegeArtsImage from "@/assets/Colleges/College_Arts.jpg";
+import collegeArchitectureImage from "@/assets/Colleges/College_Architecture.jpeg";
 import collegeEngineeringImage from "@/assets/Colleges/College_Engineering.jpg";
 import collegePharmaImage from "@/assets/Colleges/College_Pharma.jpg";
 import collegePhysicalEducationImage from "@/assets/Colleges/College_PhysicalEducation.jpg";
@@ -118,8 +119,8 @@ const colleges: CollegeSummary[] = [
     details: "Research-led departments in life sciences, physical sciences and computational fields.",
     icon: FlaskConical,
     image: collegeSciencesImage,
-    principalImage: principalProfMSureshKumarImage,
-    principalName: "Prof. M. Suresh Kumar",
+    principalImage: principalProfKVeeraiahImage,
+    principalName: "Prof. K. Veeraiah",
   },
   {
     id: "engineering",
@@ -129,8 +130,8 @@ const colleges: CollegeSummary[] = [
     details: "Programs across CSE, AI/ML, Data Science, ECE, EEE, Mechanical and Civil streams.",
     icon: Code2,
     image: collegeEngineeringImage,
-    principalImage: principalProfKVeeraiahImage,
-    principalName: "Prof. K. Veeraiah",
+    principalImage: principalChLingaRajuImage,
+    principalName: "Ch. Linga Raju",
   },
   {
     id: "arts-commerce-law",
@@ -140,8 +141,8 @@ const colleges: CollegeSummary[] = [
     details: "A broad academic home for languages, social sciences, commerce, management and law.",
     icon: GraduationCap,
     image: collegeArtsImage,
-    principalImage: principalImage,
-    principalName: "College Principal",
+    principalImage: principalProfMSureshKumarImage,
+    principalName: "Prof. M. Suresh Kumar",
   },
   {
     id: "pharmacy",
@@ -151,8 +152,8 @@ const colleges: CollegeSummary[] = [
     details: "Industry-aligned pharmacy education with modern laboratories and research pathways.",
     icon: Microscope,
     image: collegePharmaImage,
-    principalImage: principalImage,
-    principalName: "College Principal",
+    principalImage: "None",
+    principalName: "Dr. Karavadi Thejomoorthy",
   },
   {
     id: "architecture-planning",
@@ -161,8 +162,8 @@ const colleges: CollegeSummary[] = [
     tagline: "Designing tomorrow's cities.",
     details: "Design, planning and sustainable built-environment programs.",
     icon: Building2,
-    image: campusImage,
-    principalImage: principalImage,
+    image: collegeArchitectureImage,
+    principalImage: "None",
     principalName: "College Principal",
   },
   {
@@ -173,8 +174,8 @@ const colleges: CollegeSummary[] = [
     details: "Physical education, coaching and sports sciences with active campus infrastructure.",
     icon: Trophy,
     image: collegePhysicalEducationImage,
-    principalImage: principalChLingaRajuImage,
-    principalName: "Ch. Linga Raju",
+    principalImage: principalImage,
+    principalName: "Dr. P. Johnson",
   },
 ];
 
@@ -314,7 +315,7 @@ const schools: School[] = [
     established: "2010",
     location: "Architecture Block, Nagarjuna Nagar",
     icon: Building2,
-    image: campusImage,
+    image: collegeArchitectureImage,
     accent: "oklch(0.55 0.14 290)",
   },
 ];
@@ -714,15 +715,22 @@ export function CollegeSection() {
 
 export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: string }) {
   const college = getCollegePage(collegeId);
-  const heroStats = college.stats.slice(0, 4);
   const featuredDepartments = college.departments.slice(0, 3);
-  const featuredFacilities = college.facilities.slice(0, 4);
 
   return (
     <section className="bg-white text-[#0B1F3A]">
-      <div className="bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.32),transparent_34%),linear-gradient(135deg,#071A33,#0B2D5A_54%,#0F766E)] text-white">
-        <div className="mx-auto grid min-h-[300px] max-w-7xl gap-6 px-6 py-9 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.72fr)] lg:items-center lg:px-8">
-          <div>
+      <div className="relative overflow-hidden text-white">
+        <img
+          src={college.image}
+          alt={`${college.name} campus`}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(112deg,rgba(7,26,51,0.64)_0%,rgba(11,45,90,0.52)_42%,rgba(15,118,110,0.32)_100%)]"
+          aria-hidden
+        />
+        <div className="relative mx-auto grid min-h-[380px] max-w-7xl gap-6 px-6 py-12 lg:min-h-[460px] lg:px-8">
+          <div className="self-end pb-1 lg:pb-2">
             <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
               {college.name}
             </h1>
@@ -747,20 +755,6 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
               </a>
             </div>
           </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            {heroStats.map((stat) => {
-              const Icon = stat.icon;
-
-              return (
-                <div key={stat.label} className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur">
-                  <Icon className="h-5 w-5 text-[#FDBA74]" aria-hidden />
-                  <p className="mt-3 text-2xl font-semibold leading-none">{stat.value}</p>
-                  <p className="mt-1 text-xs font-medium text-white/72">{stat.label}</p>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
 
@@ -768,26 +762,26 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
         <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-6 py-3 text-sm font-semibold text-[#0B1F3A] lg:px-8">
           <a href="#departments" className="whitespace-nowrap hover:text-[#F97316]">Departments</a>
           <a href="#admissions" className="whitespace-nowrap hover:text-[#F97316]">Admissions</a>
-          <a href="#facilities" className="whitespace-nowrap hover:text-[#F97316]">Facilities</a>
           <a href="#leadership" className="whitespace-nowrap hover:text-[#F97316]">Leadership</a>
         </div>
       </nav>
 
       <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
-        <section id="leadership" className="scroll-mt-24 rounded-xl border border-black/10 bg-[#F8FAFC] p-4">
-          <div className="grid gap-4 md:grid-cols-[140px_1fr] md:items-center">
+        <section id="leadership" className="scroll-mt-24 rounded-xl border border-black/10 bg-[#F8FAFC] p-5 md:p-6">
+          <div className="grid gap-5 md:grid-cols-[180px_1fr] md:items-center lg:grid-cols-[200px_1fr]">
             <img
               src={college.principalImage}
               alt={college.principalName}
-              className="h-32 w-32 rounded-xl object-cover object-top shadow-sm md:h-36 md:w-36"
+              className="h-44 w-full rounded-xl object-cover object-top shadow-sm md:h-48 lg:h-52"
               loading="lazy"
             />
             <div>
-              <SectionEyebrow>Principal / Dean</SectionEyebrow>
-              <h2 className="mt-2 text-2xl font-semibold">Message from {college.principalName}</h2>
-              <p className="mt-3 max-w-4xl text-sm leading-6 text-[#6B7280]">
-              Our focus is to create a disciplined, research-aware and student-friendly academic environment where
-              learners gain confidence, skill and purpose.
+              <SectionEyebrow>Principal</SectionEyebrow>
+              <h2 className="mt-2 text-2xl font-semibold">Message from College Principal</h2>
+              <p className="mt-3 text-base font-semibold text-[#0B1F3A]">{college.principalName}</p>
+              <p className="mt-3 max-w-4xl text-sm leading-7 text-[#6B7280]">
+                Our focus is to create a disciplined, research-aware and student-friendly academic environment where
+                learners gain confidence, skill and purpose.
               </p>
             </div>
           </div>
@@ -826,14 +820,6 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
           </div>
         </section>
 
-        <section id="facilities" className="mt-10 scroll-mt-24">
-          <SectionEyebrow>Facilities</SectionEyebrow>
-          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {featuredFacilities.map((item) => (
-              <InfoTile key={item.title} item={item} compact />
-            ))}
-          </div>
-        </section>
       </div>
     </section>
   );
@@ -925,7 +911,6 @@ function InfoTile({ item, compact = false }: { item: PanelItem; compact?: boolea
 }
 
 function DepartmentPreview({ department }: { department: Department }) {
-  const Icon = department.icon;
   const departmentSlug = department.name
     .toLowerCase()
     .replace(/&/g, "and")
@@ -933,17 +918,12 @@ function DepartmentPreview({ department }: { department: Department }) {
     .replace(/(^-|-$)/g, "");
 
   return (
-    <a href={`/departments/${departmentSlug}`} className="group flex h-full min-h-32 gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
-        <Icon className="h-6 w-6" aria-hidden />
-      </span>
-      <span className="flex min-w-0 flex-1 flex-col">
-        <span className="block text-base font-semibold text-[#0B1F3A]">{department.name}</span>
-        <span className="mt-1.5 line-clamp-2 block text-sm leading-6 text-[#6B7280]">{department.summary}</span>
-        <span className="mt-auto pt-3 inline-flex translate-y-1 items-center gap-1 text-xs font-semibold text-[#F97316] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-          Learn more <ArrowRight className="h-3.5 w-3.5" />
-        </span>
-      </span>
+    <a
+      href={`/departments/${departmentSlug}`}
+      className="group flex h-full flex-col rounded-lg border border-black/10 bg-white p-3 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]"
+    >
+      <ImagePlaceholder label={department.name} className="aspect-[16/10] w-full bg-[#D1D5DB]" />
+      <span className="mt-3 block text-center text-base font-semibold text-[#0B1F3A]">{department.name}</span>
     </a>
   );
 }

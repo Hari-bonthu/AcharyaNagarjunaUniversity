@@ -30,8 +30,8 @@ export function ResearchFocusSection({ items }: { items: ResearchFocusItem[] }) 
       title="What the department actively works on"
       className="bg-white"
     >
-      <div className="-mt-4 mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <p className="max-w-3xl text-base leading-7 text-slate-600">
+      <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <p className="max-w-3xl text-sm leading-6 text-slate-600">
           Faculty-led research areas open to M.Tech and PhD students from day one.
         </p>
 
@@ -67,25 +67,25 @@ export function ResearchFocusSection({ items }: { items: ResearchFocusItem[] }) 
               <article
                 key={item.title}
                 data-research-card
-                className="flex min-h-[360px] w-[82vw] max-w-[360px] shrink-0 snap-start flex-col justify-between rounded-lg border border-slate-200 bg-white p-5 shadow-[0_22px_55px_-38px_rgba(15,35,69,0.55)] transition-colors hover:border-orange-300 sm:w-[340px]"
+                className="flex min-h-[300px] w-[82vw] max-w-[340px] shrink-0 snap-start flex-col justify-between rounded-lg border border-slate-200 bg-white p-4 shadow-[0_22px_55px_-42px_rgba(15,35,69,0.55)] transition-colors hover:border-orange-300 sm:w-[320px]"
               >
                 <div>
                   <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-white text-[#0f2345] shadow-sm ring-1 ring-slate-200">
-                      <Icon className="h-5 w-5" aria-hidden />
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white text-[#0f2345] shadow-sm ring-1 ring-slate-200">
+                      <Icon className="h-4 w-4" aria-hidden />
                     </span>
                     <p className="text-xs font-bold tracking-wider text-slate-300">
                       {String(index + 1).padStart(2, "0")}
                     </p>
                   </div>
 
-                  <h3 className="mt-6 text-2xl font-black leading-7 tracking-tight text-[#101827]">
+                  <h3 className="mt-4 text-lg font-black leading-6 tracking-tight text-[#101827]">
                     {item.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-600">{item.text}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
                 </div>
 
-                <div className="mt-6 border-t border-slate-200 pt-4">
+                <div className="mt-4 border-t border-slate-200 pt-3">
                   <p className="text-xs leading-5 text-slate-500">
                     <span className="font-semibold text-slate-700">{item.lead}</span>
                     <span className="mx-1 text-slate-300">.</span>

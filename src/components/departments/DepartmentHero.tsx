@@ -1,61 +1,57 @@
 import { ArrowRight, Mail } from "lucide-react";
+import collegeArchitectureImage from "@/assets/Colleges/College_Architecture.jpeg";
+import collegeArtsImage from "@/assets/Colleges/College_Arts.jpg";
+import collegeEngineeringImage from "@/assets/Colleges/College_Engineering.jpg";
+import collegePharmaImage from "@/assets/Colleges/College_Pharma.jpg";
+import collegePhysicalEducationImage from "@/assets/Colleges/College_PhysicalEducation.jpg";
+import collegeSciencesImage from "@/assets/Colleges/College_Sciences.jpg";
 import type { DepartmentPageData } from "./department-data";
 
 export function DepartmentHero({ department }: { department: DepartmentPageData }) {
+  const bannerImageByCollege: Record<string, string> = {
+    "ANU College of Sciences": collegeSciencesImage,
+    "ANU College of Engineering & Technology": collegeEngineeringImage,
+    "ANU College of Arts, Commerce & Law": collegeArtsImage,
+    "ANU College of Pharmaceutical Sciences": collegePharmaImage,
+    "ANU College of Physical Education & Sports": collegePhysicalEducationImage,
+    "ANU College of Architecture & Planning": collegeArchitectureImage,
+  };
+  const bannerImage = bannerImageByCollege[department.college] ?? collegeSciencesImage;
+
   return (
-    <section className="bg-[oklch(0.985_0.004_250)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-24">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[oklch(0.58_0.15_45)]">
+    <section className="relative overflow-hidden text-white">
+      <img src={bannerImage} alt={`${department.name} banner`} className="absolute inset-0 h-full w-full object-cover" />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(112deg,rgba(7,26,51,0.7)_0%,rgba(11,45,90,0.56)_42%,rgba(15,118,110,0.36)_100%)]"
+        aria-hidden
+      />
+      <div className="relative mx-auto grid min-h-[340px] max-w-7xl gap-6 px-6 py-12 lg:min-h-[420px] lg:px-8">
+        <div className="self-end pb-1 lg:pb-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#FDBA74]">
             {department.college}
           </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-[oklch(0.22_0.06_265)] md:text-6xl">
+          <h1 className="mt-3 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
             {department.name}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[oklch(0.34_0.04_265)]">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base">
             {department.purpose}
           </p>
-          <p className="mt-3 text-base font-semibold text-[oklch(0.52_0.14_45)]">
+          <p className="mt-2 text-sm font-semibold text-[#FDBA74] md:text-base">
             {department.heroLine}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <a
               href="#curriculum"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-[oklch(0.22_0.06_265)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[oklch(0.28_0.07_265)]"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A] transition-colors hover:bg-[#fb923c]"
             >
-              Explore Curriculum <ArrowRight className="h-4 w-4" />
+              Apply Now <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-[oklch(0.78_0.1_45)] bg-white px-6 py-3 text-sm font-semibold text-[oklch(0.22_0.06_265)] transition-colors hover:bg-[oklch(0.98_0.025_45)]"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Contact Department <Mail className="h-4 w-4" />
             </a>
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="aspect-[4/3] overflow-hidden rounded-lg bg-[oklch(0.88_0.006_260)] shadow-[0_24px_70px_-35px_oklch(0.22_0.06_265/0.55)]">
-            <div
-              className="flex h-full items-center justify-center text-center text-xs font-semibold uppercase tracking-[0.2em] text-[oklch(0.5_0.03_265)]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, rgba(255,255,255,0.55) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.55) 75%, transparent 75%, transparent)",
-                backgroundSize: "24px 24px",
-              }}
-            >
-              <span className="rounded-full bg-white/80 px-5 py-2 shadow-sm">
-                {department.imageLabel}
-              </span>
-            </div>
-          </div>
-          <div className="absolute -bottom-5 left-6 rounded-md bg-white px-5 py-4 shadow-[0_16px_45px_-28px_oklch(0_0_0/0.45)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[oklch(0.58_0.15_45)]">
-              Department Focus
-            </p>
-            <p className="mt-1 text-sm font-semibold text-[oklch(0.22_0.06_265)]">
-              Teaching, labs, projects and outcomes
-            </p>
           </div>
         </div>
       </div>

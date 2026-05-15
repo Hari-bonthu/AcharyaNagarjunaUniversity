@@ -3,11 +3,8 @@ import { CTASection } from "./CTASection";
 import { DepartmentHero } from "./DepartmentHero";
 import { FacilitiesSection } from "./FacilitiesSection";
 import { FacultyPreview } from "./FacultyPreview";
-import { LearningGrid } from "./LearningGrid";
 import { ProgramsSection } from "./ProgramsSection";
 import { ResearchFocusSection } from "./ResearchFocusSection";
-import { SkillsSection } from "./SkillsSection";
-import { UpdatesMini } from "./UpdatesMini";
 import { getDepartmentPage } from "./department-data";
 
 export function DepartmentPage({ departmentId }: { departmentId: string }) {
@@ -18,8 +15,9 @@ export function DepartmentPage({ departmentId }: { departmentId: string }) {
       <DepartmentHero department={department} />
       <ProgramsSection programs={department.programs} />
       <FacultyPreview faculty={department.faculty} />
-      <ResearchFocusSection items={department.researchFocus} />
       <CTASection department={department} />
+      <FacilitiesSection items={department.facilities.slice(0, 4)} />
+      <ResearchFocusSection items={department.researchFocus} />
     </main>
   );
 }

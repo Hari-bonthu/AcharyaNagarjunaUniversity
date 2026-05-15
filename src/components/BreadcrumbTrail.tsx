@@ -23,7 +23,7 @@ export function BreadcrumbTrail({
   return (
     <div
       className={`border-b border-border bg-white/95 backdrop-blur ${
-        sticky ? "sticky top-[41px] z-40 lg:top-[67px]" : ""
+        sticky ? "sticky top-[64px] z-40 lg:top-[72px]" : ""
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 py-2.5 lg:px-8">
