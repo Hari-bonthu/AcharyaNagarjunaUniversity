@@ -63,7 +63,7 @@ export function FaqSection() {
   }, [query, active]);
 
   return (
-    <section className="relative overflow-hidden bg-[oklch(0.985_0.005_250)] py-20 lg:py-24">
+    <section id="faq" className="relative overflow-hidden bg-[oklch(0.985_0.005_250)] py-20 lg:py-24">
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[360px_1fr] lg:gap-16 lg:px-8">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <span className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.32_0.12_260)]/20 bg-white px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[oklch(0.32_0.12_260)]">
