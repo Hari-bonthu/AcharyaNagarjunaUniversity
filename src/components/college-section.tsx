@@ -534,7 +534,7 @@ export function CollegeSection() {
   const active = schools.find((s) => s.id === activeId)!;
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[oklch(0.985_0.005_250)] via-background to-[oklch(0.97_0.01_255)] py-20">
+    <section id="colleges" className="relative w-full overflow-hidden bg-gradient-to-b from-[oklch(0.985_0.005_250)] via-background to-[oklch(0.97_0.01_255)] py-20">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
@@ -869,7 +869,7 @@ function InteractionPanel({
     <section className="-mt-28 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_28px_90px_-52px_rgba(11,31,58,0.65)]">
       <div className="h-1.5 bg-[linear-gradient(90deg,#0B1F3A,#F97316,#0B1F3A)]" aria-hidden />
       <div className="p-6 md:p-8">
-      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
         <div>
           <span className="inline-flex rounded-full bg-[#F8F6F2] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B1F3A]/70">
             Selected pathway
@@ -878,7 +878,7 @@ function InteractionPanel({
           <h2 className="mt-3 text-3xl font-semibold">{panelTitle}</h2>
           <p className="mt-3 text-sm leading-7 text-[#6B7280]">{panelText}</p>
         </div>
-        <div key={activeIntent} className="grid gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300 sm:grid-cols-2">
+        <div key={activeIntent} className="grid gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300 sm:grid-cols-2 sm:items-stretch">
           {items.map((item) => (
             <InfoTile key={item.title} item={item} compact />
           ))}
@@ -913,7 +913,7 @@ function TrustBar({ stats }: { stats: StatItem[] }) {
 function InfoTile({ item, compact = false }: { item: PanelItem; compact?: boolean }) {
   const Icon = item.icon;
   return (
-    <article className={`group relative overflow-hidden rounded-lg border border-black/10 bg-white shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-5"}`}>
+    <article className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-black/10 bg-white shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-5"}`}>
       <span className="absolute inset-x-0 top-0 h-1 bg-[#F97316] opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
       <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
         <Icon className="h-5 w-5" />
@@ -933,14 +933,14 @@ function DepartmentPreview({ department }: { department: Department }) {
     .replace(/(^-|-$)/g, "");
 
   return (
-    <a href={`/departments/${departmentSlug}`} className="group flex min-h-32 gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]">
+    <a href={`/departments/${departmentSlug}`} className="group flex h-full min-h-32 gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]">
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
         <Icon className="h-6 w-6" aria-hidden />
       </span>
-      <span className="min-w-0">
+      <span className="flex min-w-0 flex-1 flex-col">
         <span className="block text-base font-semibold text-[#0B1F3A]">{department.name}</span>
         <span className="mt-1.5 line-clamp-2 block text-sm leading-6 text-[#6B7280]">{department.summary}</span>
-        <span className="mt-3 inline-flex translate-y-1 items-center gap-1 text-xs font-semibold text-[#F97316] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="mt-auto pt-3 inline-flex translate-y-1 items-center gap-1 text-xs font-semibold text-[#F97316] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
           Learn more <ArrowRight className="h-3.5 w-3.5" />
         </span>
       </span>
@@ -950,7 +950,7 @@ function DepartmentPreview({ department }: { department: Department }) {
 
 function MediaTile({ item }: { item: PanelItem }) {
   return (
-    <article className="group rounded-xl border border-black/10 bg-white p-3 shadow-[0_18px_45px_-38px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70">
+    <article className="group flex h-full flex-col rounded-xl border border-black/10 bg-white p-3 shadow-[0_18px_45px_-38px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70">
       <ImagePlaceholder label={item.title} className="aspect-[4/3] bg-[#D1D5DB]" />
       <h3 className="mt-4 text-base font-semibold text-[#0B1F3A]">{item.title}</h3>
       <p className="mt-2 text-sm leading-6 text-[#6B7280]">{item.text}</p>
@@ -1311,14 +1311,14 @@ function DynamicIntentPanel({
 
   if (activeIntent === "research") {
     return (
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:items-stretch">
         {[
           ["Instrumentation Labs", "Advanced tools for measurement, testing and experimentation."],
           ["Research Projects", "Mentored student work connected to real scientific questions."],
           ["Publications", "Faculty and scholar output across core and applied sciences."],
           ["Collaborations", "Interdisciplinary work with departments and external partners."],
         ].map(([title, text]) => (
-          <div key={title} className="rounded-xl border border-border p-5">
+          <div key={title} className="flex h-full flex-col rounded-xl border border-border p-5">
             <Microscope className="h-7 w-7 text-[oklch(0.55_0.14_75)]" />
             <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">
               {title}
@@ -1332,14 +1332,14 @@ function DynamicIntentPanel({
 
   if (activeIntent === "life") {
     return (
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:items-stretch">
         {[
           ["Library & Learning", "Quiet study spaces, journals and guided academic resources."],
           ["Clubs & Committees", "Student-led communities that build confidence and leadership."],
           ["Sports & Wellness", "Open grounds, events and wellness support for balanced growth."],
           ["Student Support", "Mentoring, counselling and academic help when students need it."],
         ].map(([title, text]) => (
-          <div key={title} className="rounded-xl border border-border p-5">
+          <div key={title} className="flex h-full flex-col rounded-xl border border-border p-5">
             <Building2 className="h-7 w-7 text-[oklch(0.55_0.14_75)]" />
             <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">
               {title}
@@ -1353,15 +1353,12 @@ function DynamicIntentPanel({
 
   return (
     <div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 sm:items-stretch xl:grid-cols-4">
         {visibleDepartments.map((department) => {
           const Icon = department.icon;
 
           return (
-            <article
-              key={department.name}
-              className="rounded-xl border border-border p-5"
-            >
+            <article key={department.name} className="flex h-full flex-col rounded-xl border border-border p-5">
               <Icon className={`h-8 w-8 ${department.color}`} />
               <h4 className="mt-5 min-h-10 text-sm font-semibold leading-5 text-[oklch(0.18_0.06_265)]">
                 {department.name}
@@ -1371,7 +1368,7 @@ function DynamicIntentPanel({
               </p>
               <a
                 href="#"
-                className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[oklch(0.18_0.06_265)]"
+                className="mt-auto pt-5 inline-flex items-center gap-2 text-xs font-semibold text-[oklch(0.18_0.06_265)]"
               >
                 View Details <ArrowRight className="h-3.5 w-3.5" />
               </a>

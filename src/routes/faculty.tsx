@@ -71,9 +71,9 @@ function Faculty() {
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 sm:items-stretch lg:grid-cols-4">
             {facultyMembers.map((member) => (
-              <article key={member.slug} className="group">
+              <article key={member.slug} className="group flex h-full flex-col">
                 <div className="overflow-hidden rounded-md bg-white shadow-sm">
                   <Link to="/faculty/$facultySlug" params={{ facultySlug: member.slug }}>
                     {member.image ? (
@@ -93,7 +93,7 @@ function Faculty() {
 
                 <h2 className="mt-4 text-2xl font-semibold leading-snug text-[#0d1f3f]">{member.name}</h2>
                 <p className="text-sm text-slate-600">{member.designation}</p>
-                <p className="text-xs text-slate-500">{member.department}</p>
+                <p className="mt-auto pt-1 text-xs text-slate-500">{member.department}</p>
               </article>
             ))}
           </div>

@@ -149,7 +149,7 @@ export function NotificationsSection() {
     .slice(0, 5);
 
   return (
-    <section className="bg-[oklch(0.985_0.005_250)] py-10">
+    <section id="notifications" className="bg-[oklch(0.985_0.005_250)] py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
           <div>
@@ -241,7 +241,7 @@ export function NotificationsSection() {
 
 export function WelcomeSection() {
   return (
-    <section className="bg-white px-6 py-12 text-[#1a1a1a] lg:px-8 lg:py-14">
+    <section id="about-university" className="bg-white px-6 py-12 text-[#1a1a1a] lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#0066cc]/20 bg-[#f5f9ff] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0066cc]">
@@ -299,8 +299,8 @@ export function WelcomeSection() {
           </div>
         </section>
 
-        <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px] lg:items-start">
-          <article className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+        <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px] lg:items-stretch">
+          <article className="flex h-full flex-col rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eaf3ff] text-[#0066cc]">
               <Landmark className="h-5 w-5" aria-hidden />
             </div>
@@ -313,12 +313,12 @@ export function WelcomeSection() {
               From its main campus between Vijayawada and Guntur, ANU serves learners across undergraduate,
               postgraduate and research programs.
             </p>
-            <a href="#history" className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+            <a href="#history" className="mt-auto pt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
               Explore our history <ArrowUpRight className="h-4 w-4" />
             </a>
           </article>
 
-          <article className="rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
+          <article className="flex h-full flex-col rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eaf3ff] text-[#0066cc]">
               <BookOpen className="h-5 w-5" aria-hidden />
             </div>
@@ -331,16 +331,16 @@ export function WelcomeSection() {
               We believe education is not just knowledge acquisition. It is a path to discovering truth within
               ourselves and applying it with responsibility.
             </p>
-            <a href="#values" className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+            <a href="#values" className="mt-auto pt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
               Learn our values <ArrowUpRight className="h-4 w-4" />
             </a>
           </article>
 
-          <aside className="rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-5">
+          <aside className="flex h-full flex-col rounded-lg border border-[#e5e7eb] bg-[#f9f9f9] p-5">
             <h3 className="text-xl font-semibold leading-tight">Key Numbers</h3>
-            <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="mt-4 grid flex-1 grid-cols-2 gap-3">
               {aboutStats.map((stat) => (
-                <div key={stat.label} className="rounded-md bg-white p-3 ring-1 ring-[#eeeeee]">
+                <div key={stat.label} className="flex h-full flex-col justify-center rounded-md bg-white p-3 ring-1 ring-[#eeeeee]">
                   <strong className="block text-2xl font-semibold leading-none text-[#0066cc]">
                     {stat.value}
                   </strong>
@@ -368,9 +368,9 @@ export function WelcomeSection() {
             </a>
           </div>
 
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div className="mt-5 grid gap-4 md:grid-cols-3 md:items-stretch">
             {leaders.map((leader) => (
-              <article key={leader.name} className="rounded-lg border border-[#eeeeee] bg-white p-4 text-center shadow-[0_16px_42px_-40px_rgba(15,23,42,0.45)]">
+              <article key={leader.name} className="flex h-full flex-col rounded-lg border border-[#eeeeee] bg-white p-4 text-center shadow-[0_16px_42px_-40px_rgba(15,23,42,0.45)]">
                 <img
                   src={leader.image}
                   alt={leader.name}
