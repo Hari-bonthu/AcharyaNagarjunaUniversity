@@ -4,6 +4,15 @@ import { DepartmentPage } from "@/components/departments/DepartmentPage";
 import { getDepartmentPage } from "@/components/departments/department-data";
 import { UniversityNavbar } from "@/components/university-navbar";
 
+const collegeIdByName: Record<string, string> = {
+  "ANU College of Engineering & Technology": "engineering",
+  "ANU College of Sciences": "sciences",
+  "ANU College of Arts, Commerce & Law": "arts-commerce-law",
+  "ANU College of Pharmaceutical Sciences": "pharmacy",
+  "ANU College of Architecture & Planning": "architecture-planning",
+  "ANU College of Physical Education & Sports": "physical-education-sports",
+};
+
 export const Route = createFileRoute("/departments/$departmentId")({
   head: ({ params }) => {
     const department = getDepartmentPage(params.departmentId);
@@ -35,13 +44,17 @@ function DepartmentRoute() {
     throw notFound();
   }
 
+  const collegeId = collegeIdByName[department.college];
+  const collegeHref = collegeId ? `/colleges/${collegeId}` : undefined;
+
   return (
     <div className="min-h-screen bg-background">
       <UniversityNavbar />
       <BreadcrumbTrail
         items={[
           { label: "Home", href: "/" },
-          { label: "Departments", href: "/departments" },
+          { label: "Colleges" },
+          { label: department.college, href: collegeHref },
           { label: department.name },
         ]}
       />

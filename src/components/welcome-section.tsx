@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowUpRight,
@@ -16,8 +17,8 @@ import {
 } from "lucide-react";
 import vcImage from "@/assets/vice-chancellor.jpg";
 import bgImage from "@/assets/bgg1.jpg";
-import principalProfMSureshKumarImage from "@/assets/Principals/principalprofmsureshkumar.jpg";
-import principalProfKVeeraiahImage from "@/assets/Principals/profkveeraiahgaaru.jpg";
+import rector from "@/assets/rector.jpg";
+import registrar from "@/assets/registrar.jpg";
 
 type Item = {
   title: string;
@@ -110,16 +111,16 @@ const leaders = [
     credentials: "Guiding ANU's academic direction, institutional growth and student-centred development.",
   },
   {
-    name: "Prof. K. Veeraiah",
-    role: "Engineering & Technology Leadership",
-    image: principalProfKVeeraiahImage,
+    name: "Prof. Prof.R,Sivaramprasad",
+    role: "Rector",
+    image: rector,
     quote: "Engineering education must connect technical depth with practical problem solving.",
     credentials: "Leading professional education with a focus on industry readiness and innovation.",
   },
   {
-    name: "Prof. M. Suresh Kumar",
-    role: "Sciences Leadership",
-    image: principalProfMSureshKumarImage,
+    name: "Prof. G. Simhachalam",
+    role: "Registrar ",
+    image: registrar,
     quote: "Research culture grows when curiosity, discipline and mentorship work together.",
     credentials: "Supporting research-led learning across science departments and laboratory practice.",
   },
@@ -311,9 +312,9 @@ export function WelcomeSection() {
               From its main campus between Vijayawada and Guntur, ANU serves learners across undergraduate,
               postgraduate and research programs.
             </p>
-            <a href="#history" className="mt-auto pt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
+            <Link to="/history" className="mt-auto pt-4 inline-flex items-center gap-1.5 border-b-2 border-[#0066cc] pb-0.5 text-sm font-semibold text-[#0066cc] transition-colors hover:border-[#0052a3] hover:text-[#0052a3]">
               Explore our history <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </article>
 
           <article className="flex h-full flex-col rounded-lg border border-[#e5e7eb] bg-white p-5 shadow-[0_16px_45px_-38px_rgba(15,23,42,0.32)]">

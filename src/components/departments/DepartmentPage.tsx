@@ -22,7 +22,12 @@ export function DepartmentPage({
       </section>
 
       <section id="faculty">
-        <FacultyPreview faculty={department.faculty} />
+        <FacultyPreview
+          faculty={department.faculty}
+          departmentId={department.id}
+          departmentName={department.name}
+          collegeName={department.college}
+        />
       </section>
 
       <section id="facilities">

@@ -11,7 +11,17 @@ const facultyImages = Object.values(
   }),
 ) as string[];
 
-export function FacultyPreview({ faculty }: { faculty: FacultyItem[] }) {
+export function FacultyPreview({
+  faculty,
+  departmentId,
+  departmentName,
+  collegeName,
+}: {
+  faculty: FacultyItem[];
+  departmentId: string;
+  departmentName: string;
+  collegeName: string;
+}) {
   const featuredFaculty = faculty.slice(0, 3);
 
   return (
@@ -49,8 +59,7 @@ export function FacultyPreview({ faculty }: { faculty: FacultyItem[] }) {
           return (
             <Link
               key={member.name}
-              to="/faculty/$facultySlug"
-              params={{ facultySlug }}
+              to={`/faculty/${facultySlug}?fromDepartmentId=${encodeURIComponent(departmentId)}&fromDepartmentName=${encodeURIComponent(departmentName)}&fromCollegeName=${encodeURIComponent(collegeName)}`}
               className="group rounded-2xl border border-slate-200 bg-[oklch(0.995_0.002_260)] p-5 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-md"
             >
               <div className="grid grid-cols-[92px_1fr] gap-4">

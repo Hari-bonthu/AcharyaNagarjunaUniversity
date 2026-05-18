@@ -85,18 +85,17 @@ export const departmentPages: Record<string, DepartmentPageData> = {
     purpose: "Designing practical, reliable and intelligent digital systems.",
     heroLine: "Building intelligent systems for tomorrow",
     heroImage: "/departments/cse.jpg",
-    college: "ANU College of Engineering & Technology",
+    college: "ANU College of Sciences",
     imageLabel: "CSE Department",
     learning: [
       { title: "Programming & Problem Solving", text: "Write clean code and reason through computational problems.", icon: Code2 },
       { title: "AI & Machine Learning", text: "Apply intelligent models to real-world systems.", icon: Brain },
     ],
     programs: [
-      { name: "B.Tech Computer Science and Engineering", duration: "4 Years", description: "Undergraduate engineering program covering algorithms, software systems, databases and modern computing technologies." },
-      { name: "B.Tech Artificial Intelligence & Machine Learning", duration: "4 Years", description: "Specialized program in AI, deep learning, neural networks and intelligent system design." },
-      { name: "B.Tech Data Science", duration: "4 Years", description: "Engineering program focused on big data analytics, statistical modelling and data-driven decision making." },
-      { name: "B.Tech Cyber Security", duration: "4 Years", description: "Specialized curriculum in cybersecurity, ethical hacking, network security and digital protection systems." },
-       ],
+      { name: "MCA", duration: "2 Years", description: "Postgraduate program in software engineering, data structures, web technologies, cloud fundamentals and application development." },
+      { name: "M.Sc Computer Science", duration: "2 Years", description: "Postgraduate program covering advanced algorithms, operating systems, database systems, distributed computing and machine learning foundations." },
+      { name: "M.Sc Data Science", duration: "2 Years", description: "Postgraduate specialization in statistics, predictive modelling, big data processing and applied analytics for industry and research." },
+    ],
     skills: [
       { title: "Industry-ready Coding", text: "Use modern development tools, frameworks and CI/CD workflows.", icon: Code2 },
       { title: "Data Analysis", text: "Work with large datasets and extract actionable insights.", icon: Database },

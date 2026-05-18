@@ -105,7 +105,7 @@ function Index() {
           />
           <div className="text-center">
             <p className="text-2xl font-bold tracking-wide text-[#d71920] md:text-4xl">
-              Acharya Nagarjuna University
+              ఆచార్య నాగార్జున విశ్వవిద్యాలయం
             </p>
             <h1 className="mt-1 text-2xl font-bold tracking-wide text-[oklch(0.22_0.06_265)] md:text-4xl">
               ACHARYA NAGARJUNA UNIVERSITY

@@ -530,12 +530,6 @@ const departmentsByCollege: Record<string, Department[]> = {
 
   engineering: [
     {
-      name: "Computer Science and Engineering",
-      summary: "Software development and computing systems.",
-      icon: Code2,
-      color: "text-sky-600",
-    },
-    {
       name: "Mechanical Engineering",
       summary: "Machines, manufacturing and mechanics.",
       icon: Wrench,

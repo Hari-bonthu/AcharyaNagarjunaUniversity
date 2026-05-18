@@ -8,6 +8,7 @@ import {
   Mail,
   ArrowRight,
 } from "lucide-react";
+import emblem from "@/assets/university-emblem.png";
 
 /**
  * University Navbar — light theme with mega menu
@@ -58,8 +59,8 @@ const MENU: MenuItem[] = [
       {
         title: "OVERVIEW",
         items: [
-          { label: "Profile", href: "#" },
-          { label: "History", href: "#" },
+          { label: "Profile", href: "/aboutprofile" },
+          { label: "History", href: "/history" },
           { label: "Vision & Mission", href: "#" },
           { label: "Emblem", href: "#" },
         ],
@@ -383,6 +384,7 @@ export function UniversityNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<number | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number | null>(null);
 
@@ -404,9 +406,16 @@ export function UniversityNavbar() {
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("mousedown", onClick);
-      document.removeEventListener("keydown", onKey);
+    document.removeEventListener("mousedown", onClick);
+    document.removeEventListener("keydown", onKey);
     };
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const openMenu = (i: number) => {
@@ -437,9 +446,30 @@ export function UniversityNavbar() {
         }}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 lg:px-8">
+          {isScrolled && (
+            <a href="/" className="hidden shrink-0 items-center gap-3 py-2 lg:flex" aria-label="Acharya Nagarjuna University Home">
+              <img
+                src={emblem}
+                alt="ANU emblem"
+                className="h-14 w-14 object-contain"
+              />
+              <span className="text-sm font-semibold tracking-wide text-white/95">
+                Acharya Nagarjuna University
+              </span>
+            </a>
+          )}
+
           {/* Desktop nav */}
           <nav aria-label="Main" className="hidden lg:block flex-1">
             <ul className="flex items-stretch">
+              <li className="relative">
+                <a
+                  href="/"
+                  className="relative flex h-full items-center gap-1 px-4 py-6 text-[13px] font-medium tracking-wide transition-colors hover:text-[color:var(--utility-bar-accent)] focus:outline-none"
+                >
+                  Home
+                </a>
+              </li>
               {MENU.map((item, i) => {
                 const active = openIndex === i;
                 return (
@@ -489,6 +519,19 @@ export function UniversityNavbar() {
           </div>
 
           {/* Mobile toggle */}
+          {isScrolled && (
+            <a href="/" className="flex items-center gap-2 py-2 lg:hidden" aria-label="Acharya Nagarjuna University Home">
+              <img
+                src={emblem}
+                alt="ANU emblem"
+                className="h-13 w-13 object-contain"
+              />
+              <span className="text-sm font-bold tracking-[0.05em] text-[color:var(--utility-bar-accent)]">
+                Acharya Nagarjuna University
+              </span>
+            </a>
+          )}
+
           <button
             type="button"
             className="-mr-2 p-2 lg:hidden"
@@ -623,6 +666,14 @@ export function UniversityNavbar() {
         <div className="border-t border-white/10 bg-background text-foreground lg:hidden">
           <nav aria-label="Mobile" className="max-h-[80vh] overflow-y-auto">
             <ul className="divide-y divide-border">
+              <li>
+                <a
+                  href="/"
+                  className="block px-4 py-3 text-sm font-medium text-foreground/90 hover:text-foreground"
+                >
+                  Home
+                </a>
+              </li>
               {MENU.map((item, i) => (
                 <li key={item.label}>
                   <button

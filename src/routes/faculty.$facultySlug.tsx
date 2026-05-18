@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { Building2, Mail, Phone } from "lucide-react";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { UniversityNavbar } from "@/components/university-navbar";
@@ -50,6 +50,13 @@ export const Route = createFileRoute("/faculty/$facultySlug")({
 
 function FacultyProfile() {
   const { facultySlug = "" } = Route.useParams();
+  const searchStr = useRouterState({
+    select: (state) => state.location.searchStr,
+  });
+  const query = new URLSearchParams(searchStr);
+  const fromDepartmentId = query.get("fromDepartmentId");
+  const fromDepartmentName = query.get("fromDepartmentName");
+  const fromCollegeName = query.get("fromCollegeName");
   const profile = facultyBySlug[facultySlug];
   const imageSrc = profile ? imageByFileName[profile.imageFile] ?? "" : "";
 
@@ -58,13 +65,24 @@ function FacultyProfile() {
       <div className="min-h-screen bg-background">
         <UniversityNavbar />
         <main>
-          <BreadcrumbTrail
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Faculty", href: "/faculty" },
-              { label: "Profile" },
-            ]}
-          />
+        <BreadcrumbTrail
+          items={[
+            { label: "Home", href: "/" },
+            fromDepartmentId && fromDepartmentName
+              ? { label: "Colleges" }
+              : { label: "Faculty", href: "/faculty" },
+            ...(fromDepartmentId && fromDepartmentName
+              ? [
+                  ...(fromCollegeName ? [{ label: fromCollegeName }] : []),
+                  {
+                    label: fromDepartmentName,
+                    href: `/departments/${fromDepartmentId}`,
+                  },
+                ]
+              : []),
+            { label: "Profile" },
+          ]}
+        />
           <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <h1 className="text-4xl font-bold text-[#0d2f57]">Faculty profile not found</h1>
             <p className="mt-4 text-lg text-slate-600">The requested faculty member could not be found.</p>
@@ -87,7 +105,18 @@ function FacultyProfile() {
         <BreadcrumbTrail
           items={[
             { label: "Home", href: "/" },
-            { label: "Faculty", href: "/faculty" },
+            fromDepartmentId && fromDepartmentName
+              ? { label: "Colleges" }
+              : { label: "Faculty", href: "/faculty" },
+            ...(fromDepartmentId && fromDepartmentName
+              ? [
+                  ...(fromCollegeName ? [{ label: fromCollegeName }] : []),
+                  {
+                    label: fromDepartmentName,
+                    href: `/departments/${fromDepartmentId}`,
+                  },
+                ]
+              : []),
             { label: profile.name },
           ]}
         />

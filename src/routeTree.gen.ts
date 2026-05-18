@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as JubileeRouteImport } from './routes/jubilee'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as AboutprofileRouteImport } from './routes/aboutprofile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FacultyFacultySlugRouteImport } from './routes/faculty.$facultySlug'
 import { Route as DepartmentsDepartmentIdRouteImport } from './routes/departments.$departmentId'
@@ -21,9 +23,19 @@ const JubileeRoute = JubileeRouteImport.update({
   path: '/jubilee',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FacultyRoute = FacultyRouteImport.update({
   id: '/faculty',
   path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutprofileRoute = AboutprofileRouteImport.update({
+  id: '/aboutprofile',
+  path: '/aboutprofile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -49,7 +61,9 @@ const CollegesCollegeIdRoute = CollegesCollegeIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aboutprofile': typeof AboutprofileRoute
   '/faculty': typeof FacultyRouteWithChildren
+  '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
@@ -57,7 +71,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aboutprofile': typeof AboutprofileRoute
   '/faculty': typeof FacultyRouteWithChildren
+  '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
@@ -66,7 +82,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aboutprofile': typeof AboutprofileRoute
   '/faculty': typeof FacultyRouteWithChildren
+  '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
@@ -76,7 +94,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/aboutprofile'
     | '/faculty'
+    | '/history'
     | '/jubilee'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
@@ -84,7 +104,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aboutprofile'
     | '/faculty'
+    | '/history'
     | '/jubilee'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
@@ -92,7 +114,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/aboutprofile'
     | '/faculty'
+    | '/history'
     | '/jubilee'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
@@ -101,7 +125,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutprofileRoute: typeof AboutprofileRoute
   FacultyRoute: typeof FacultyRouteWithChildren
+  HistoryRoute: typeof HistoryRoute
   JubileeRoute: typeof JubileeRoute
   CollegesCollegeIdRoute: typeof CollegesCollegeIdRoute
   DepartmentsDepartmentIdRoute: typeof DepartmentsDepartmentIdRoute
@@ -116,11 +142,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JubileeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faculty': {
       id: '/faculty'
       path: '/faculty'
       fullPath: '/faculty'
       preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aboutprofile': {
+      id: '/aboutprofile'
+      path: '/aboutprofile'
+      fullPath: '/aboutprofile'
+      preLoaderRoute: typeof AboutprofileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -167,7 +207,9 @@ const FacultyRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutprofileRoute: AboutprofileRoute,
   FacultyRoute: FacultyRouteWithChildren,
+  HistoryRoute: HistoryRoute,
   JubileeRoute: JubileeRoute,
   CollegesCollegeIdRoute: CollegesCollegeIdRoute,
   DepartmentsDepartmentIdRoute: DepartmentsDepartmentIdRoute,
