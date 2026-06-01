@@ -1,6 +1,5 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
-import { UniversityNavbar } from "@/components/university-navbar";
 import { facultyProfiles } from "@/data/facultyProfiles";
 
 type FacultyMember = {
@@ -54,7 +53,6 @@ function Faculty() {
 
   return (
     <div className="min-h-screen bg-[#f7f7f7]">
-      <UniversityNavbar />
       <main>
         <BreadcrumbTrail
           items={[

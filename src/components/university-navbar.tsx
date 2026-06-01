@@ -28,21 +28,30 @@ type MenuItem = {
   columns: Column[];
 };
 
+const pendingPage = (section: string, page: string) =>
+  `/pages/${section}?page=${encodeURIComponent(page)}`;
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const TOP_LEFT = [
   { icon: Phone, label: "+91 863 234 6114", href: "tel:+918632346114" },
   { icon: Mail, label: "registrar@anu.ac.in", href: "mailto:registrar@anu.ac.in" },
 ];
 
 const TOP_RIGHT_ACCENT = [
-  { label: "Placements", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Placements", href: pendingPage("student-services", "placements") },
+  { label: "Careers", href: pendingPage("employee-services", "careers") },
+  { label: "Contact", href: pendingPage("about", "contact") },
 ];
 
 const TOP_RIGHT_PORTAL = [
-  { label: "Student Portal", href: "#" },
-  { label: "Employee Portal", href: "#" },
-  { label: "WebMail", href: "#" },
+  { label: "Student Portal", href: pendingPage("student-services", "student-portal") },
+  { label: "Employee Portal", href: pendingPage("employee-services", "employee-portal") },
+  { label: "WebMail", href: pendingPage("employee-services", "webmail") },
 ];
 
 const MENU: MenuItem[] = [
@@ -61,26 +70,26 @@ const MENU: MenuItem[] = [
         items: [
           { label: "Profile", href: "/aboutprofile" },
           { label: "History", href: "/history" },
-          { label: "Vision & Mission", href: "#" },
-          { label: "Emblem", href: "#" },
+          { label: "Vision & Mission", href: pendingPage("about", "vision-mission") },
+          { label: "Emblem", href: pendingPage("about", "emblem") },
         ],
       },
       {
         title: "LEADERSHIP",
         items: [
-          { label: "Chancellor", href: "#" },
-          { label: "Vice Chancellor", href: "#" },
-          { label: "Rector", href: "#" },
-          { label: "Registrar", href: "#" },
+          { label: "Chancellor", href: pendingPage("about", "chancellor") },
+          { label: "Vice Chancellor", href: pendingPage("about", "vice-chancellor") },
+          { label: "Rector", href: pendingPage("about", "rector") },
+          { label: "Registrar", href: pendingPage("about", "registrar") },
         ],
       },
       {
         title: "GOVERNANCE",
         items: [
-          { label: "Executive Council", href: "#" },
-          { label: "Organization Structure", href: "#" },
-          { label: "Statutory Committees", href: "#" },
-          { label: "Strategic Plan", href: "#" },
+          { label: "Executive Council", href: pendingPage("about", "executive-council") },
+          { label: "Organization Structure", href: pendingPage("about", "organization-structure") },
+          { label: "Statutory Committees", href: pendingPage("about", "statutory-committees") },
+          { label: "Strategic Plan", href: pendingPage("about", "strategic-plan") },
         ],
       },
     ],
@@ -110,28 +119,28 @@ const MENU: MenuItem[] = [
         title: "ACADEMIC UNITS",
         items: [
           { label: "Faculty", href: "/faculty" },
-          { label: "ANUCDE", href: "#" },
-          { label: "Library", href: "#" },
+          { label: "ANUCDE", href: pendingPage("academics", "anucde") },
+          { label: "Library", href: pendingPage("academics", "library") },
         ],
       },
       {
         title: "SPECIALISED CENTRES",
         items: [
-          { label: "Dr. B.R. Ambedkar Chair", href: "#" },
-          { label: "Centre for Women Studies", href: "#" },
-          { label: "Centre for CSR", href: "#" },
-          { label: "Phule Centre", href: "#" },
-          { label: "Mahatma Gandhi Centre", href: "#" },
-          { label: "Babu Jagjivan Ram Centre", href: "#" },
-          { label: "Computer Centre", href: "#" },
+          { label: "Dr. B.R. Ambedkar Chair", href: pendingPage("academics", "ambedkar-chair") },
+          { label: "Centre for Women Studies", href: pendingPage("academics", "women-studies") },
+          { label: "Centre for CSR", href: pendingPage("academics", "csr-centre") },
+          { label: "Phule Centre", href: pendingPage("academics", "phule-centre") },
+          { label: "Mahatma Gandhi Centre", href: pendingPage("academics", "mahatma-gandhi-centre") },
+          { label: "Babu Jagjivan Ram Centre", href: pendingPage("academics", "jagjivan-ram-centre") },
+          { label: "Computer Centre", href: pendingPage("academics", "computer-centre") },
         ],
       },
       {
         title: "REGULATIONS",
         items: [
-          { label: "ANU Code", href: "#" },
-          { label: "Ordinances", href: "#" },
-          { label: "Code of Conduct", href: "#" },
+          { label: "ANU Code", href: pendingPage("academics", "anu-code") },
+          { label: "Ordinances", href: pendingPage("academics", "ordinances") },
+          { label: "Code of Conduct", href: pendingPage("academics", "code-of-conduct") },
         ],
       },
     ],
@@ -149,26 +158,26 @@ const MENU: MenuItem[] = [
       {
         title: "GETTING STARTED",
         items: [
-          { label: "Why Choose Us", href: "#" },
-          { label: "Academic Calendar", href: "#" },
-          { label: "Fee Structure", href: "#" },
-          { label: "Scholarships", href: "#" },
+          { label: "Why Choose Us", href: pendingPage("admissions", "why-choose-us") },
+          { label: "Academic Calendar", href: pendingPage("admissions", "academic-calendar") },
+          { label: "Fee Structure", href: pendingPage("admissions", "fee-structure") },
+          { label: "Scholarships", href: pendingPage("admissions", "scholarships") },
         ],
       },
       {
         title: "PROCESS",
         items: [
-          { label: "How to Apply", href: "#" },
-          { label: "Eligibility Criteria", href: "#" },
-          { label: "Affiliated Colleges", href: "#" },
+          { label: "How to Apply", href: pendingPage("admissions", "how-to-apply") },
+          { label: "Eligibility Criteria", href: pendingPage("admissions", "eligibility-criteria") },
+          { label: "Affiliated Colleges", href: pendingPage("admissions", "affiliated-colleges") },
         ],
       },
       {
         title: "SUPPORT",
         items: [
-          { label: "Admission Helpdesk", href: "#" },
-          { label: "FAQs", href: "#" },
-          { label: "Brochure", href: "#" },
+          { label: "Admission Helpdesk", href: pendingPage("admissions", "helpdesk") },
+          { label: "FAQs", href: pendingPage("admissions", "faqs") },
+          { label: "Brochure", href: pendingPage("admissions", "brochure") },
         ],
       },
     ],
@@ -571,6 +580,13 @@ export function UniversityNavbar() {
             onMouseEnter={() => openMenu(openIndex)}
             onMouseLeave={scheduleClose}
           >
+            {/*
+              openIndex is guaranteed non-null in this branch.
+              Keep a stable reference to avoid scope mistakes in nested maps.
+            */}
+            {(() => {
+              const activeMenu = MENU[openIndex];
+              return (
             <div
               className="border-t border-border bg-background animate-in fade-in slide-in-from-top-1 duration-150"
               style={{ boxShadow: "var(--mega-shadow)" }}
@@ -583,13 +599,13 @@ export function UniversityNavbar() {
                       className="text-[11px] font-semibold tracking-[0.2em]"
                       style={{ color: "var(--gold-strong)" }}
                     >
-                      {MENU[openIndex].eyebrow}
+                      {activeMenu.eyebrow}
                     </div>
                     <h3
                       className="mt-2 text-3xl font-semibold leading-tight"
                       style={{ color: "var(--brand)" }}
                     >
-                      {MENU[openIndex].heading}
+                      {activeMenu.heading}
                     </h3>
                     <div
                       className="mt-3 h-[2px] w-12 rounded-full"
@@ -606,13 +622,13 @@ export function UniversityNavbar() {
                           color: "var(--brand-foreground)",
                         }}
                       >
-                        {MENU[openIndex].promo.badge}
+                        {activeMenu.promo.badge}
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                        {MENU[openIndex].promo.description}
+                        {activeMenu.promo.description}
                       </p>
                       <a
-                        href="#"
+                        href={pendingPage(toSlug(activeMenu.label), "overview")}
                         className="mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-colors"
                         style={{ color: "var(--brand)" }}
                       >
@@ -624,7 +640,7 @@ export function UniversityNavbar() {
 
                   {/* Columns */}
                   <div className="col-span-9 grid grid-cols-3 gap-8">
-                    {MENU[openIndex].columns.map((col) => (
+                    {activeMenu.columns.map((col) => (
                       <div key={col.title}>
                         <div
                           className="mb-4 text-[11px] font-semibold tracking-[0.18em]"
@@ -636,7 +652,7 @@ export function UniversityNavbar() {
                           {col.items.map((c) => (
                             <li key={c.label}>
                               <a
-                                href={c.href}
+                                href={c.href === "#" ? pendingPage(toSlug(activeMenu.label), toSlug(c.label)) : c.href}
                                 className="group block"
                               >
                                 <div className="text-sm font-medium text-foreground transition-colors group-hover:text-[color:var(--brand)]">
@@ -657,6 +673,8 @@ export function UniversityNavbar() {
                 </div>
               </div>
             </div>
+              );
+            })()}
           </div>
         )}
       </div>
@@ -704,7 +722,7 @@ export function UniversityNavbar() {
                             {col.items.map((c) => (
                               <li key={c.label}>
                                 <a
-                                  href={c.href}
+                                  href={c.href === "#" ? pendingPage(toSlug(item.label), toSlug(c.label)) : c.href}
                                   className="block py-1 text-sm text-foreground/80 hover:text-foreground"
                                 >
                                   {c.label}

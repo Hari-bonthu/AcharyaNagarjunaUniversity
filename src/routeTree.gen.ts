@@ -14,6 +14,7 @@ import { Route as HistoryRouteImport } from './routes/history'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as AboutprofileRouteImport } from './routes/aboutprofile'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PagesSectionRouteImport } from './routes/pages.$section'
 import { Route as FacultyFacultySlugRouteImport } from './routes/faculty.$facultySlug'
 import { Route as DepartmentsDepartmentIdRouteImport } from './routes/departments.$departmentId'
 import { Route as CollegesCollegeIdRouteImport } from './routes/colleges.$collegeId'
@@ -43,6 +44,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagesSectionRoute = PagesSectionRouteImport.update({
+  id: '/pages/$section',
+  path: '/pages/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FacultyFacultySlugRoute = FacultyFacultySlugRouteImport.update({
   id: '/$facultySlug',
   path: '/$facultySlug',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
+  '/pages/$section': typeof PagesSectionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
+  '/pages/$section': typeof PagesSectionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
+  '/pages/$section': typeof PagesSectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
     | '/faculty/$facultySlug'
+    | '/pages/$section'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
     | '/faculty/$facultySlug'
+    | '/pages/$section'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
     | '/faculty/$facultySlug'
+    | '/pages/$section'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   JubileeRoute: typeof JubileeRoute
   CollegesCollegeIdRoute: typeof CollegesCollegeIdRoute
   DepartmentsDepartmentIdRoute: typeof DepartmentsDepartmentIdRoute
+  PagesSectionRoute: typeof PagesSectionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/$section': {
+      id: '/pages/$section'
+      path: '/pages/$section'
+      fullPath: '/pages/$section'
+      preLoaderRoute: typeof PagesSectionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faculty/$facultySlug': {
@@ -213,6 +233,7 @@ const rootRouteChildren: RootRouteChildren = {
   JubileeRoute: JubileeRoute,
   CollegesCollegeIdRoute: CollegesCollegeIdRoute,
   DepartmentsDepartmentIdRoute: DepartmentsDepartmentIdRoute,
+  PagesSectionRoute: PagesSectionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

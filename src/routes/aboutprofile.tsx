@@ -4,7 +4,6 @@ import rectorImage from "@/assets/rector.jpg";
 import registrarImage from "@/assets/registrar.jpg";
 import vcImage from "@/assets/vice-chancellor.jpg";
 import { SiteFooter } from "@/components/site-footer";
-import { UniversityNavbar } from "@/components/university-navbar";
 import { useEffect, useRef } from "react";
 
 const profileStats = [
@@ -408,7 +407,6 @@ function AboutProfilePage() {
       `}</style>
 
       <div className="profile-root">
-        <UniversityNavbar />
         <BreadcrumbTrail
           items={[
             { label: "Home", href: "/" },
