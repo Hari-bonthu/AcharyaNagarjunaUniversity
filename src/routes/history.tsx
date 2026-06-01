@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { SiteFooter } from "@/components/site-footer";
-import { UniversityNavbar } from "@/components/university-navbar";
 import { useEffect, useRef } from "react";
 
 const chapters = [
@@ -401,7 +400,6 @@ function HistoryPage() {
       `}</style>
 
       <div className="history-root">
-        <UniversityNavbar />
         <BreadcrumbTrail
           items={[
             { label: "Home", href: "/" },

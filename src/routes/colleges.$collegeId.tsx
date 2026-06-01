@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { CollegeDetailPage, getCollegePage } from "@/components/college-section";
-import { UniversityNavbar } from "@/components/university-navbar";
 
 export const Route = createFileRoute("/colleges/$collegeId")({
   component: CollegeRoute,
@@ -23,7 +22,6 @@ function CollegeRoute() {
 
   return (
     <div className="min-h-screen bg-background">
-      <UniversityNavbar />
       <main>
         <BreadcrumbTrail
           items={[

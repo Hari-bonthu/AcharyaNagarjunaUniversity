@@ -7,6 +7,22 @@ type FooterNavItem = {
   external?: boolean;
 };
 
+type FooterContext = {
+  aboutTitle: string;
+  aboutText: string;
+  contextualTitle: string;
+  contextualLinks: FooterNavItem[];
+  commonLinks: FooterNavItem[];
+};
+
+const baseCommonLinks: FooterNavItem[] = [
+  { label: "Admissions", href: "/pages/admissions?page=overview" },
+  { label: "Exam Notifications", href: "/pages/student-services?page=exam-notifications" },
+  { label: "Results", href: "/pages/student-services?page=results" },
+  { label: "Placements", href: "/pages/student-services?page=placements" },
+  { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
+];
+
 const routeAwareLinks: Record<string, FooterNavItem[]> = {
   home: [
     { label: "Top", href: "#top" },
@@ -45,18 +61,10 @@ const routeAwareLinks: Record<string, FooterNavItem[]> = {
   ],
 };
 
-const commonLinks: FooterNavItem[] = [
-  { label: "Admissions", href: "#" },
-  { label: "Exam Notifications", href: "#" },
-  { label: "Results", href: "#" },
-  { label: "Placements", href: "#" },
-  { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
-];
-
 const socialLinks = [
-  { label: "Facebook", icon: Facebook, href: "#" },
-  { label: "Instagram", icon: Instagram, href: "#" },
-  { label: "Twitter", icon: Twitter, href: "#" },
+  { label: "Facebook", icon: Facebook, href: "/pages/about?page=facebook" },
+  { label: "Instagram", icon: Instagram, href: "/pages/about?page=instagram" },
+  { label: "Twitter", icon: Twitter, href: "/pages/about?page=twitter" },
 ];
 
 function getSectionFromPath(pathname: string) {
@@ -66,6 +74,114 @@ function getSectionFromPath(pathname: string) {
   if (pathname.startsWith("/departments")) return "departments";
   if (pathname.startsWith("/jubilee")) return "jubilee";
   return "home";
+}
+
+function toReadable(input: string) {
+  return input
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .trim();
+}
+
+function getFooterContext(pathname: string, searchStr: string): FooterContext {
+  const section = getSectionFromPath(pathname);
+  const defaultContext: FooterContext = {
+    aboutTitle: "About University",
+    aboutText:
+      "Acharya Nagarjuna University, established in 1976, continues to serve students with strong academics, research culture and inclusive campus growth across Andhra Pradesh.",
+    contextualTitle: "On This Page",
+    contextualLinks: routeAwareLinks[section] ?? routeAwareLinks.home,
+    commonLinks: baseCommonLinks,
+  };
+
+  if (pathname.startsWith("/colleges/")) {
+    const collegeId = pathname.split("/")[2] ?? "";
+    const collegeName = toReadable(collegeId);
+    return {
+      ...defaultContext,
+      aboutTitle: `${collegeName} College`,
+      aboutText: `You are viewing the ${collegeName} college detail page. Explore departments, facilities, updates and admissions pathways for this academic unit.`,
+      contextualTitle: "College Navigation",
+      contextualLinks: [
+        { label: "College Overview", href: "#top" },
+        { label: "Departments", href: "#departments" },
+        { label: "Admissions", href: "#admissions" },
+        { label: "All Colleges", href: "/colleges/sciences" },
+        { label: "Faculty", href: "/faculty" },
+      ],
+      commonLinks: [
+        { label: "Apply Now", href: "/pages/admissions?page=how-to-apply" },
+        { label: "Scholarships", href: "/pages/admissions?page=scholarships" },
+        { label: "Academic Regulations", href: "/pages/academics?page=ordinances" },
+        { label: "Results", href: "/pages/student-services?page=results" },
+        { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
+      ],
+    };
+  }
+
+  if (pathname.startsWith("/departments/")) {
+    const departmentId = pathname.split("/")[2] ?? "";
+    const departmentName = toReadable(departmentId);
+    return {
+      ...defaultContext,
+      aboutTitle: `${departmentName} Department`,
+      aboutText: `Department-focused view for ${departmentName}. Access programs, skills, facilities, research and faculty highlights from this page.`,
+      contextualTitle: "Department Navigation",
+      contextualLinks: [
+        { label: "Department Home", href: "#top" },
+        { label: "Programs", href: "#programs" },
+        { label: "Faculty", href: "#faculty" },
+        { label: "Facilities", href: "#facilities" },
+        { label: "Research", href: "#research" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/faculty/") && pathname !== "/faculty") {
+    return {
+      ...defaultContext,
+      aboutTitle: "Faculty Profile",
+      aboutText:
+        "Detailed faculty page with profile, academic contributions, publications and contact information for the selected member.",
+      contextualTitle: "Profile Navigation",
+      contextualLinks: [
+        { label: "Overview", href: "#overview" },
+        { label: "Research", href: "#research" },
+        { label: "Publications", href: "#publications" },
+        { label: "Achievements", href: "#achievements" },
+        { label: "Contact", href: "#contact" },
+      ],
+      commonLinks: [
+        { label: "All Faculty", href: "/faculty" },
+        { label: "Departments", href: "/colleges/sciences#departments" },
+        { label: "Research Cell", href: "/pages/research?page=research-cell" },
+        { label: "Consultancy Policy", href: "/pages/research?page=consultancy-policy" },
+        { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
+      ],
+    };
+  }
+
+  if (pathname.startsWith("/pages/")) {
+    const routeSection = pathname.split("/")[2] ?? "section";
+    const page = new URLSearchParams(searchStr).get("page") ?? "overview";
+    return {
+      ...defaultContext,
+      aboutTitle: `${toReadable(routeSection)} Section`,
+      aboutText: `This is a shared placeholder template for ${toReadable(routeSection)} / ${toReadable(page)}. It keeps navigation consistent while final content is being prepared.`,
+      contextualTitle: "Related Pages",
+      contextualLinks: [
+        { label: "Section Overview", href: `/pages/${routeSection}?page=overview` },
+        { label: "Admissions", href: "/pages/admissions?page=overview" },
+        { label: "Student Services", href: "/pages/student-services?page=overview" },
+        { label: "Academics", href: "/pages/academics?page=overview" },
+        { label: "University Home", href: "/" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  return defaultContext;
 }
 
 function renderFooterLink(item: FooterNavItem) {
@@ -98,8 +214,8 @@ function renderFooterLink(item: FooterNavItem) {
 
 export function SiteFooter() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const section = getSectionFromPath(pathname);
-  const contextualLinks = routeAwareLinks[section];
+  const searchStr = useRouterState({ select: (state) => state.location.searchStr });
+  const context = getFooterContext(pathname, searchStr);
 
   return (
     <footer className="relative overflow-hidden bg-[oklch(0.18_0.05_265)] text-[oklch(0.96_0.01_250)]">
@@ -108,10 +224,9 @@ export function SiteFooter() {
 
       <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] lg:px-8 lg:py-16">
         <section>
-          <FooterHeading>About University</FooterHeading>
+          <FooterHeading>{context.aboutTitle}</FooterHeading>
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/80">
-            Acharya Nagarjuna University, established in 1976, continues to serve students with strong academics,
-            research culture and inclusive campus growth across Andhra Pradesh.
+            {context.aboutText}
           </p>
           <div className="mt-6 flex items-center gap-3">
             {socialLinks.map((item) => {
@@ -131,9 +246,9 @@ export function SiteFooter() {
         </section>
 
         <nav aria-label="Contextual footer links">
-          <FooterHeading>On This Page</FooterHeading>
+          <FooterHeading>{context.contextualTitle}</FooterHeading>
           <ul className="mt-6 space-y-3 text-sm">
-            {contextualLinks.map((item) => (
+            {context.contextualLinks.map((item) => (
               <li key={item.label}>{renderFooterLink(item)}</li>
             ))}
           </ul>
@@ -142,7 +257,7 @@ export function SiteFooter() {
         <nav aria-label="University quick links">
           <FooterHeading>University Links</FooterHeading>
           <ul className="mt-6 space-y-3 text-sm">
-            {commonLinks.map((item) => (
+            {context.commonLinks.map((item) => (
               <li key={item.label}>{renderFooterLink(item)}</li>
             ))}
           </ul>

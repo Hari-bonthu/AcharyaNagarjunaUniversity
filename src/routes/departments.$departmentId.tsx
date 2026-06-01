@@ -2,7 +2,6 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { DepartmentPage } from "@/components/departments/DepartmentPage";
 import { getDepartmentPage } from "@/components/departments/department-data";
-import { UniversityNavbar } from "@/components/university-navbar";
 
 const collegeIdByName: Record<string, string> = {
   "ANU College of Engineering & Technology": "engineering",
@@ -49,7 +48,6 @@ function DepartmentRoute() {
 
   return (
     <div className="min-h-screen bg-background">
-      <UniversityNavbar />
       <BreadcrumbTrail
         items={[
           { label: "Home", href: "/" },

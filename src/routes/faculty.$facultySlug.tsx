@@ -1,7 +1,6 @@
 import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { Building2, Mail, Phone } from "lucide-react";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
-import { UniversityNavbar } from "@/components/university-navbar";
 import { facultyBySlug } from "@/data/facultyProfiles";
 
 const facultyImages = import.meta.glob("../assets/faculty/*.{jpg,jpeg,png,webp}", {
@@ -63,7 +62,6 @@ function FacultyProfile() {
   if (!profile) {
     return (
       <div className="min-h-screen bg-background">
-        <UniversityNavbar />
         <main>
         <BreadcrumbTrail
           items={[
@@ -100,7 +98,6 @@ function FacultyProfile() {
 
   return (
     <div className="min-h-screen bg-[#f4f6f8]">
-      <UniversityNavbar />
       <main>
         <BreadcrumbTrail
           items={[
