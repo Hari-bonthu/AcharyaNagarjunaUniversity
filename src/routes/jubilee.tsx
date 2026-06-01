@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 
 export const Route = createFileRoute("/jubilee")({
   component: JubileePage,
@@ -39,12 +38,7 @@ function JubileePage() {
       }}
     >
       {/* ── Hero — the scroll unfurls right here on load ── */}
-      <BreadcrumbTrail
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Golden Jubilee" },
-        ]}
-      />
+     
 
       <section className="relative mx-auto flex max-w-6xl flex-col items-center px-6 pb-20 pt-16 text-center md:pt-24">
         <JubileeScrollHero onComplete={() => setHeroComplete(true)} />

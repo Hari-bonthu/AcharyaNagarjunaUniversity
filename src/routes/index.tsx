@@ -16,6 +16,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import emblem from "@/assets/university-emblem.png";
+import { HeroSection } from "./herosection";
 
 const bannerImages = Object.entries(
   import.meta.glob("../assets/banners/*.{jpg,jpeg,png,webp}", {
@@ -130,7 +131,8 @@ function Index() {
       </div>
 
       <main className="w-full bg-background">
-        <BannerCarousel />
+        <HeroSection />
+        {/* <BannerCarousel /> */}
         <NotificationsSection />
         <WelcomeSection />
         <CollegeSection />

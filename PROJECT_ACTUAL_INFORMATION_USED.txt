@@ -1,0 +1,184 @@
+ACHARYA NAGARJUNA UNIVERSITY NAV REDESIGN - ACTUAL INFORMATION USED IN PROJECT
+Generated on: 2026-05-27
+
+IMPORTANT DATA QUALITY NOTE
+- This project contains a mix of real-world institutional labels and sample/demo content.
+- Faculty profiles in src/data/facultyProfiles.ts are explicitly marked as dummy/sample in their summaries.
+- Several department-page details (faculty names, projects, updates) are presentation content and may not represent verified live university records.
+
+1) CORE UNIVERSITY IDENTITY DATA USED
+- University name: ACHARYA NAGARJUNA UNIVERSITY
+- Telugu title displayed: The Telugu university name banner text from src/routes/index.tsx (Unicode title).
+- Main utility contact phone: +91 863 234 6114
+- Main utility contact email: registrar@anu.ac.in
+- Accreditation line shown: NAAC "A+ Grade" (with 3.46 score text shown in homepage banner)
+
+2) PROFILE + HISTORY STATS/TIMELINE DATA USED
+From src/routes/aboutprofile.tsx and src/routes/history.tsx:
+- Established: 1976
+- Legal reference: Act 43 of 1976
+- Inauguration date shown: 11 September 1976
+- Campus area shown: 300 acres
+- Departments shown: 39
+- Affiliated colleges shown: 450+
+- History milestones shown: 2nd c. CE, 1967, 1976, 1980s-1990s, 2004, 2026
+
+3) LEADERSHIP DATA USED
+From src/routes/aboutprofile.tsx:
+- Prof. K. Gangadhara Rao - Vice Chancellor
+- Prof. R. Sivarama Prasad - Rector
+- Prof. G. Simhachalam - Registrar
+
+4) COLLEGES LIST USED
+From src/components/college-section.tsx:
+- ANU College of Sciences
+- ANU College of Engineering & Technology
+- ANU College of Arts, Commerce & Law
+- ANU College of Pharmaceutical Sciences
+- ANU College of Architecture & Planning
+- ANU College of Physical Education & Sports
+
+5) PRINCIPAL NAMES USED IN COLLEGE CARDS
+- Prof. K. Veeraiah
+- Ch. Linga Raju
+- Prof. M. Suresh Kumar
+- Dr. Karavadi Thejomoorthy
+- College Principal (placeholder label)
+- Dr. P. Johnson
+
+6) SCHOOL/COLLEGE PROGRAMME LISTS USED
+A) Engineering (Dr. YSR ANUCET)
+- B.Tech CSE
+- B.Tech AI & ML
+- B.Tech Data Science
+- B.Tech Cyber Security
+- B.Tech ECE
+- B.Tech EEE
+- B.Tech Mechanical
+- B.Tech Civil
+- M.Tech (All Specializations)
+- Ph.D Engineering
+
+B) Sciences
+- M.Sc Physics
+- M.Sc Chemistry
+- M.Sc Mathematics
+- M.Sc Biotechnology
+- M.Sc Botany
+- M.Sc Zoology
+- M.Sc Environmental Science
+- Ph.D Sciences
+
+C) Arts, Commerce & Law
+- B.A Honours
+- B.Com Honours
+- M.A English
+- M.A Telugu
+- M.A Economics
+- M.Com
+- MBA
+- LL.B (3 Year)
+- LL.M
+- Ph.D Humanities
+
+D) Pharmacy
+- B.Pharmacy
+- Pharm.D
+- M.Pharmacy (Pharmaceutics)
+- M.Pharmacy (Pharmacology)
+- M.Pharmacy (Pharmaceutical Analysis)
+- Ph.D Pharmaceutical Sciences
+
+E) Physical Education & Sports
+- B.P.Ed
+- M.P.Ed
+- Diploma in Sports Coaching
+- Ph.D Physical Education
+
+F) Architecture & Planning
+- B.Arch (5 Year)
+- M.Arch (Urban Design)
+- M.Plan (Urban Planning)
+- Ph.D Architecture
+
+7) FACULTY DIRECTORY DATA USED (MARKED DUMMY/SAMPLE IN FILE)
+From src/data/facultyProfiles.ts:
+- Prof. V. Ramachandra Rao (Computer Science)
+- Dr. P. Lakshmi Narayana (Computer Science)
+- Dr. K. Anitha Devi (Computer Science)
+- Dr. B. Srinivasa Rao (Biotechnology)
+- Dr. M. Padmavathi (Chemistry)
+- Dr. T. Venkateswara Rao (Electronics & Instrumentation)
+
+Faculty contact emails used:
+- ramachandra.rao@anu.ac.in
+- lakshmi.narayana@anu.ac.in
+- anitha.devi@anu.ac.in
+- srinivasa.rao@anu.ac.in
+- padmavathi@anu.ac.in
+- venkateswara.rao@anu.ac.in
+
+Faculty contact phones used:
+- +91 863 234 6201
+- +91 863 234 6202
+- +91 863 234 6203
+- +91 863 234 6210
+- +91 863 234 6215
+- +91 863 234 6220
+
+8) DEPARTMENT NAMES/SLUGS USED FOR DEPARTMENT PAGES
+From src/components/departments/department-data.ts:
+- computer-science-and-engineering - Department of Computer Science and Engineering - ANU College of Sciences
+- mechanical-engineering - Department of Mechanical Engineering - ANU College of Engineering & Technology
+- electronics-and-communication-engineering - Department of Electronics and Communication Engineering - ANU College of Engineering & Technology
+- civil-engineering - Department of Civil Engineering - ANU College of Engineering & Technology
+- electrical-and-electronics-engineering - Department of Electrical and Electronics Engineering - ANU College of Engineering & Technology
+- physics - Department of Physics - ANU College of Sciences
+- chemistry - Department of Chemistry - ANU College of Sciences
+- mathematics - Department of Mathematics - ANU College of Sciences
+- statistics - Department of Statistics - ANU College of Sciences
+- bio-technology - Department of Bio Technology - ANU College of Sciences
+- bio-chemistry - Department of Bio Chemistry - ANU College of Sciences
+- botany-and-microbiology - Department of Botany and Microbiology - ANU College of Sciences
+- zoology-and-aquaculture - Department of Zoology and Aquaculture - ANU College of Sciences
+- geology - Department of Geology - ANU College of Sciences
+- food-and-nutritional-science - Department of Food and Nutritional Science - ANU College of Sciences
+- electronics-and-instrumentation - Department of Electronics and Instrumentation - ANU College of Sciences
+- english - Department of English - ANU College of Arts, Commerce & Law
+- hindi - Department of Hindi - ANU College of Arts, Commerce & Law
+- history-and-archaeology - Department of History and Archaeology - ANU College of Arts, Commerce & Law
+- mahayana-buddhist-studies - Centre for Mahayana Buddhist Studies - ANU College of Arts, Commerce & Law
+- journalism-and-mass-communication - Department of Journalism and Mass Communication - ANU College of Arts, Commerce & Law
+- commerce-and-business-administration - Department of Commerce and Business Administration - ANU College of Arts, Commerce & Law
+- dr-b-r-ambedkar-school-of-legal-education-and-research - Dr. B.R. Ambedkar School of Legal Education and Research - ANU College of Arts, Commerce & Law
+- pharmaceutics - Department of Pharmaceutics - ANU College of Pharmaceutical Sciences
+- pharmacology - Department of Pharmacology - ANU College of Pharmaceutical Sciences
+- pharmaceutical-analysis - Department of Pharmaceutical Analysis - ANU College of Pharmaceutical Sciences
+- pharmaceutical-chemistry - Department of Pharmaceutical Chemistry - ANU College of Pharmaceutical Sciences
+- industrial-pharmacy - Department of Industrial Pharmacy - ANU College of Pharmaceutical Sciences
+
+9) HOMEPAGE/NOTICE STYLE DATED UPDATES USED
+From src/routes/index.tsx and src/components/college-section.tsx:
+- Advertisement for Research Assistant and Field Investigator for ICSSR funded Major Research Project 2026-2027
+- M.PHIL PART-1 / PRE Ph.D Examination schedule July 2026
+- Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security (Apr 28)
+- B.Sc Honours in Fire and Industrial Safety - Admissions Open (Apr 24)
+- B.Tech 2nd Year and 3rd Year Examinations Time-Table, July 2026 (Apr 18)
+- Revised Academic Calendar for PG Programmes 2026-27 (Apr 12)
+
+10) QUICK ACCESS/STRUCTURAL LABELS USED AS INFORMATIONAL DATA
+- Results
+- Notifications
+- Syllabus
+- Time Tables
+- Examinations
+- Admissions
+- Downloads
+- Contact Us
+- Placements
+- Careers
+- Student Portal
+- Employee Portal
+- WebMail
+
+
