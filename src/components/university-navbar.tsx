@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  ChevronDown,
-  Menu,
-  X,
-  Search,
-  Phone,
-  Mail,
-  ArrowRight,
-} from "lucide-react";
+import { ChevronDown, Menu, X, Search, Phone, Mail, ArrowRight } from "lucide-react";
 import emblem from "@/assets/university-emblem.png";
 
 /**
@@ -28,8 +20,12 @@ type MenuItem = {
   columns: Column[];
 };
 
-const pendingPage = (section: string, page: string) =>
-  `/pages/${section}?page=${encodeURIComponent(page)}`;
+const pendingPage = (section: string, page: string) => {
+  if (section === "admissions") {
+    return `/admissions/${encodeURIComponent(page)}`;
+  }
+  return `/pages/${section}?page=${encodeURIComponent(page)}`;
+};
 const toSlug = (value: string) =>
   value
     .toLowerCase()
@@ -130,8 +126,14 @@ const MENU: MenuItem[] = [
           { label: "Centre for Women Studies", href: pendingPage("academics", "women-studies") },
           { label: "Centre for CSR", href: pendingPage("academics", "csr-centre") },
           { label: "Phule Centre", href: pendingPage("academics", "phule-centre") },
-          { label: "Mahatma Gandhi Centre", href: pendingPage("academics", "mahatma-gandhi-centre") },
-          { label: "Babu Jagjivan Ram Centre", href: pendingPage("academics", "jagjivan-ram-centre") },
+          {
+            label: "Mahatma Gandhi Centre",
+            href: pendingPage("academics", "mahatma-gandhi-centre"),
+          },
+          {
+            label: "Babu Jagjivan Ram Centre",
+            href: pendingPage("academics", "jagjivan-ram-centre"),
+          },
           { label: "Computer Centre", href: pendingPage("academics", "computer-centre") },
         ],
       },
@@ -168,7 +170,10 @@ const MENU: MenuItem[] = [
         title: "PROCESS",
         items: [
           { label: "How to Apply", href: pendingPage("admissions", "how-to-apply") },
-          { label: "Eligibility Criteria", href: pendingPage("admissions", "eligibility-criteria") },
+          {
+            label: "Eligibility Criteria",
+            href: pendingPage("admissions", "eligibility-criteria"),
+          },
           { label: "Affiliated Colleges", href: pendingPage("admissions", "affiliated-colleges") },
         ],
       },
@@ -238,7 +243,6 @@ const MENU: MenuItem[] = [
           { label: "Incubators", href: "#" },
         ],
       },
-      
     ],
   },
   {
@@ -287,28 +291,43 @@ const MENU: MenuItem[] = [
       {
         title: "EXAMINATIONS",
         items: [
-          { label: "Exam Section", href: "#" },
-          { label: "Notifications & Timetables", href: "#" },
-          { label: "Results", href: "#" },
-          { label: "Downloads (Forms)", href: "#" },
+          { label: "Exam Section", href: pendingPage("student-services", "exam-section") },
+          {
+            label: "Notifications & Timetables",
+            href: pendingPage("student-services", "exam-notifications"),
+          },
+          { label: "Results", href: pendingPage("student-services", "results") },
+          { label: "Downloads (Forms)", href: pendingPage("student-services", "downloads") },
         ],
       },
       {
         title: "CAREER",
         items: [
-          { label: "Placements", href: "#" },
-          { label: "Alumni", href: "#" },
-          { label: "Services", href: "#" },
+          { label: "Placements", href: pendingPage("student-services", "placements") },
+          { label: "Alumni", href: pendingPage("student-services", "alumni") },
+          { label: "Services", href: pendingPage("student-services", "services") },
         ],
       },
       {
         title: "SUPPORT CELLS",
         items: [
-          { label: "Anti-Ragging Cell", href: "#" },
-          { label: "Women Grievance Cell", href: "#" },
-          { label: "SC/ST Cell", href: "#" },
-          { label: "Differently Abled Cell", href: "#" },
-          { label: "Student Grievance Cell", href: "#" },
+          {
+            label: "Anti-Ragging Cell",
+            href: pendingPage("student-services", "anti-ragging-cell"),
+          },
+          {
+            label: "Women Grievance Cell",
+            href: pendingPage("student-services", "women-grievance-cell"),
+          },
+          { label: "SC/ST Cell", href: pendingPage("student-services", "sc-st-cell") },
+          {
+            label: "Differently Abled Cell",
+            href: pendingPage("student-services", "differently-abled-cell"),
+          },
+          {
+            label: "Student Grievance Cell",
+            href: pendingPage("student-services", "student-grievance-cell"),
+          },
         ],
       },
     ],
@@ -356,8 +375,7 @@ const MENU: MenuItem[] = [
     heading: "Employee Services",
     promo: {
       badge: "FACULTY & STAFF",
-      description:
-        "Policies, regulations and quick links for faculty, employees and pensioners.",
+      description: "Policies, regulations and quick links for faculty, employees and pensioners.",
     },
     columns: [
       {
@@ -415,8 +433,8 @@ export function UniversityNavbar() {
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
-    document.removeEventListener("mousedown", onClick);
-    document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
     };
   }, []);
 
@@ -456,12 +474,12 @@ export function UniversityNavbar() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 lg:px-8">
           {isScrolled && (
-            <a href="/" className="hidden shrink-0 items-center gap-3 py-2 lg:flex" aria-label="Acharya Nagarjuna University Home">
-              <img
-                src={emblem}
-                alt="ANU emblem"
-                className="h-14 w-14 object-contain"
-              />
+            <a
+              href="/"
+              className="hidden shrink-0 items-center gap-3 py-2 lg:flex"
+              aria-label="Acharya Nagarjuna University Home"
+            >
+              <img src={emblem} alt="ANU emblem" className="h-14 w-14 object-contain" />
               <span className="text-sm font-semibold tracking-wide text-white/95">
                 Acharya Nagarjuna University
               </span>
@@ -529,12 +547,12 @@ export function UniversityNavbar() {
 
           {/* Mobile toggle */}
           {isScrolled && (
-            <a href="/" className="flex items-center gap-2 py-2 lg:hidden" aria-label="Acharya Nagarjuna University Home">
-              <img
-                src={emblem}
-                alt="ANU emblem"
-                className="h-13 w-13 object-contain"
-              />
+            <a
+              href="/"
+              className="flex items-center gap-2 py-2 lg:hidden"
+              aria-label="Acharya Nagarjuna University Home"
+            >
+              <img src={emblem} alt="ANU emblem" className="h-13 w-13 object-contain" />
               <span className="text-sm font-bold tracking-[0.05em] text-[color:var(--utility-bar-accent)]">
                 Acharya Nagarjuna University
               </span>
@@ -587,92 +605,96 @@ export function UniversityNavbar() {
             {(() => {
               const activeMenu = MENU[openIndex];
               return (
-            <div
-              className="border-t border-border bg-background animate-in fade-in slide-in-from-top-1 duration-150"
-              style={{ boxShadow: "var(--mega-shadow)" }}
-            >
-              <div className="mx-auto max-w-[1400px] px-8 py-10">
-                <div className="grid grid-cols-12 gap-8">
-                  {/* Promo / Explore card */}
-                  <div className="col-span-3">
-                    <div
-                      className="text-[11px] font-semibold tracking-[0.2em]"
-                      style={{ color: "var(--gold-strong)" }}
-                    >
-                      {activeMenu.eyebrow}
-                    </div>
-                    <h3
-                      className="mt-2 text-3xl font-semibold leading-tight"
-                      style={{ color: "var(--brand)" }}
-                    >
-                      {activeMenu.heading}
-                    </h3>
-                    <div
-                      className="mt-3 h-[2px] w-12 rounded-full"
-                      style={{ backgroundColor: "var(--gold-strong)" }}
-                    />
-                    <div
-                      className="mt-6 rounded-2xl p-5"
-                      style={{ backgroundColor: "var(--brand-soft)" }}
-                    >
-                      <div
-                        className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wider"
-                        style={{
-                          backgroundColor: "var(--brand)",
-                          color: "var(--brand-foreground)",
-                        }}
-                      >
-                        {activeMenu.promo.badge}
-                      </div>
-                      <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                        {activeMenu.promo.description}
-                      </p>
-                      <a
-                        href={pendingPage(toSlug(activeMenu.label), "overview")}
-                        className="mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-colors"
-                        style={{ color: "var(--brand)" }}
-                      >
-                        Learn more
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Columns */}
-                  <div className="col-span-9 grid grid-cols-3 gap-8">
-                    {activeMenu.columns.map((col) => (
-                      <div key={col.title}>
+                <div
+                  className="border-t border-border bg-background animate-in fade-in slide-in-from-top-1 duration-150"
+                  style={{ boxShadow: "var(--mega-shadow)" }}
+                >
+                  <div className="mx-auto max-w-[1400px] px-8 py-10">
+                    <div className="grid grid-cols-12 gap-8">
+                      {/* Promo / Explore card */}
+                      <div className="col-span-3">
                         <div
-                          className="mb-4 text-[11px] font-semibold tracking-[0.18em]"
+                          className="text-[11px] font-semibold tracking-[0.2em]"
+                          style={{ color: "var(--gold-strong)" }}
+                        >
+                          {activeMenu.eyebrow}
+                        </div>
+                        <h3
+                          className="mt-2 text-3xl font-semibold leading-tight"
                           style={{ color: "var(--brand)" }}
                         >
-                          {col.title}
+                          {activeMenu.heading}
+                        </h3>
+                        <div
+                          className="mt-3 h-[2px] w-12 rounded-full"
+                          style={{ backgroundColor: "var(--gold-strong)" }}
+                        />
+                        <div
+                          className="mt-6 rounded-2xl p-5"
+                          style={{ backgroundColor: "var(--brand-soft)" }}
+                        >
+                          <div
+                            className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wider"
+                            style={{
+                              backgroundColor: "var(--brand)",
+                              color: "var(--brand-foreground)",
+                            }}
+                          >
+                            {activeMenu.promo.badge}
+                          </div>
+                          <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                            {activeMenu.promo.description}
+                          </p>
+                          <a
+                            href={pendingPage(toSlug(activeMenu.label), "overview")}
+                            className="mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-colors"
+                            style={{ color: "var(--brand)" }}
+                          >
+                            Learn more
+                            <ArrowRight className="h-3.5 w-3.5" />
+                          </a>
                         </div>
-                        <ul className="space-y-3">
-                          {col.items.map((c) => (
-                            <li key={c.label}>
-                              <a
-                                href={c.href === "#" ? pendingPage(toSlug(activeMenu.label), toSlug(c.label)) : c.href}
-                                className="group block"
-                              >
-                                <div className="text-sm font-medium text-foreground transition-colors group-hover:text-[color:var(--brand)]">
-                                  {c.label}
-                                </div>
-                                {c.subtitle && (
-                                  <div className="mt-0.5 text-xs text-muted-foreground">
-                                    {c.subtitle}
-                                  </div>
-                                )}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
-                    ))}
+
+                      {/* Columns */}
+                      <div className="col-span-9 grid grid-cols-3 gap-8">
+                        {activeMenu.columns.map((col) => (
+                          <div key={col.title}>
+                            <div
+                              className="mb-4 text-[11px] font-semibold tracking-[0.18em]"
+                              style={{ color: "var(--brand)" }}
+                            >
+                              {col.title}
+                            </div>
+                            <ul className="space-y-3">
+                              {col.items.map((c) => (
+                                <li key={c.label}>
+                                  <a
+                                    href={
+                                      c.href === "#"
+                                        ? pendingPage(toSlug(activeMenu.label), toSlug(c.label))
+                                        : c.href
+                                    }
+                                    className="group block"
+                                  >
+                                    <div className="text-sm font-medium text-foreground transition-colors group-hover:text-[color:var(--brand)]">
+                                      {c.label}
+                                    </div>
+                                    {c.subtitle && (
+                                      <div className="mt-0.5 text-xs text-muted-foreground">
+                                        {c.subtitle}
+                                      </div>
+                                    )}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
               );
             })()}
           </div>
@@ -722,7 +744,11 @@ export function UniversityNavbar() {
                             {col.items.map((c) => (
                               <li key={c.label}>
                                 <a
-                                  href={c.href === "#" ? pendingPage(toSlug(item.label), toSlug(c.label)) : c.href}
+                                  href={
+                                    c.href === "#"
+                                      ? pendingPage(toSlug(item.label), toSlug(c.label))
+                                      : c.href
+                                  }
                                   className="block py-1 text-sm text-foreground/80 hover:text-foreground"
                                 >
                                   {c.label}

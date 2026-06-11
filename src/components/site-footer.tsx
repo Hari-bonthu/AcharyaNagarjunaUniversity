@@ -1,5 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUp, ExternalLink, Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import {
+  ArrowUp,
+  ExternalLink,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+} from "lucide-react";
 
 type FooterNavItem = {
   label: string;
@@ -16,7 +25,7 @@ type FooterContext = {
 };
 
 const baseCommonLinks: FooterNavItem[] = [
-  { label: "Admissions", href: "/pages/admissions?page=overview" },
+  { label: "Admissions", href: "/admissions/overview" },
   { label: "Exam Notifications", href: "/pages/student-services?page=exam-notifications" },
   { label: "Results", href: "/pages/student-services?page=results" },
   { label: "Placements", href: "/pages/student-services?page=placements" },
@@ -110,8 +119,8 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
         { label: "Faculty", href: "/faculty" },
       ],
       commonLinks: [
-        { label: "Apply Now", href: "/pages/admissions?page=how-to-apply" },
-        { label: "Scholarships", href: "/pages/admissions?page=scholarships" },
+        { label: "Apply Now", href: "/admissions/how-to-apply" },
+        { label: "Scholarships", href: "/admissions/scholarships" },
         { label: "Academic Regulations", href: "/pages/academics?page=ordinances" },
         { label: "Results", href: "/pages/student-services?page=results" },
         { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
@@ -165,6 +174,40 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
   if (pathname.startsWith("/pages/")) {
     const routeSection = pathname.split("/")[2] ?? "section";
     const page = new URLSearchParams(searchStr).get("page") ?? "overview";
+    if (routeSection === "student-services") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Student Services Application",
+        aboutText:
+          "This student-services area now works as a real application shell with task-based tabs, classified workflows and dedicated support-cell guidance.",
+        contextualTitle: "Student Service Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/pages/student-services?page=overview" },
+          { label: "Exam Section", href: "/pages/student-services?page=exam-section" },
+          { label: "Results", href: "/pages/student-services?page=results" },
+          { label: "Downloads", href: "/pages/student-services?page=downloads" },
+          { label: "Student Portal", href: "/pages/student-services?page=student-portal" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
+    if (routeSection === "employee-services") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Employee Services Application",
+        aboutText:
+          "This employee-services area operates as a dedicated module with task-based tabs, administrative workflows and support guidance for university staff.",
+        contextualTitle: "Employee Service Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/pages/employee-services?page=overview" },
+          { label: "HR & Payroll", href: "/pages/employee-services?page=hr-payroll" },
+          { label: "Leave Management", href: "/pages/employee-services?page=leave-management" },
+          { label: "Downloads & Forms", href: "/pages/employee-services?page=downloads" },
+          { label: "Employee Portal", href: "/pages/employee-services?page=employee-portal" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
     return {
       ...defaultContext,
       aboutTitle: `${toReadable(routeSection)} Section`,
@@ -172,7 +215,7 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
       contextualTitle: "Related Pages",
       contextualLinks: [
         { label: "Section Overview", href: `/pages/${routeSection}?page=overview` },
-        { label: "Admissions", href: "/pages/admissions?page=overview" },
+        { label: "Admissions", href: "/admissions/overview" },
         { label: "Student Services", href: "/pages/student-services?page=overview" },
         { label: "Academics", href: "/pages/academics?page=overview" },
         { label: "University Home", href: "/" },
@@ -186,11 +229,15 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
 
 function renderFooterLink(item: FooterNavItem) {
   const isAnchorOnly = item.href.startsWith("#");
-  const isMailOrExternal = item.external || item.href.startsWith("mailto:") || item.href.startsWith("tel:");
+  const isMailOrExternal =
+    item.external || item.href.startsWith("mailto:") || item.href.startsWith("tel:");
 
   if (isMailOrExternal) {
     return (
-      <a href={item.href} className="group inline-flex items-center gap-1.5 text-white/78 transition hover:text-[color:var(--utility-bar-accent)]">
+      <a
+        href={item.href}
+        className="group inline-flex items-center gap-1.5 text-white/78 transition hover:text-[color:var(--utility-bar-accent)]"
+      >
         <span>{item.label}</span>
         {item.external && <ExternalLink className="h-3.5 w-3.5 opacity-80" aria-hidden />}
       </a>
@@ -199,14 +246,20 @@ function renderFooterLink(item: FooterNavItem) {
 
   if (isAnchorOnly) {
     return (
-      <a href={item.href} className="text-white/78 transition hover:text-[color:var(--utility-bar-accent)]">
+      <a
+        href={item.href}
+        className="text-white/78 transition hover:text-[color:var(--utility-bar-accent)]"
+      >
         {item.label}
       </a>
     );
   }
 
   return (
-    <Link to={item.href} className="text-white/78 transition hover:text-[color:var(--utility-bar-accent)]">
+    <Link
+      to={item.href}
+      className="text-white/78 transition hover:text-[color:var(--utility-bar-accent)]"
+    >
       {item.label}
     </Link>
   );
@@ -219,15 +272,19 @@ export function SiteFooter() {
 
   return (
     <footer className="relative overflow-hidden bg-[oklch(0.18_0.05_265)] text-[oklch(0.96_0.01_250)]">
-      <div aria-hidden className="pointer-events-none absolute -left-32 -top-36 h-[420px] w-[420px] rounded-full border border-white/10" />
-      <div aria-hidden className="pointer-events-none absolute -right-20 -bottom-40 h-[420px] w-[420px] rounded-full border border-white/10" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 -top-36 h-[420px] w-[420px] rounded-full border border-white/10"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 -bottom-40 h-[420px] w-[420px] rounded-full border border-white/10"
+      />
 
       <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] lg:px-8 lg:py-16">
         <section>
           <FooterHeading>{context.aboutTitle}</FooterHeading>
-          <p className="mt-6 max-w-xl text-sm leading-7 text-white/80">
-            {context.aboutText}
-          </p>
+          <p className="mt-6 max-w-xl text-sm leading-7 text-white/80">{context.aboutText}</p>
           <div className="mt-6 flex items-center gap-3">
             {socialLinks.map((item) => {
               const Icon = item.icon;
@@ -319,13 +376,7 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ContactItem({
-  children,
-  icon: Icon,
-}: {
-  children: React.ReactNode;
-  icon: typeof Phone;
-}) {
+function ContactItem({ children, icon: Icon }: { children: React.ReactNode; icon: typeof Phone }) {
   return (
     <div className="flex items-start gap-4">
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[oklch(0.65_0.19_42)] text-[oklch(0.18_0.05_265)]">

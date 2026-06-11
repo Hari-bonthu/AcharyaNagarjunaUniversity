@@ -1,7 +1,24 @@
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { Building2, Clock3, Mail, Phone } from "lucide-react";
 import { getPublishedPage } from "@/content/page-registry";
-import { BreadcrumbsBlock, PageHero, PageSections, SideNavigation } from "@/components/content/page-blocks";
+import { StudentServicesApp } from "@/components/student-services/student-services-app";
+import { EmployeeServicesApp } from "@/components/employee-services/employee-services-app";
+import {
+  BreadcrumbsBlock,
+  PageHero,
+  PageSections,
+  SideNavigation,
+} from "@/components/content/page-blocks";
+import {
+  getStudentServiceTab,
+  studentServicePageAliases,
+  type StudentServiceTabKey,
+} from "@/data/student-services-app";
+import {
+  getEmployeeServiceTab,
+  employeeServicePageAliases,
+  type EmployeeServiceTabKey,
+} from "@/data/employee-services-app";
 
 type PlaceholderSearch = {
   page?: string;
@@ -10,6 +27,8 @@ type PlaceholderSearch = {
 const pageAliasMap: Record<string, string> = {
   "notifications-timetables": "exam-notifications",
   "downloads-forms": "downloads",
+  ...studentServicePageAliases,
+  ...employeeServicePageAliases,
 };
 
 function normalizeSlug(input: string) {
@@ -28,6 +47,14 @@ function resolvePage(page?: string) {
 }
 
 export const Route = createFileRoute("/pages/$section")({
+  beforeLoad: ({ params, search }) => {
+    if (params.section === "student-services") {
+      throw redirect({ to: "/student-services/$pageId", params: { pageId: search.page || "overview" } });
+    }
+    if (params.section === "employee-services") {
+      throw redirect({ to: "/employee-services/$pageId", params: { pageId: search.page || "overview" } });
+    }
+  },
   validateSearch: (search: Record<string, unknown>): PlaceholderSearch => ({
     page: typeof search.page === "string" ? search.page : undefined,
   }),
@@ -62,13 +89,16 @@ function PlaceholderPage({ section, page }: { section: string; page: string }) {
     <main className="min-h-[70vh] bg-[oklch(0.985_0.005_250)]">
       <section className="border-b border-border bg-white">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Page in progress</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
+            Page in progress
+          </p>
           <h1 className="mt-3 text-3xl font-bold text-[oklch(0.22_0.06_265)] md:text-4xl">
             {sectionLabel}: {pageLabel}
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">
-            This section is being prepared as part of the official ANU website structure.
-            Verified details such as eligibility, schedules, contacts, and downloadable documents will be added here once approved.
+            This section is being prepared as part of the official ANU website structure. Verified
+            details such as eligibility, schedules, contacts, and downloadable documents will be
+            added here once approved.
           </p>
         </div>
       </section>
@@ -78,16 +108,21 @@ function PlaceholderPage({ section, page }: { section: string; page: string }) {
           <h2 className="text-lg font-semibold text-foreground">Template Status</h2>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
             You are viewing the shared fallback template for incomplete routes using
-            <code> /pages/$section?page=$page</code>. Once the final page is ready, this URL can map to the full module.
+            <code> /pages/$section?page=$page</code>. Once the final page is ready, this URL can map
+            to the full module.
           </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div className="rounded-lg border border-border/80 bg-background p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Section</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Section
+              </p>
               <p className="mt-1 text-sm font-semibold text-foreground">{sectionLabel}</p>
             </div>
             <div className="rounded-lg border border-border/80 bg-background p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Page</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Page
+              </p>
               <p className="mt-1 text-sm font-semibold text-foreground">{pageLabel}</p>
             </div>
           </div>
@@ -113,19 +148,27 @@ function PlaceholderPage({ section, page }: { section: string; page: string }) {
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-3">
               <Building2 className="mt-0.5 h-4 w-4 text-[color:var(--brand)]" aria-hidden />
-              <span>Acharya Nagarjuna University, Nagarjuna Nagar, Guntur, Andhra Pradesh 522510</span>
+              <span>
+                Acharya Nagarjuna University, Nagarjuna Nagar, Guntur, Andhra Pradesh 522510
+              </span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="h-4 w-4 text-[color:var(--brand)]" aria-hidden />
-              <a href="tel:+918632346114" className="hover:text-foreground">+91 863 234 6114</a>
+              <a href="tel:+918632346114" className="hover:text-foreground">
+                +91 863 234 6114
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4 text-[color:var(--brand)]" aria-hidden />
-              <a href="mailto:registrar@anu.ac.in" className="hover:text-foreground">registrar@anu.ac.in</a>
+              <a href="mailto:registrar@anu.ac.in" className="hover:text-foreground">
+                registrar@anu.ac.in
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <Clock3 className="mt-0.5 h-4 w-4 text-[color:var(--brand)]" aria-hidden />
-              <span>Working hours and notices are published in the relevant finalized section.</span>
+              <span>
+                Working hours and notices are published in the relevant finalized section.
+              </span>
             </li>
           </ul>
         </aside>
@@ -151,10 +194,54 @@ function PublishedPage({ section, page }: { section: string; page: string }) {
   );
 }
 
+function StudentServicesPage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getStudentServiceTab(page);
+
+  return (
+    <StudentServicesApp
+      page={currentTab.key}
+      onPageChange={(nextPage: StudentServiceTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "student-services" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
+function EmployeeServicesPage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getEmployeeServiceTab(page);
+
+  return (
+    <EmployeeServicesApp
+      page={currentTab.key}
+      onPageChange={(nextPage: EmployeeServiceTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "employee-services" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
 function SectionPage() {
   const { section } = Route.useParams();
   const { page } = Route.useSearch();
   const resolvedPage = resolvePage(page);
+
+  if (section === "student-services") {
+    return <StudentServicesPage page={resolvedPage} />;
+  }
+
+  if (section === "employee-services") {
+    return <EmployeeServicesPage page={resolvedPage} />;
+  }
 
   const published = getPublishedPage(section, resolvedPage);
   if (published) {

@@ -14,10 +14,15 @@ import { Route as HistoryRouteImport } from './routes/history'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as AboutprofileRouteImport } from './routes/aboutprofile'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentServicesIndexRouteImport } from './routes/student-services.index'
+import { Route as EmployeeServicesIndexRouteImport } from './routes/employee-services.index'
+import { Route as StudentServicesPageIdRouteImport } from './routes/student-services.$pageId'
 import { Route as PagesSectionRouteImport } from './routes/pages.$section'
 import { Route as FacultyFacultySlugRouteImport } from './routes/faculty.$facultySlug'
+import { Route as EmployeeServicesPageIdRouteImport } from './routes/employee-services.$pageId'
 import { Route as DepartmentsDepartmentIdRouteImport } from './routes/departments.$departmentId'
 import { Route as CollegesCollegeIdRouteImport } from './routes/colleges.$collegeId'
+import { Route as AdmissionsPageIdRouteImport } from './routes/admissions.$pageId'
 
 const JubileeRoute = JubileeRouteImport.update({
   id: '/jubilee',
@@ -44,6 +49,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentServicesIndexRoute = StudentServicesIndexRouteImport.update({
+  id: '/student-services/',
+  path: '/student-services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeeServicesIndexRoute = EmployeeServicesIndexRouteImport.update({
+  id: '/employee-services/',
+  path: '/employee-services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentServicesPageIdRoute = StudentServicesPageIdRouteImport.update({
+  id: '/student-services/$pageId',
+  path: '/student-services/$pageId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesSectionRoute = PagesSectionRouteImport.update({
   id: '/pages/$section',
   path: '/pages/$section',
@@ -53,6 +73,11 @@ const FacultyFacultySlugRoute = FacultyFacultySlugRouteImport.update({
   id: '/$facultySlug',
   path: '/$facultySlug',
   getParentRoute: () => FacultyRoute,
+} as any)
+const EmployeeServicesPageIdRoute = EmployeeServicesPageIdRouteImport.update({
+  id: '/employee-services/$pageId',
+  path: '/employee-services/$pageId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DepartmentsDepartmentIdRoute = DepartmentsDepartmentIdRouteImport.update({
   id: '/departments/$departmentId',
@@ -64,6 +89,11 @@ const CollegesCollegeIdRoute = CollegesCollegeIdRouteImport.update({
   path: '/colleges/$collegeId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdmissionsPageIdRoute = AdmissionsPageIdRouteImport.update({
+  id: '/admissions/$pageId',
+  path: '/admissions/$pageId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,10 +101,15 @@ export interface FileRoutesByFullPath {
   '/faculty': typeof FacultyRouteWithChildren
   '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
+  '/admissions/$pageId': typeof AdmissionsPageIdRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
+  '/employee-services/$pageId': typeof EmployeeServicesPageIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
   '/pages/$section': typeof PagesSectionRoute
+  '/student-services/$pageId': typeof StudentServicesPageIdRoute
+  '/employee-services/': typeof EmployeeServicesIndexRoute
+  '/student-services/': typeof StudentServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -82,10 +117,15 @@ export interface FileRoutesByTo {
   '/faculty': typeof FacultyRouteWithChildren
   '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
+  '/admissions/$pageId': typeof AdmissionsPageIdRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
+  '/employee-services/$pageId': typeof EmployeeServicesPageIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
   '/pages/$section': typeof PagesSectionRoute
+  '/student-services/$pageId': typeof StudentServicesPageIdRoute
+  '/employee-services': typeof EmployeeServicesIndexRoute
+  '/student-services': typeof StudentServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -94,10 +134,15 @@ export interface FileRoutesById {
   '/faculty': typeof FacultyRouteWithChildren
   '/history': typeof HistoryRoute
   '/jubilee': typeof JubileeRoute
+  '/admissions/$pageId': typeof AdmissionsPageIdRoute
   '/colleges/$collegeId': typeof CollegesCollegeIdRoute
   '/departments/$departmentId': typeof DepartmentsDepartmentIdRoute
+  '/employee-services/$pageId': typeof EmployeeServicesPageIdRoute
   '/faculty/$facultySlug': typeof FacultyFacultySlugRoute
   '/pages/$section': typeof PagesSectionRoute
+  '/student-services/$pageId': typeof StudentServicesPageIdRoute
+  '/employee-services/': typeof EmployeeServicesIndexRoute
+  '/student-services/': typeof StudentServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,10 +152,15 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/history'
     | '/jubilee'
+    | '/admissions/$pageId'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
+    | '/employee-services/$pageId'
     | '/faculty/$facultySlug'
     | '/pages/$section'
+    | '/student-services/$pageId'
+    | '/employee-services/'
+    | '/student-services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -118,10 +168,15 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/history'
     | '/jubilee'
+    | '/admissions/$pageId'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
+    | '/employee-services/$pageId'
     | '/faculty/$facultySlug'
     | '/pages/$section'
+    | '/student-services/$pageId'
+    | '/employee-services'
+    | '/student-services'
   id:
     | '__root__'
     | '/'
@@ -129,10 +184,15 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/history'
     | '/jubilee'
+    | '/admissions/$pageId'
     | '/colleges/$collegeId'
     | '/departments/$departmentId'
+    | '/employee-services/$pageId'
     | '/faculty/$facultySlug'
     | '/pages/$section'
+    | '/student-services/$pageId'
+    | '/employee-services/'
+    | '/student-services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,9 +201,14 @@ export interface RootRouteChildren {
   FacultyRoute: typeof FacultyRouteWithChildren
   HistoryRoute: typeof HistoryRoute
   JubileeRoute: typeof JubileeRoute
+  AdmissionsPageIdRoute: typeof AdmissionsPageIdRoute
   CollegesCollegeIdRoute: typeof CollegesCollegeIdRoute
   DepartmentsDepartmentIdRoute: typeof DepartmentsDepartmentIdRoute
+  EmployeeServicesPageIdRoute: typeof EmployeeServicesPageIdRoute
   PagesSectionRoute: typeof PagesSectionRoute
+  StudentServicesPageIdRoute: typeof StudentServicesPageIdRoute
+  EmployeeServicesIndexRoute: typeof EmployeeServicesIndexRoute
+  StudentServicesIndexRoute: typeof StudentServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -183,6 +248,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student-services/': {
+      id: '/student-services/'
+      path: '/student-services'
+      fullPath: '/student-services/'
+      preLoaderRoute: typeof StudentServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employee-services/': {
+      id: '/employee-services/'
+      path: '/employee-services'
+      fullPath: '/employee-services/'
+      preLoaderRoute: typeof EmployeeServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student-services/$pageId': {
+      id: '/student-services/$pageId'
+      path: '/student-services/$pageId'
+      fullPath: '/student-services/$pageId'
+      preLoaderRoute: typeof StudentServicesPageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages/$section': {
       id: '/pages/$section'
       path: '/pages/$section'
@@ -197,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FacultyFacultySlugRouteImport
       parentRoute: typeof FacultyRoute
     }
+    '/employee-services/$pageId': {
+      id: '/employee-services/$pageId'
+      path: '/employee-services/$pageId'
+      fullPath: '/employee-services/$pageId'
+      preLoaderRoute: typeof EmployeeServicesPageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/departments/$departmentId': {
       id: '/departments/$departmentId'
       path: '/departments/$departmentId'
@@ -209,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/colleges/$collegeId'
       fullPath: '/colleges/$collegeId'
       preLoaderRoute: typeof CollegesCollegeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admissions/$pageId': {
+      id: '/admissions/$pageId'
+      path: '/admissions/$pageId'
+      fullPath: '/admissions/$pageId'
+      preLoaderRoute: typeof AdmissionsPageIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -231,9 +331,14 @@ const rootRouteChildren: RootRouteChildren = {
   FacultyRoute: FacultyRouteWithChildren,
   HistoryRoute: HistoryRoute,
   JubileeRoute: JubileeRoute,
+  AdmissionsPageIdRoute: AdmissionsPageIdRoute,
   CollegesCollegeIdRoute: CollegesCollegeIdRoute,
   DepartmentsDepartmentIdRoute: DepartmentsDepartmentIdRoute,
+  EmployeeServicesPageIdRoute: EmployeeServicesPageIdRoute,
   PagesSectionRoute: PagesSectionRoute,
+  StudentServicesPageIdRoute: StudentServicesPageIdRoute,
+  EmployeeServicesIndexRoute: EmployeeServicesIndexRoute,
+  StudentServicesIndexRoute: StudentServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
