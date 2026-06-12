@@ -24,11 +24,7 @@ function CollegeRoute() {
     <div className="min-h-screen bg-background">
       <main>
         <BreadcrumbTrail
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Colleges" },
-            { label: college.name },
-          ]}
+          items={[{ label: "Home", href: "/" }, { label: "Colleges" }, { label: college.name }]}
         />
         <CollegeDetailPage collegeId={collegeId} />
       </main>

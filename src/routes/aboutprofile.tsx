@@ -89,7 +89,7 @@ function AboutProfilePage() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     cards.forEach((c) => obs.observe(c));
     return () => obs.disconnect();
@@ -407,15 +407,9 @@ function AboutProfilePage() {
       `}</style>
 
       <div className="profile-root">
-        <BreadcrumbTrail
-          items={[
-            { label: "Home", href: "/" },
-            { label: "About Profile" },
-          ]}
-        />
+        <BreadcrumbTrail items={[{ label: "Home", href: "/" }, { label: "About Profile" }]} />
 
         <main className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
-
           {/* ── Masthead ── */}
           <section className="profile-masthead rounded-sm overflow-hidden mb-10">
             <div className="gold-rule" />
@@ -443,7 +437,8 @@ function AboutProfilePage() {
                   maxWidth: "30rem",
                 }}
               >
-                Acharya Nagarjuna<br />
+                Acharya Nagarjuna
+                <br />
                 <span
                   style={{
                     fontWeight: 400,
@@ -464,7 +459,7 @@ function AboutProfilePage() {
                   maxWidth: "34rem",
                 }}
               >
-                A public university shaped by heritage, academic intent and regional responsibility. 
+                A public university shaped by heritage, academic intent and regional responsibility.
                 Rooted in 1976. Still building.
               </p>
             </div>
@@ -496,7 +491,9 @@ function AboutProfilePage() {
             <h2 className="section-heading">
               Rooted in <em>Legacy,</em> Focused on Relevance
             </h2>
-            <div className="divider-rule"><span>✦</span></div>
+            <div className="divider-rule">
+              <span>✦</span>
+            </div>
 
             <div
               style={{
@@ -512,20 +509,20 @@ function AboutProfilePage() {
                 <div className="identity-card">
                   <div className="identity-prose">
                     <p>
-                      Established in 1976, Acharya Nagarjuna University evolved from a regional 
-                      educational aspiration into a major public university — one that serves learners 
-                      across multiple disciplines and carries the intellectual lineage of one of 
-                      antiquity's most remarkable thinkers.
+                      Established in 1976, Acharya Nagarjuna University evolved from a regional
+                      educational aspiration into a major public university — one that serves
+                      learners across multiple disciplines and carries the intellectual lineage of
+                      one of antiquity's most remarkable thinkers.
                     </p>
                     <p>
-                      The institution holds a deliberate balance: foundational scholarship alongside 
-                      contemporary demands in science, technology, social sciences, management and 
+                      The institution holds a deliberate balance: foundational scholarship alongside
+                      contemporary demands in science, technology, social sciences, management and
                       professional education. Neither purely traditional nor breathlessly modern.
                     </p>
                     <p>
-                      ANU continues to strengthen quality, access and employability through curriculum 
-                      renewal, faculty development, student support systems and collaborative research 
-                      with institutions across the country and beyond.
+                      ANU continues to strengthen quality, access and employability through
+                      curriculum renewal, faculty development, student support systems and
+                      collaborative research with institutions across the country and beyond.
                     </p>
                     <blockquote
                       style={{
@@ -539,8 +536,8 @@ function AboutProfilePage() {
                         color: "var(--ink-mid)",
                       }}
                     >
-                      "Great learning demands great roots — and ANU has always known where its 
-                      roots lie."
+                      "Great learning demands great roots — and ANU has always known where its roots
+                      lie."
                     </blockquote>
                   </div>
                 </div>
@@ -569,7 +566,8 @@ function AboutProfilePage() {
                       lineHeight: 1.3,
                     }}
                   >
-                    Three pillars,<br />
+                    Three pillars,
+                    <br />
                     <em style={{ fontWeight: 400 }}>one direction.</em>
                   </p>
                   <div style={{ marginTop: "1.25rem" }}>
@@ -592,7 +590,9 @@ function AboutProfilePage() {
             <h2 className="section-heading">
               Stewardship &amp; <em>Administration</em>
             </h2>
-            <div className="divider-rule"><span>◈</span></div>
+            <div className="divider-rule">
+              <span>◈</span>
+            </div>
 
             <div
               style={{
@@ -650,15 +650,14 @@ function AboutProfilePage() {
                 maxWidth: "30rem",
               }}
             >
-              Step into the History page for ANU's complete six-chapter timeline — from ancient inquiry to present-day university.
+              Step into the History page for ANU's complete six-chapter timeline — from ancient
+              inquiry to present-day university.
             </p>
             <Link to="/history" className="cta-link">
               Open History →
             </Link>
           </section>
-
         </main>
-        
       </div>
     </>
   );

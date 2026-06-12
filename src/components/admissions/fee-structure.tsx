@@ -40,18 +40,23 @@ export function FeeStructure() {
       <section>
         <h2 className="font-playfair text-3xl font-bold text-[var(--ink)]">Fee Structure</h2>
         <div className="mt-4 h-1 w-20 bg-[var(--gold)]" />
-        
+
         <div className="mt-8 rounded border border-[var(--rule)] bg-white p-8 shadow-sm">
           <p className="font-serif text-lg leading-relaxed text-[#4a4235]">
-            Acharya Nagarjuna University is committed to providing high-quality education at an accessible cost. The fee structure varies based on the level of study, specific program, and the mode of admission (Regular vs. Self-Financed).
+            Acharya Nagarjuna University is committed to providing high-quality education at an
+            accessible cost. The fee structure varies based on the level of study, specific program,
+            and the mode of admission (Regular vs. Self-Financed).
           </p>
         </div>
       </section>
 
       <section>
-        <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">Indicative Annual Fees</h3>
+        <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">
+          Indicative Annual Fees
+        </h3>
         <p className="font-serif mt-2 text-sm text-[var(--muted)]">
-          * Note: Values represent typical ranges per annum and may change based on academic year and university notifications.
+          * Note: Values represent typical ranges per annum and may change based on academic year
+          and university notifications.
         </p>
 
         <div className="mt-6 overflow-hidden rounded border border-[var(--rule)] bg-white shadow-sm">
@@ -59,10 +64,16 @@ export function FeeStructure() {
             <table className="w-full text-left text-sm">
               <thead className="bg-[var(--parchment-dark)] font-serif text-[var(--ink)]">
                 <tr>
-                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold">Program Category</th>
+                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold">
+                    Program Category
+                  </th>
                   <th className="border-b border-[var(--rule)] px-6 py-4 font-bold">Tuition Fee</th>
-                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold">Special/Lab Fee</th>
-                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold text-[var(--gold-light)]">Estimated Total</th>
+                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold">
+                    Special/Lab Fee
+                  </th>
+                  <th className="border-b border-[var(--rule)] px-6 py-4 font-bold text-[var(--gold-light)]">
+                    Estimated Total
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--rule)] font-serif">
@@ -83,11 +94,21 @@ export function FeeStructure() {
       <section className="flex items-start gap-4 rounded border border-[var(--gold)]/30 bg-[var(--gold)]/5 p-6">
         <Info className="mt-0.5 h-6 w-6 shrink-0 text-[var(--gold)]" />
         <div>
-          <h4 className="font-playfair text-lg font-bold text-[var(--ink)]">Important Information</h4>
+          <h4 className="font-playfair text-lg font-bold text-[var(--ink)]">
+            Important Information
+          </h4>
           <ul className="font-serif mt-2 list-inside list-disc space-y-2 text-sm leading-relaxed text-[var(--muted)]">
-            <li>Examination fees, hostel accommodation, and mess charges are collected separately.</li>
-            <li>Self-financed (SF) courses carry a different fee structure compared to regular courses.</li>
-            <li>Students eligible for State Government fee reimbursement (JVD) must submit relevant certificates during admission.</li>
+            <li>
+              Examination fees, hostel accommodation, and mess charges are collected separately.
+            </li>
+            <li>
+              Self-financed (SF) courses carry a different fee structure compared to regular
+              courses.
+            </li>
+            <li>
+              Students eligible for State Government fee reimbursement (JVD) must submit relevant
+              certificates during admission.
+            </li>
           </ul>
         </div>
       </section>

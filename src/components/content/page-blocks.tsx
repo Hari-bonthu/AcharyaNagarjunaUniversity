@@ -3,10 +3,14 @@ import { Link } from "@tanstack/react-router";
 import { Download, ExternalLink } from "lucide-react";
 
 function renderLink(href: string, label: string) {
-  const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+  const isExternal =
+    href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
   if (isExternal) {
     return (
-      <a href={href} className="inline-flex items-center gap-1.5 text-[color:var(--brand)] hover:underline">
+      <a
+        href={href}
+        className="inline-flex items-center gap-1.5 text-[color:var(--brand)] hover:underline"
+      >
         {label}
         <ExternalLink className="h-3.5 w-3.5" aria-hidden />
       </a>
@@ -23,13 +27,17 @@ export function PageHero({ content }: { content: PageContent }) {
   return (
     <section className="border-b border-border bg-white">
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-14">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Student Services</p>
-        <h1 className="mt-3 text-3xl font-bold text-[oklch(0.22_0.06_265)] md:text-4xl">{content.hero.heading}</h1>
-        <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground md:text-base">{content.hero.subheading}</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
+          Student Services
+        </p>
+        <h1 className="mt-3 text-3xl font-bold text-[oklch(0.22_0.06_265)] md:text-4xl">
+          {content.hero.heading}
+        </h1>
+        <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground md:text-base">
+          {content.hero.subheading}
+        </p>
         {content.hero.ctaLabel && content.hero.ctaLink ? (
-          <div className="mt-6">
-            {renderLink(content.hero.ctaLink, content.hero.ctaLabel)}
-          </div>
+          <div className="mt-6">{renderLink(content.hero.ctaLink, content.hero.ctaLabel)}</div>
         ) : null}
       </div>
     </section>
@@ -70,7 +78,10 @@ function CardsSection({ section }: { section: Extract<PageSection, { type: "card
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         {section.items.map((item) => (
-          <article key={item.title} className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4">
+          <article
+            key={item.title}
+            className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4"
+          >
             <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
           </article>
@@ -86,8 +97,13 @@ function NoticesSection({ section }: { section: Extract<PageSection, { type: "no
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <ul className="mt-4 space-y-3">
         {section.items.map((item, index) => (
-          <li key={`${item.title}-${index}`} className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand)]">{item.date}</p>
+          <li
+            key={`${item.title}-${index}`}
+            className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand)]">
+              {item.date}
+            </p>
             <p className="mt-1 text-sm font-semibold text-foreground">{item.title}</p>
             <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.details}</p>
             {item.href ? <div className="mt-2">{renderLink(item.href, "View details")}</div> : null}
@@ -104,10 +120,16 @@ function DownloadsSection({ section }: { section: Extract<PageSection, { type: "
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <ul className="mt-4 space-y-3">
         {section.items.map((item) => (
-          <li key={item.name} className="flex items-center justify-between gap-3 rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4">
+          <li
+            key={item.name}
+            className="flex items-center justify-between gap-3 rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4"
+          >
             <div>
               <p className="text-sm font-semibold text-foreground">{item.name}</p>
-              <p className="text-xs text-muted-foreground">{item.format}{item.note ? ` · ${item.note}` : ""}</p>
+              <p className="text-xs text-muted-foreground">
+                {item.format}
+                {item.note ? ` · ${item.note}` : ""}
+              </p>
             </div>
             <a
               href={item.href}
@@ -129,7 +151,10 @@ function FAQSection({ section }: { section: Extract<PageSection, { type: "faq" }
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <div className="mt-4 space-y-4">
         {section.items.map((item) => (
-          <article key={item.question} className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4">
+          <article
+            key={item.question}
+            className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4"
+          >
             <h3 className="text-sm font-semibold text-foreground">{item.question}</h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.answer}</p>
           </article>
@@ -145,9 +170,14 @@ function ContactSection({ section }: { section: Extract<PageSection, { type: "co
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <ul className="mt-4 space-y-3">
         {section.items.map((item) => (
-          <li key={item.label} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] px-4 py-3">
+          <li
+            key={item.label}
+            className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] px-4 py-3"
+          >
             <span className="text-sm font-semibold text-foreground">{item.label}</span>
-            <span className="text-sm text-muted-foreground">{item.href ? renderLink(item.href, item.value) : item.value}</span>
+            <span className="text-sm text-muted-foreground">
+              {item.href ? renderLink(item.href, item.value) : item.value}
+            </span>
           </li>
         ))}
       </ul>
@@ -161,8 +191,13 @@ function TimelineSection({ section }: { section: Extract<PageSection, { type: "t
       <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
       <ol className="mt-4 space-y-4">
         {section.items.map((item) => (
-          <li key={`${item.period}-${item.title}`} className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand)]">{item.period}</p>
+          <li
+            key={`${item.period}-${item.title}`}
+            className="rounded-lg border border-border/80 bg-[oklch(0.985_0.005_250)] p-4"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand)]">
+              {item.period}
+            </p>
             <h3 className="mt-1 text-sm font-semibold text-foreground">{item.title}</h3>
             <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.description}</p>
           </li>
@@ -191,7 +226,10 @@ function TableSection({ section }: { section: Extract<PageSection, { type: "tabl
             {section.rows.map((row, index) => (
               <tr key={`${section.id}-${index}`}>
                 {row.map((cell, cellIndex) => (
-                  <td key={`${section.id}-${index}-${cellIndex}`} className="border-b border-border px-3 py-2 text-muted-foreground">
+                  <td
+                    key={`${section.id}-${index}-${cellIndex}`}
+                    className="border-b border-border px-3 py-2 text-muted-foreground"
+                  >
                     {cell}
                   </td>
                 ))}
@@ -237,34 +275,47 @@ export function SideNavigation({ content }: { content: PageContent }) {
   return (
     <aside className="space-y-6">
       <section className="rounded-xl border border-border bg-white p-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">On this page</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          On this page
+        </h2>
         <ul className="mt-3 space-y-2 text-sm">
           {content.onThisPage.map((item) => (
-            <li key={item.label}>
-              {renderLink(item.href, item.label)}
-            </li>
+            <li key={item.label}>{renderLink(item.href, item.label)}</li>
           ))}
         </ul>
       </section>
 
       <section className="rounded-xl border border-border bg-white p-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Related links</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Related links
+        </h2>
         <ul className="mt-3 space-y-2 text-sm">
           {content.relatedLinks.map((item) => (
-            <li key={item.label}>
-              {renderLink(item.href, item.label)}
-            </li>
+            <li key={item.label}>{renderLink(item.href, item.label)}</li>
           ))}
         </ul>
       </section>
 
       <section className="rounded-xl border border-border bg-white p-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Content Governance</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Content Governance
+        </h2>
         <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-          <li><span className="font-semibold text-foreground">Owner:</span> {content.meta.owner}</li>
-          <li><span className="font-semibold text-foreground">Last updated:</span> {content.meta.lastUpdated}</li>
-          <li><span className="font-semibold text-foreground">Approved by:</span> {content.governance.approvedBy}</li>
-          <li><span className="font-semibold text-foreground">Approved on:</span> {content.governance.approvedOn}</li>
+          <li>
+            <span className="font-semibold text-foreground">Owner:</span> {content.meta.owner}
+          </li>
+          <li>
+            <span className="font-semibold text-foreground">Last updated:</span>{" "}
+            {content.meta.lastUpdated}
+          </li>
+          <li>
+            <span className="font-semibold text-foreground">Approved by:</span>{" "}
+            {content.governance.approvedBy}
+          </li>
+          <li>
+            <span className="font-semibold text-foreground">Approved on:</span>{" "}
+            {content.governance.approvedOn}
+          </li>
         </ul>
       </section>
     </aside>

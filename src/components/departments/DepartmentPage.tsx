@@ -6,19 +6,13 @@ import { FacultyPreview } from "./FacultyPreview";
 import { ProgramsSection } from "./ProgramsSection";
 import { ResearchFocusSection } from "./ResearchFocusSection";
 import type { DepartmentPageData } from "./department-data";
-export function DepartmentPage({
-  department,
-}: {
-  department: DepartmentPageData;
-}) {
+export function DepartmentPage({ department }: { department: DepartmentPageData }) {
   return (
     <main className="bg-background">
       <DepartmentHero department={department} />
 
       <section id="programs">
-        <ProgramsSection
-  programs={department.programs}
-/>
+        <ProgramsSection programs={department.programs} />
       </section>
 
       <section id="faculty">
@@ -37,8 +31,6 @@ export function DepartmentPage({
       <section id="research">
         <ResearchFocusSection items={department.researchFocus} />
       </section>
-
-      
     </main>
   );
 }

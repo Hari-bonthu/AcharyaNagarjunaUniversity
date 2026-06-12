@@ -23,8 +23,7 @@ export function AdmissionsShell({
   pageId: string;
   children: React.ReactNode;
 }) {
-  const activeLabel =
-    ADMISSIONS_MENU.find((item) => item.id === pageId)?.label ?? "Admissions";
+  const activeLabel = ADMISSIONS_MENU.find((item) => item.id === pageId)?.label ?? "Admissions";
 
   return (
     <>
@@ -132,7 +131,8 @@ export function AdmissionsShell({
               Admissions
             </h1>
             <p className="font-garamond mx-auto mt-6 max-w-2xl text-lg italic tracking-wide text-[var(--gold-light)] md:text-xl">
-              "Fostering academic excellence and regional inclusion for the next generation of scholars."
+              "Fostering academic excellence and regional inclusion for the next generation of
+              scholars."
             </p>
           </div>
         </div>
@@ -154,7 +154,9 @@ export function AdmissionsShell({
               <div className="lg:sticky lg:top-24">
                 <nav className="sidebar-menu" aria-label="Admissions Navigation">
                   <div className="bg-[var(--parchment-dark)] px-6 py-4 border-b border-[var(--rule)]">
-                    <h3 className="font-playfair text-lg font-bold text-[var(--ink)]">Admissions Guide</h3>
+                    <h3 className="font-playfair text-lg font-bold text-[var(--ink)]">
+                      Admissions Guide
+                    </h3>
                   </div>
                   <div className="flex flex-col">
                     {ADMISSIONS_MENU.map((item) => (
@@ -175,21 +177,28 @@ export function AdmissionsShell({
 
             <main className="min-w-0" id="admissions-content">
               {children}
-
               (* Helpdesk Banner inside main content *)
               <div className="mt-16 rounded border border-[var(--gold)]/30 bg-[var(--gold)]/5 p-8">
                 <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
                   <div>
-                    <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">Admissions Helpdesk</h3>
+                    <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">
+                      Admissions Helpdesk
+                    </h3>
                     <p className="font-serif mt-2 text-lg text-[var(--muted)]">
                       Need assistance with the application process? Our counselors are here to help.
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-col items-center gap-4 sm:flex-row md:items-end">
-                    <a href="tel:,918632346114" className="flex items-center gap-2 rounded border border-[var(--rule)] bg-white px-6 py-3 font-serif text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--parchment)] hover:text-[var(--gold)]">
+                    <a
+                      href="tel:,918632346114"
+                      className="flex items-center gap-2 rounded border border-[var(--rule)] bg-white px-6 py-3 font-serif text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--parchment)] hover:text-[var(--gold)]"
+                    >
                       Call: +91 863 234 6114
                     </a>
-                    <a href="mailto:admissions@anu.ac.in" className="flex items-center gap-2 rounded bg-[var(--ink)] px-6 py-3 font-serif text-sm font-semibold text-white transition hover:bg-[var(--ink-mid)]">
+                    <a
+                      href="mailto:admissions@anu.ac.in"
+                      className="flex items-center gap-2 rounded bg-[var(--ink)] px-6 py-3 font-serif text-sm font-semibold text-white transition hover:bg-[var(--ink-mid)]"
+                    >
                       Email Admissions
                     </a>
                   </div>

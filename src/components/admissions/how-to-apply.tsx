@@ -5,23 +5,28 @@ export function HowToApply() {
   const steps = [
     {
       title: "Identify Your Program",
-      description: "Review our program offerings, verify eligibility criteria, and ensure you meet the academic requirements for your chosen course.",
+      description:
+        "Review our program offerings, verify eligibility criteria, and ensure you meet the academic requirements for your chosen course.",
     },
     {
       title: "Register on the Portal",
-      description: "Create an account on the Directorate of Admissions portal or the State Common Entrance Test portal (APPECET, ICET, etc.) depending on your program.",
+      description:
+        "Create an account on the Directorate of Admissions portal or the State Common Entrance Test portal (APPECET, ICET, etc.) depending on your program.",
     },
     {
       title: "Submit Application & Documents",
-      description: "Fill out the online application form and upload scanned copies of your academic transcripts, caste certificate (if applicable), and passport-size photographs.",
+      description:
+        "Fill out the online application form and upload scanned copies of your academic transcripts, caste certificate (if applicable), and passport-size photographs.",
     },
     {
       title: "Pay Application Fee",
-      description: "Complete the process by paying the required application fee via the secure payment gateway (Net Banking, Credit/Debit Card, or UPI).",
+      description:
+        "Complete the process by paying the required application fee via the secure payment gateway (Net Banking, Credit/Debit Card, or UPI).",
     },
     {
       title: "Entrance Test & Counseling",
-      description: "Download your hall ticket, appear for the entrance examination, and participate in the web counseling phase to secure your seat.",
+      description:
+        "Download your hall ticket, appear for the entrance examination, and participate in the web counseling phase to secure your seat.",
     },
   ];
 
@@ -30,10 +35,12 @@ export function HowToApply() {
       <section>
         <h2 className="font-playfair text-3xl font-bold text-[var(--ink)]">How to Apply</h2>
         <div className="mt-4 h-1 w-20 bg-[var(--gold)]" />
-        
+
         <div className="mt-8">
           <p className="font-serif text-lg leading-relaxed text-[#4a4235]">
-            The application process at Acharya Nagarjuna University is fully digitized to ensure transparency and efficiency. Depending on your level of study, admission is either through state-level common entrance tests or university-specific admission drives.
+            The application process at Acharya Nagarjuna University is fully digitized to ensure
+            transparency and efficiency. Depending on your level of study, admission is either
+            through state-level common entrance tests or university-specific admission drives.
           </p>
         </div>
       </section>
@@ -48,13 +55,15 @@ export function HowToApply() {
                 {index !== steps.length - 1 && (
                   <div className="absolute left-[1.15rem] top-10 bottom-[-2rem] w-px bg-[var(--rule)]" />
                 )}
-                
+
                 <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-white shadow-sm">
                   <span className="font-playfair font-bold">{index + 1}</span>
                 </div>
-                
+
                 <div className="pt-2">
-                  <h4 className="font-playfair text-xl font-bold text-[var(--ink)]">{step.title}</h4>
+                  <h4 className="font-playfair text-xl font-bold text-[var(--ink)]">
+                    {step.title}
+                  </h4>
                   <p className="font-serif mt-2 text-sm leading-relaxed text-[var(--muted)]">
                     {step.description}
                   </p>

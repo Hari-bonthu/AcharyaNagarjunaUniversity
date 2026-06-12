@@ -68,9 +68,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <div id="top" className="min-h-screen">
+    <div id="top" className="flex flex-col min-h-screen">
       <SiteTopHeader />
-      <Outlet />
+      <main className="grow flex flex-col">
+        <Outlet />
+      </main>
       <SiteFooter />
     </div>
   );

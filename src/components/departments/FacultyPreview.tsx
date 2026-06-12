@@ -42,19 +42,13 @@ export function FacultyPreview({
 
       <div className="grid gap-5 lg:grid-cols-3">
         {featuredFaculty.map((member) => {
-          const facultySlug =
-            getFacultySlugByName(member.name) ?? "prof-v-ramachandra-rao";
+          const facultySlug = getFacultySlugByName(member.name) ?? "prof-v-ramachandra-rao";
           const demoImage = facultyImages.length
             ? facultyImages[featuredFaculty.indexOf(member) % facultyImages.length]
             : "";
 
           const initial =
-            member.name
-              .trim()
-              .split(" ")
-              .slice(-1)[0]
-              ?.charAt(0)
-              .toUpperCase() ?? "F";
+            member.name.trim().split(" ").slice(-1)[0]?.charAt(0).toUpperCase() ?? "F";
 
           return (
             <Link
@@ -77,9 +71,7 @@ export function FacultyPreview({
                 )}
 
                 <div className="min-w-0">
-                  <h3 className="text-base font-bold leading-6 text-slate-900">
-                    {member.name}
-                  </h3>
+                  <h3 className="text-base font-bold leading-6 text-slate-900">{member.name}</h3>
                   <p className="mt-1 text-sm font-medium text-[oklch(0.52_0.14_45)]">
                     {member.role}
                   </p>

@@ -85,9 +85,9 @@ const sharedContacts: ContactItem[] = [
 export const employeeServicePageAliases: Record<string, EmployeeServiceTabKey> = {
   "payroll-salary": "hr-payroll",
   "forms-downloads": "downloads",
-  "pension": "retirees-pensioners",
-  "careers": "professional-development",
-  "webmail": "employee-portal",
+  pension: "retirees-pensioners",
+  careers: "professional-development",
+  webmail: "employee-portal",
 };
 
 export const employeeServiceTabs: EmployeeServiceTab[] = [
@@ -104,7 +104,11 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
         value: "6",
         note: "Payroll, HR, Records, Portal, Welfare, and Pensions",
       },
-      { label: "Support channels", value: "3", note: "Phone, email and establishment office guidance" },
+      {
+        label: "Support channels",
+        value: "3",
+        note: "Phone, email and establishment office guidance",
+      },
       {
         label: "Employee tabs",
         value: "10",
@@ -196,7 +200,8 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
     ],
     contacts: sharedContacts,
     supportPanel: {
-      availability: "Use this hub to quickly find the correct department for any administrative request.",
+      availability:
+        "Use this hub to quickly find the correct department for any administrative request.",
       responseTime:
         "Processing windows vary significantly based on the service type and university calendar.",
       bestFor: [
@@ -308,11 +313,7 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
         "Highly active during the end of the financial year and first week of the month.",
       responseTime:
         "Routine slip generation is automatic. Discrepancy resolution takes 3-5 working days.",
-      bestFor: [
-        "Salary slip downloads",
-        "Tax declaration planning",
-        "Understanding deductions",
-      ],
+      bestFor: ["Salary slip downloads", "Tax declaration planning", "Understanding deductions"],
       notes: [
         "Keep your portal credentials secure.",
         "Always cross-check your bank statements with your official payslip.",
@@ -487,19 +488,13 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
         href: "/employee-services/downloads",
       },
     ],
-    contacts: [
-      { label: "Campus Health Centre", value: "Ext: 250", href: "#" },
-      ...sharedContacts,
-    ],
+    contacts: [{ label: "Campus Health Centre", value: "Ext: 250", href: "#" }, ...sharedContacts],
     supportPanel: {
-      availability: "Health centre is available during campus hours; claims can be submitted year-round.",
+      availability:
+        "Health centre is available during campus hours; claims can be submitted year-round.",
       responseTime:
         "Medical reimbursements require thorough verification and committee approval, taking several weeks.",
-      bestFor: [
-        "Medical emergencies",
-        "Reimbursement claims",
-        "Updating dependent records",
-      ],
+      bestFor: ["Medical emergencies", "Reimbursement claims", "Updating dependent records"],
       notes: [
         "Keep photocopies of all medical bills submitted for reimbursement.",
         "Always notify the administration early in case of prolonged hospitalization.",
@@ -692,14 +687,8 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
       availability: "Plan and apply well ahead of the registration deadline for external events.",
       responseTime:
         "Funding approvals require committee clearance and take longer than standard duty leave approvals.",
-      bestFor: [
-        "Attending conferences",
-        "Applying for external grants",
-        "Participating in FDPs",
-      ],
-      notes: [
-        "Maintain a personal dossier of all attended programs for future CAS applications.",
-      ],
+      bestFor: ["Attending conferences", "Applying for external grants", "Participating in FDPs"],
+      notes: ["Maintain a personal dossier of all attended programs for future CAS applications."],
     },
   },
   {
@@ -770,12 +759,9 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
     ],
     supportPanel: {
       availability: "Available 24/7. System maintenance is usually scheduled on weekends.",
-      responseTime:
-        "Portal access issues are typically resolved by the IT desk within 24 hours.",
+      responseTime: "Portal access issues are typically resolved by the IT desk within 24 hours.",
       bestFor: ["Downloading payslips", "Checking leave quotas", "Accessing digital circulars"],
-      notes: [
-        "Do not share your password with colleagues or subordinates.",
-      ],
+      notes: ["Do not share your password with colleagues or subordinates."],
     },
   },
   {
@@ -828,8 +814,7 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
     steps: [
       {
         title: "Attempt local resolution",
-        description:
-          "Discuss the concern with your direct supervisor or department head first.",
+        description: "Discuss the concern with your direct supervisor or department head first.",
       },
       {
         title: "Draft a formal representation",
@@ -944,9 +929,7 @@ export const employeeServiceTabs: EmployeeServiceTab[] = [
       availability: "Available anytime. Check back before starting a new process.",
       responseTime: "Instant download.",
       bestFor: ["Finding standard templates", "Preparing applications", "Policy reference"],
-      notes: [
-        "If a specific form is missing, contact the relevant department directly.",
-      ],
+      notes: ["If a specific form is missing, contact the relevant department directly."],
     },
   },
   {

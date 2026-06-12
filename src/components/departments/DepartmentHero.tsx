@@ -7,11 +7,7 @@ import collegePhysicalEducationImage from "@/assets/Colleges/College_PhysicalEdu
 import collegeSciencesImage from "@/assets/Colleges/College_Sciences.jpg";
 import type { DepartmentPageData } from "./department-data";
 
-export function DepartmentHero({
-  department,
-}: {
-  department: DepartmentPageData;
-}) {
+export function DepartmentHero({ department }: { department: DepartmentPageData }) {
   const bannerImageByCollege: Record<string, string> = {
     "ANU College of Sciences": collegeSciencesImage,
     "ANU College of Engineering & Technology": collegeEngineeringImage,
@@ -21,8 +17,7 @@ export function DepartmentHero({
     "ANU College of Architecture & Planning": collegeArchitectureImage,
   };
 
-  const bannerImage =
-    bannerImageByCollege[department.college] ?? collegeSciencesImage;
+  const bannerImage = bannerImageByCollege[department.college] ?? collegeSciencesImage;
 
   const stats = [
     { label: "Programs", value: String(department.programs.length) },
@@ -85,8 +80,6 @@ export function DepartmentHero({
             </a>
           </div>
         </div>
-
-        
       </div>
     </section>
   );

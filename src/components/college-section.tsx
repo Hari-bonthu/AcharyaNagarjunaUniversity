@@ -116,7 +116,8 @@ const colleges: CollegeSummary[] = [
     name: "ANU College of Sciences",
     shortName: "Sciences",
     tagline: "Science. Curiosity. Impact.",
-    details: "Research-led departments in life sciences, physical sciences and computational fields.",
+    details:
+      "Research-led departments in life sciences, physical sciences and computational fields.",
     icon: FlaskConical,
     image: collegeSciencesImage,
     principalImage: principalProfKVeeraiahImage,
@@ -286,12 +287,7 @@ const schools: School[] = [
     tagline: "Strength of body, spirit and mind.",
     description:
       "Producing national-level athletes, coaches and physical educators with world-class training infrastructure and a dedicated sports sciences research wing.",
-    programmes: [
-      "B.P.Ed",
-      "M.P.Ed",
-      "Diploma in Sports Coaching",
-      "Ph.D Physical Education",
-    ],
+    programmes: ["B.P.Ed", "M.P.Ed", "Diploma in Sports Coaching", "Ph.D Physical Education"],
     established: "1985",
     location: "Sports Complex, Nagarjuna Nagar",
     icon: Trophy,
@@ -485,47 +481,47 @@ const departmentsByCollege: Record<string, Department[]> = {
       color: "text-pink-700",
     },
     {
-  name: "Mahayana Buddhist Studies",
-  summary: "Buddhist philosophy, culture and historical studies.",
-  icon: ScrollText,
-  color: "text-orange-700",
-},
-{
-  name: "MBA Hospital Administration",
-  summary: "Healthcare systems and hospital management.",
-  icon: BriefcaseBusiness,
-  color: "text-red-600",
-},
-{
-  name: "Department of Rural Development",
-  summary: "Rural growth, policy and development studies.",
-  icon: Users,
-  color: "text-green-700",
-},
-{
-  name: "Sociology and Social",
-  summary: "Society, communities and social sciences.",
-  icon: Users,
-  color: "text-pink-600",
-},
-{
-  name: "International Business Studies",
-  summary: "Global business and international trade.",
-  icon: BriefcaseBusiness,
-  color: "text-indigo-700",
-},
-{
-  name: "Department of Tourism and Hospitality Management",
-  summary: "Tourism, hospitality and service management.",
-  icon: MapPin,
-  color: "text-cyan-700",
-},
-{
-  name: "Human Resource Management",
-  summary: "Workforce planning and organizational management.",
-  icon: Users,
-  color: "text-violet-700",
-},
+      name: "Mahayana Buddhist Studies",
+      summary: "Buddhist philosophy, culture and historical studies.",
+      icon: ScrollText,
+      color: "text-orange-700",
+    },
+    {
+      name: "MBA Hospital Administration",
+      summary: "Healthcare systems and hospital management.",
+      icon: BriefcaseBusiness,
+      color: "text-red-600",
+    },
+    {
+      name: "Department of Rural Development",
+      summary: "Rural growth, policy and development studies.",
+      icon: Users,
+      color: "text-green-700",
+    },
+    {
+      name: "Sociology and Social",
+      summary: "Society, communities and social sciences.",
+      icon: Users,
+      color: "text-pink-600",
+    },
+    {
+      name: "International Business Studies",
+      summary: "Global business and international trade.",
+      icon: BriefcaseBusiness,
+      color: "text-indigo-700",
+    },
+    {
+      name: "Department of Tourism and Hospitality Management",
+      summary: "Tourism, hospitality and service management.",
+      icon: MapPin,
+      color: "text-cyan-700",
+    },
+    {
+      name: "Human Resource Management",
+      summary: "Workforce planning and organizational management.",
+      icon: Users,
+      color: "text-violet-700",
+    },
   ],
 
   engineering: [
@@ -620,8 +616,7 @@ const pillars = [
 const updates = [
   {
     date: "Apr 28",
-    title:
-      "Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security",
+    title: "Guest Faculty Positions in CSE, AI & ML, Data Science and Cyber Security",
     tag: "New",
   },
   {
@@ -714,10 +709,26 @@ const collegePages: Record<string, CollegePageData> = Object.fromEntries(
         },
       ],
       campusHighlights: [
-        { title: "Labs", text: "Hands-on learning spaces for experiments and demonstrations.", icon: FlaskConical },
-        { title: "Library", text: "Study resources, journals and quiet academic spaces.", icon: BookOpen },
-        { title: "Student Life", text: "Clubs, mentoring and student-led academic communities.", icon: Users },
-        { title: "Activities", text: "Seminars, workshops, competitions and campus events.", icon: CalendarDays },
+        {
+          title: "Labs",
+          text: "Hands-on learning spaces for experiments and demonstrations.",
+          icon: FlaskConical,
+        },
+        {
+          title: "Library",
+          text: "Study resources, journals and quiet academic spaces.",
+          icon: BookOpen,
+        },
+        {
+          title: "Student Life",
+          text: "Clubs, mentoring and student-led academic communities.",
+          icon: Users,
+        },
+        {
+          title: "Activities",
+          text: "Seminars, workshops, competitions and campus events.",
+          icon: CalendarDays,
+        },
       ],
       differentiators: [
         {
@@ -744,7 +755,11 @@ const collegePages: Record<string, CollegePageData> = Object.fromEntries(
       updates: [
         { date: "Apr 28", title: "Guest faculty notification released for 2026-27", tag: "NEW" },
         { date: "Apr 24", title: "Admissions open for selected honors programs", tag: "NEW" },
-        { date: "Apr 18", title: "Examination time tables published for July 2026", tag: "UPDATED" },
+        {
+          date: "Apr 18",
+          title: "Examination time tables published for July 2026",
+          tag: "UPDATED",
+        },
         { date: "Apr 12", title: "Revised academic calendar for PG programmes", tag: "UPDATED" },
       ],
     },
@@ -760,7 +775,10 @@ export function CollegeSection() {
   const active = schools.find((s) => s.id === activeId)!;
 
   return (
-    <section id="colleges" className="relative w-full overflow-hidden bg-gradient-to-b from-[oklch(0.985_0.005_250)] via-background to-[oklch(0.97_0.01_255)] py-20">
+    <section
+      id="colleges"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[oklch(0.985_0.005_250)] via-background to-[oklch(0.97_0.01_255)] py-20"
+    >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
@@ -781,8 +799,8 @@ export function CollegeSection() {
             Explore Our Constituent Colleges
           </h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
-            Six premier colleges. Sixty plus programmes. One legacy of academic excellence -
-            select a discipline to dive into the courses, faculty and infrastructure that define it.
+            Six premier colleges. Sixty plus programmes. One legacy of academic excellence - select
+            a discipline to dive into the courses, faculty and infrastructure that define it.
           </p>
         </div>
 
@@ -863,15 +881,10 @@ export function CollegeSection() {
 
           <div className="lg:col-span-5">
             <div className="flex h-full flex-col rounded-3xl border border-border bg-white p-6 shadow-[0_20px_60px_-20px_oklch(0.22_0.06_265/0.15)] md:p-8">
-              <p
-                className="text-sm font-semibold italic"
-                style={{ color: active.accent }}
-              >
+              <p className="text-sm font-semibold italic" style={{ color: active.accent }}>
                 "{active.tagline}"
               </p>
-              <p className="mt-3 text-base leading-relaxed text-foreground">
-                {active.description}
-              </p>
+              <p className="mt-3 text-base leading-relaxed text-foreground">{active.description}</p>
 
               <div className="mt-6">
                 <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[oklch(0.22_0.06_265)]">
@@ -906,7 +919,7 @@ export function CollegeSection() {
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
                 <a
-                  href="#"
+                  href="/admissions/how-to-apply"
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-white px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-[oklch(0.97_0.01_260)]"
                 >
                   Apply for Admission
@@ -945,64 +958,60 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
   return (
     <section className="bg-white text-[#0B1F3A]">
       <div className="relative overflow-hidden text-white">
+        <img
+          src={college.image}
+          alt={`${college.name} campus banner`}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
 
-  <img
-    src={college.image}
-    alt={`${college.name} campus banner`}
-    className="absolute inset-0 h-full w-full object-cover"
-  />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(110deg,rgba(7,20,40,0.9)_0%,rgba(10,35,70,0.76)_45%,rgba(15,118,110,0.28)_100%)]"
+          aria-hidden
+        />
 
-  <div
-    className="absolute inset-0 bg-[linear-gradient(110deg,rgba(7,20,40,0.9)_0%,rgba(10,35,70,0.76)_45%,rgba(15,118,110,0.28)_100%)]"
-    aria-hidden
-  />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.18),transparent_30%)]"
+          aria-hidden
+        />
 
-  <div
-    className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.18),transparent_30%)]"
-    aria-hidden
-  />
+        <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-end gap-10 px-6 py-14 lg:px-8 lg:py-20">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#FDBA74] backdrop-blur-sm">
+              {college.shortName}
+            </div>
 
-  <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-end gap-10 px-6 py-14 lg:px-8 lg:py-20">
+            <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight md:text-6xl">
+              {college.name}
+            </h1>
 
-    <div className="max-w-4xl">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
+              {college.tagline}
+            </p>
 
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#FDBA74] backdrop-blur-sm">
-        {college.shortName}
+            <p className="mt-4 text-sm font-semibold tracking-wide text-[#FDBA74] md:text-base">
+              {college.description}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#departments"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-3 text-sm font-semibold text-[#0B1F3A] transition hover:bg-[#fb923c]"
+              >
+                Browse Departments
+                <ArrowRight className="h-4 w-4" />
+              </a>
+
+              <a
+                href="#admissions"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+              >
+                Apply Now
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight md:text-6xl">
-        {college.name}
-      </h1>
-
-      <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
-        {college.tagline}
-      </p>
-
-      <p className="mt-4 text-sm font-semibold tracking-wide text-[#FDBA74] md:text-base">
-        {college.description}
-      </p>
-
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a
-          href="#departments"
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-3 text-sm font-semibold text-[#0B1F3A] transition hover:bg-[#fb923c]"
-        >
-          Browse Departments
-          <ArrowRight className="h-4 w-4" />
-        </a>
-
-        <a
-          href="#admissions"
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
-        >
-          Apply Now
-          <ArrowRight className="h-4 w-4" />
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
 
       {/* <nav className="sticky top-0 z-20 border-b border-black/10 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-6 py-3 text-sm font-semibold text-[#0B1F3A] lg:px-8">
@@ -1014,62 +1023,61 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
 
       <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <section
-  id="leadership"
-  className="scroll-mt-24 overflow-hidden bg-white px-6 py-12 md:px-8 md:py-16"
->
-  <div className="mx-auto max-w-5xl">
-    <div className="grid gap-8 lg:grid-cols-[280px_1fr] lg:items-center">
-      {/* Image Side */}
-      <div className="relative mx-auto w-full max-w-xs">
-        <div className="relative overflow-hidden rounded-[24px] border border-[#E2E8F0] shadow-[0_12px_40px_-10px_rgba(11,31,58,0.15)]">
-          <img
-            src={college.principalImage}
-            alt={college.principalName}
-            className="h-[360px] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/40 to-transparent px-5 py-5">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#60A5FA]">
-              Principal
-            </p>
-            <h3 className="mt-1.5 text-lg font-bold text-white">
-              {college.principalName}
-            </h3>
-            <p className="mt-0.5 text-xs text-blue-100">
-              {college.shortName}
-            </p>
+          id="leadership"
+          className="scroll-mt-24 overflow-hidden bg-white px-6 py-12 md:px-8 md:py-16"
+        >
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-8 lg:grid-cols-[280px_1fr] lg:items-center">
+              {/* Image Side */}
+              <div className="relative mx-auto w-full max-w-xs">
+                <div className="relative overflow-hidden rounded-[24px] border border-[#E2E8F0] shadow-[0_12px_40px_-10px_rgba(11,31,58,0.15)]">
+                  <img
+                    src={college.principalImage}
+                    alt={college.principalName}
+                    className="h-[360px] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/40 to-transparent px-5 py-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#60A5FA]">
+                      Principal
+                    </p>
+                    <h3 className="mt-1.5 text-lg font-bold text-white">{college.principalName}</h3>
+                    <p className="mt-0.5 text-xs text-blue-100">{college.shortName}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Side */}
+              <div className="relative space-y-5">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#BFDBFE] bg-[#F0F9FF] px-3.5 py-1.5 w-fit">
+                  <GraduationCap className="h-3.5 w-3.5 text-[#3B82F6]" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1E40AF]">
+                    Leadership Message
+                  </span>
+                </div>
+
+                <div>
+                  <h2 className="text-3xl font-bold leading-tight text-[#0B1F3A] md:text-3.5xl">
+                    Message from Our Principal
+                  </h2>
+                </div>
+
+                <div className="space-y-3 border-l-4 border-[#F97316] pl-5">
+                  <p className="text-base font-semibold leading-7 text-[#1F2937]">
+                    {college.description ||
+                      "Our institution is committed to building an academic environment rooted in excellence, discipline, innovation and student growth."}
+                  </p>
+                  <p className="text-sm leading-6 text-[#6B7280]">
+                    We continuously strive to empower learners with knowledge, research
+                    opportunities and values that prepare them to contribute meaningfully to
+                    society.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Content Side */}
-      <div className="relative space-y-5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#BFDBFE] bg-[#F0F9FF] px-3.5 py-1.5 w-fit">
-          <GraduationCap className="h-3.5 w-3.5 text-[#3B82F6]" />
-          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1E40AF]">
-            Leadership Message
-          </span>
-        </div>
-
-        <div>
-          <h2 className="text-3xl font-bold leading-tight text-[#0B1F3A] md:text-3.5xl">
-            Message from Our Principal
-          </h2>
-        </div>
-
-        <div className="space-y-3 border-l-4 border-[#F97316] pl-5">
-          <p className="text-base font-semibold leading-7 text-[#1F2937]">
-            {college.description || 'Our institution is committed to building an academic environment rooted in excellence, discipline, innovation and student growth.'}
-          </p>
-          <p className="text-sm leading-6 text-[#6B7280]">
-            We continuously strive to empower learners with knowledge, research opportunities and values that prepare them to contribute meaningfully to society.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
         <section id="departments" className="mt-10 scroll-mt-24">
           <div className="flex items-end justify-between gap-5">
@@ -1077,33 +1085,44 @@ export function CollegeDetailPage({ collegeId = "sciences" }: { collegeId?: stri
               <SectionEyebrow>Departments</SectionEyebrow>
               <h2 className="mt-2 text-2xl font-semibold">Academic departments</h2>
               <p className="mt-1 text-sm text-[#6B7280]">
-  {college.departments.length} Departments
-</p>
+                {college.departments.length} Departments
+              </p>
             </div>
-            
           </div>
 
-<div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">            {featuredDepartments.map((department) => (
+          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {" "}
+            {featuredDepartments.map((department) => (
               <DepartmentPreview key={department.name} department={department} />
             ))}
           </div>
         </section>
 
-        <section id="admissions" className="mt-8 scroll-mt-24 rounded-lg bg-[#0B1F3A] px-6 py-6 text-white md:flex md:items-center md:justify-between md:gap-8">
+        <section
+          id="admissions"
+          className="mt-8 scroll-mt-24 rounded-lg bg-[#0B1F3A] px-6 py-6 text-white md:flex md:items-center md:justify-between md:gap-8"
+        >
           <div>
             <h2 className="text-2xl font-semibold">Ready to take the next step?</h2>
-            <p className="mt-2 text-sm text-white/70">Start your admission journey or schedule a campus conversation.</p>
+            <p className="mt-2 text-sm text-white/70">
+              Start your admission journey or schedule a campus conversation.
+            </p>
           </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-0">
-            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A]">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-[#F97316] px-5 py-2.5 text-sm font-semibold text-[#0B1F3A]"
+            >
               Apply Now <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white"
+            >
               Schedule Tour <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>
-
       </div>
     </section>
   );
@@ -1139,21 +1158,24 @@ function InteractionPanel({
     <section className="-mt-28 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_28px_90px_-52px_rgba(11,31,58,0.65)]">
       <div className="h-1.5 bg-[linear-gradient(90deg,#0B1F3A,#F97316,#0B1F3A)]" aria-hidden />
       <div className="p-6 md:p-8">
-      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
-        <div>
-          <span className="inline-flex rounded-full bg-[#F8F6F2] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B1F3A]/70">
-            Selected pathway
-          </span>
-          <SectionEyebrow>{intentContent[activeIntent].eyebrow}</SectionEyebrow>
-          <h2 className="mt-3 text-3xl font-semibold">{panelTitle}</h2>
-          <p className="mt-3 text-sm leading-7 text-[#6B7280]">{panelText}</p>
+        <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
+          <div>
+            <span className="inline-flex rounded-full bg-[#F8F6F2] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B1F3A]/70">
+              Selected pathway
+            </span>
+            <SectionEyebrow>{intentContent[activeIntent].eyebrow}</SectionEyebrow>
+            <h2 className="mt-3 text-3xl font-semibold">{panelTitle}</h2>
+            <p className="mt-3 text-sm leading-7 text-[#6B7280]">{panelText}</p>
+          </div>
+          <div
+            key={activeIntent}
+            className="grid gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300 sm:grid-cols-2 sm:items-stretch"
+          >
+            {items.map((item) => (
+              <InfoTile key={item.title} item={item} compact />
+            ))}
+          </div>
         </div>
-        <div key={activeIntent} className="grid gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300 sm:grid-cols-2 sm:items-stretch">
-          {items.map((item) => (
-            <InfoTile key={item.title} item={item} compact />
-          ))}
-        </div>
-      </div>
       </div>
     </section>
   );
@@ -1165,7 +1187,10 @@ function TrustBar({ stats }: { stats: StatItem[] }) {
       {stats.map((stat) => {
         const Icon = stat.icon;
         return (
-          <div key={stat.label} className="flex items-center justify-center gap-3 border-b border-black/10 px-4 py-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+          <div
+            key={stat.label}
+            className="flex items-center justify-center gap-3 border-b border-black/10 px-4 py-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+          >
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B1F3A] text-[#FDBA74]">
               <Icon className="h-5 w-5" />
             </span>
@@ -1183,8 +1208,13 @@ function TrustBar({ stats }: { stats: StatItem[] }) {
 function InfoTile({ item, compact = false }: { item: PanelItem; compact?: boolean }) {
   const Icon = item.icon;
   return (
-    <article className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-black/10 bg-white shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-5"}`}>
-      <span className="absolute inset-x-0 top-0 h-1 bg-[#F97316] opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+    <article
+      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-black/10 bg-white shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 ${compact ? "p-4" : "p-5"}`}
+    >
+      <span
+        className="absolute inset-x-0 top-0 h-1 bg-[#F97316] opacity-0 transition-opacity group-hover:opacity-100"
+        aria-hidden
+      />
       <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[#FFF7ED] text-[#F97316]">
         <Icon className="h-5 w-5" />
       </span>
@@ -1207,7 +1237,9 @@ function DepartmentPreview({ department }: { department: Department }) {
       className="group flex h-full flex-col rounded-lg border border-black/10 bg-white p-3 shadow-[0_18px_45px_-40px_rgba(11,31,58,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#F97316]/70 hover:shadow-[0_22px_50px_-38px_rgba(11,31,58,0.55)]"
     >
       <ImagePlaceholder label={department.name} className="aspect-[16/10] w-full bg-[#D1D5DB]" />
-      <span className="mt-3 block text-center text-base font-semibold text-[#0B1F3A]">{department.name}</span>
+      <span className="mt-3 block text-center text-base font-semibold text-[#0B1F3A]">
+        {department.name}
+      </span>
     </a>
   );
 }
@@ -1265,7 +1297,11 @@ function QuickActions() {
         {actions.map((action) => {
           const Icon = action.icon;
           return (
-            <a key={action.label} href="#" className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-md border border-black/10 text-center text-sm font-semibold text-[#0B1F3A] transition-colors hover:border-[#F97316] hover:bg-[#FFF7ED]">
+            <a
+              key={action.label}
+              href="#"
+              className="flex min-h-20 flex-col items-center justify-center gap-2 rounded-md border border-black/10 text-center text-sm font-semibold text-[#0B1F3A] transition-colors hover:border-[#F97316] hover:bg-[#FFF7ED]"
+            >
               <Icon className="h-5 w-5 text-[#F97316]" />
               {action.label}
             </a>
@@ -1278,7 +1314,9 @@ function QuickActions() {
 
 function ImagePlaceholder({ label, className = "" }: { label: string; className?: string }) {
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden rounded-lg border border-dashed border-black/20 bg-[#E5E7EB] text-xs font-semibold uppercase tracking-[0.18em] text-[#6B7280] ${className}`}>
+    <div
+      className={`relative flex items-center justify-center overflow-hidden rounded-lg border border-dashed border-black/20 bg-[#E5E7EB] text-xs font-semibold uppercase tracking-[0.18em] text-[#6B7280] ${className}`}
+    >
       <div
         className="absolute inset-0 opacity-60"
         style={{
@@ -1297,9 +1335,7 @@ function ImagePlaceholder({ label, className = "" }: { label: string; className?
 
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F97316]">
-      {children}
-    </p>
+    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F97316]">{children}</p>
   );
 }
 /*
@@ -1555,13 +1591,9 @@ function DynamicIntentPanel({
         <ol className="space-y-5">
           {updates.map((item) => (
             <li key={item.title} className="grid grid-cols-[72px_1fr] gap-4">
-              <time className="text-sm font-semibold text-[oklch(0.55_0.14_75)]">
-                {item.date}
-              </time>
+              <time className="text-sm font-semibold text-[oklch(0.55_0.14_75)]">{item.date}</time>
               <div className="border-l border-border pl-5">
-                <p className="text-sm font-semibold text-[oklch(0.18_0.06_265)]">
-                  {item.title}
-                </p>
+                <p className="text-sm font-semibold text-[oklch(0.18_0.06_265)]">{item.title}</p>
                 <span className="mt-2 inline-flex rounded-full bg-[oklch(0.96_0.03_145)] px-2 py-0.5 text-[10px] font-semibold text-[oklch(0.45_0.13_145)]">
                   {item.tag}
                 </span>
@@ -1584,9 +1616,7 @@ function DynamicIntentPanel({
         ].map(([title, text]) => (
           <div key={title} className="flex h-full flex-col rounded-xl border border-border p-5">
             <Microscope className="h-7 w-7 text-[oklch(0.55_0.14_75)]" />
-            <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">
-              {title}
-            </h4>
+            <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">{title}</h4>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
           </div>
         ))}
@@ -1605,9 +1635,7 @@ function DynamicIntentPanel({
         ].map(([title, text]) => (
           <div key={title} className="flex h-full flex-col rounded-xl border border-border p-5">
             <Building2 className="h-7 w-7 text-[oklch(0.55_0.14_75)]" />
-            <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">
-              {title}
-            </h4>
+            <h4 className="mt-4 font-semibold text-[oklch(0.18_0.06_265)]">{title}</h4>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
           </div>
         ))}
@@ -1622,7 +1650,10 @@ function DynamicIntentPanel({
           const Icon = department.icon;
 
           return (
-            <article key={department.name} className="flex h-full flex-col rounded-xl border border-border p-5">
+            <article
+              key={department.name}
+              className="flex h-full flex-col rounded-xl border border-border p-5"
+            >
               <Icon className={`h-8 w-8 ${department.color}`} />
               <h4 className="mt-5 min-h-10 text-sm font-semibold leading-5 text-[oklch(0.18_0.06_265)]">
                 {department.name}

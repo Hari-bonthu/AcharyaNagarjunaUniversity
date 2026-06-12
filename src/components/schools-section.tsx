@@ -49,7 +49,6 @@ const schools: School[] = [
       "B.Tech EEE",
       "B.Tech Mechanical",
       "B.Tech Civil",
-      
     ],
     established: "2007",
     location: "Main Campus, Nagarjuna Nagar",
@@ -137,12 +136,7 @@ const schools: School[] = [
     tagline: "Strength of body, spirit and mind.",
     description:
       "Producing national-level athletes, coaches and physical educators with world-class training infrastructure and a dedicated sports sciences research wing.",
-    programmes: [
-      "B.P.Ed",
-      "M.P.Ed",
-      "Diploma in Sports Coaching",
-      "Ph.D Physical Education",
-    ],
+    programmes: ["B.P.Ed", "M.P.Ed", "Diploma in Sports Coaching", "Ph.D Physical Education"],
     established: "1985",
     location: "Sports Complex, Nagarjuna Nagar",
     icon: Trophy,
@@ -199,8 +193,8 @@ export function SchoolsSection() {
             Explore Our Constituent Colleges
           </h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
-            Six premier colleges. Sixty plus programmes. One legacy of academic excellence —
-            select a discipline to dive into the courses, faculty and infrastructure that define it.
+            Six premier colleges. Sixty plus programmes. One legacy of academic excellence — select
+            a discipline to dive into the courses, faculty and infrastructure that define it.
           </p>
         </div>
 
@@ -289,15 +283,10 @@ export function SchoolsSection() {
           {/* Details */}
           <div className="lg:col-span-5">
             <div className="flex h-full flex-col rounded-3xl border border-border bg-white p-6 shadow-[0_20px_60px_-20px_oklch(0.22_0.06_265/0.15)] md:p-8">
-              <p
-                className="text-sm font-semibold italic"
-                style={{ color: active.accent }}
-              >
+              <p className="text-sm font-semibold italic" style={{ color: active.accent }}>
                 "{active.tagline}"
               </p>
-              <p className="mt-3 text-base leading-relaxed text-foreground">
-                {active.description}
-              </p>
+              <p className="mt-3 text-base leading-relaxed text-foreground">{active.description}</p>
 
               <div className="mt-6">
                 <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[oklch(0.22_0.06_265)]">

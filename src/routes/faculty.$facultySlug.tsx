@@ -8,20 +8,25 @@ const facultyImages = import.meta.glob("../assets/faculty/*.{jpg,jpeg,png,webp}"
   import: "default",
 }) as Record<string, string>;
 
-const imageByFileName = Object.entries(facultyImages).reduce<Record<string, string>>((acc, [path, src]) => {
-  const fileName = path.split("/").pop();
-  if (fileName) {
-    acc[fileName] = src;
-  }
-  return acc;
-}, {});
+const imageByFileName = Object.entries(facultyImages).reduce<Record<string, string>>(
+  (acc, [path, src]) => {
+    const fileName = path.split("/").pop();
+    if (fileName) {
+      acc[fileName] = src;
+    }
+    return acc;
+  },
+  {},
+);
 
 const Section = ({ id, title, items }: { id: string; title: string; items: string[] }) => {
   if (!items.length) return null;
 
   return (
     <section id={id} className="mt-10 scroll-mt-28">
-      <h2 className="border-b border-slate-200 pb-2 text-3xl font-semibold text-[#0d2f57]">{title}</h2>
+      <h2 className="border-b border-slate-200 pb-2 text-3xl font-semibold text-[#0d2f57]">
+        {title}
+      </h2>
       <ul className="mt-3 divide-y divide-slate-200/80">
         {items.map((item, index) => (
           <li key={`${title}-${index}`} className="py-3 text-sm leading-relaxed text-slate-700">
@@ -57,33 +62,35 @@ function FacultyProfile() {
   const fromDepartmentName = query.get("fromDepartmentName");
   const fromCollegeName = query.get("fromCollegeName");
   const profile = facultyBySlug[facultySlug];
-  const imageSrc = profile ? imageByFileName[profile.imageFile] ?? "" : "";
+  const imageSrc = profile ? (imageByFileName[profile.imageFile] ?? "") : "";
 
   if (!profile) {
     return (
       <div className="min-h-screen bg-background">
         <main>
-        <BreadcrumbTrail
-          items={[
-            { label: "Home", href: "/" },
-            fromDepartmentId && fromDepartmentName
-              ? { label: "Colleges" }
-              : { label: "Faculty", href: "/faculty" },
-            ...(fromDepartmentId && fromDepartmentName
-              ? [
-                  ...(fromCollegeName ? [{ label: fromCollegeName }] : []),
-                  {
-                    label: fromDepartmentName,
-                    href: `/departments/${fromDepartmentId}`,
-                  },
-                ]
-              : []),
-            { label: "Profile" },
-          ]}
-        />
+          <BreadcrumbTrail
+            items={[
+              { label: "Home", href: "/" },
+              fromDepartmentId && fromDepartmentName
+                ? { label: "Colleges" }
+                : { label: "Faculty", href: "/faculty" },
+              ...(fromDepartmentId && fromDepartmentName
+                ? [
+                    ...(fromCollegeName ? [{ label: fromCollegeName }] : []),
+                    {
+                      label: fromDepartmentName,
+                      href: `/departments/${fromDepartmentId}`,
+                    },
+                  ]
+                : []),
+              { label: "Profile" },
+            ]}
+          />
           <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <h1 className="text-4xl font-bold text-[#0d2f57]">Faculty profile not found</h1>
-            <p className="mt-4 text-lg text-slate-600">The requested faculty member could not be found.</p>
+            <p className="mt-4 text-lg text-slate-600">
+              The requested faculty member could not be found.
+            </p>
             <Link
               to="/faculty"
               className="mt-8 inline-flex rounded bg-[#0d3b66] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b3155]"
@@ -122,7 +129,9 @@ function FacultyProfile() {
           <div className="grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)]">
             <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
               <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">Faculty Profile</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                  Faculty Profile
+                </h3>
                 <nav className="mt-3 space-y-2 text-sm">
                   <Link to="/faculty" className="block font-semibold text-[#0d3b66]">
                     Back to Faculty
@@ -146,7 +155,9 @@ function FacultyProfile() {
               </div>
 
               <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">Research Metrics</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                  Research Metrics
+                </h3>
                 <div className="mt-3 space-y-3">
                   {profile.metrics.map((metric) => (
                     <div
@@ -180,8 +191,12 @@ function FacultyProfile() {
                 </div>
 
                 <div className="bg-gradient-to-br from-[#0d3b66] to-[#0a2f52] p-6 text-white">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#ffd8b5]">Professor</p>
-                  <h2 className="mt-2 text-3xl font-semibold leading-tight">{profile.designation}</h2>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#ffd8b5]">
+                    Professor
+                  </p>
+                  <h2 className="mt-2 text-3xl font-semibold leading-tight">
+                    {profile.designation}
+                  </h2>
                   <p className="mt-2 text-lg text-blue-100">{profile.department}</p>
                   <p className="mt-6 text-sm text-blue-100">
                     <span className="font-semibold text-white">Qualifications: </span>
@@ -190,11 +205,13 @@ function FacultyProfile() {
 
                   <div className="mt-6 grid gap-3 text-sm">
                     <p>
-                      <span className="font-semibold text-blue-100">Date of Joining:</span> {profile.dateOfJoining}
+                      <span className="font-semibold text-blue-100">Date of Joining:</span>{" "}
+                      {profile.dateOfJoining}
                     </p>
                     {profile.dateOfBirth && (
                       <p>
-                        <span className="font-semibold text-blue-100">Date of Birth:</span> {profile.dateOfBirth}
+                        <span className="font-semibold text-blue-100">Date of Birth:</span>{" "}
+                        {profile.dateOfBirth}
                       </p>
                     )}
                     <p>
@@ -205,16 +222,24 @@ function FacultyProfile() {
                 </div>
 
                 <div id="contact" className="bg-[#e9eef4] p-6">
-                  <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">Contact & Office</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                    Contact & Office
+                  </h3>
                   <div className="mt-4 space-y-4 text-sm text-slate-700">
                     {profile.contact.email && (
-                      <a href={`mailto:${profile.contact.email}`} className="flex gap-2 hover:text-[#0d3b66]">
+                      <a
+                        href={`mailto:${profile.contact.email}`}
+                        className="flex gap-2 hover:text-[#0d3b66]"
+                      >
                         <Mail className="mt-0.5 h-4 w-4" />
                         <span className="break-all">{profile.contact.email}</span>
                       </a>
                     )}
                     {profile.contact.phone && (
-                      <a href={`tel:${profile.contact.phone}`} className="flex gap-2 hover:text-[#0d3b66]">
+                      <a
+                        href={`tel:${profile.contact.phone}`}
+                        className="flex gap-2 hover:text-[#0d3b66]"
+                      >
                         <Phone className="mt-0.5 h-4 w-4" />
                         <span>{profile.contact.phone}</span>
                       </a>
@@ -250,13 +275,16 @@ function FacultyProfile() {
                     </h2>
                     <div className="mt-4 space-y-2 text-sm leading-relaxed text-slate-700">
                       <p>
-                        <span className="font-semibold text-slate-900">Thesis Title:</span> {profile.thesis.title}
+                        <span className="font-semibold text-slate-900">Thesis Title:</span>{" "}
+                        {profile.thesis.title}
                       </p>
                       <p>
-                        <span className="font-semibold text-slate-900">University:</span> {profile.thesis.university}
+                        <span className="font-semibold text-slate-900">University:</span>{" "}
+                        {profile.thesis.university}
                       </p>
                       <p>
-                        <span className="font-semibold text-slate-900">Awarded Year:</span> {profile.thesis.year}
+                        <span className="font-semibold text-slate-900">Awarded Year:</span>{" "}
+                        {profile.thesis.year}
                       </p>
                     </div>
                   </section>
@@ -280,11 +308,27 @@ function FacultyProfile() {
                   </section>
                 )}
 
-                <Section id="experience" title="Administrative Experience" items={profile.administrativeExperience} />
-                <Section id="achievements" title="Academic Achievements" items={profile.achievements} />
-                <Section id="publications" title="Publications & Conferences" items={profile.publications} />
+                <Section
+                  id="experience"
+                  title="Administrative Experience"
+                  items={profile.administrativeExperience}
+                />
+                <Section
+                  id="achievements"
+                  title="Academic Achievements"
+                  items={profile.achievements}
+                />
+                <Section
+                  id="publications"
+                  title="Publications & Conferences"
+                  items={profile.publications}
+                />
                 <Section id="memberships" title="Memberships" items={profile.memberships} />
-                <Section id="activities" title="Professional Activities" items={profile.professionalActivities} />
+                <Section
+                  id="activities"
+                  title="Professional Activities"
+                  items={profile.professionalActivities}
+                />
               </div>
             </div>
           </div>

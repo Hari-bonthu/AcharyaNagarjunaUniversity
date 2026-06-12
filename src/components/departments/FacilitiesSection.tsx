@@ -17,8 +17,8 @@ export function FacilitiesSection({ items }: { items: DepartmentCardItem[] }) {
       className="bg-white"
     >
       <p className="mb-6 max-w-3xl text-sm leading-6 text-slate-600">
-        Modern labs, research centers, and learning spaces equipped with industry-standard tools
-        and technology to support hands-on education.
+        Modern labs, research centers, and learning spaces equipped with industry-standard tools and
+        technology to support hands-on education.
       </p>
 
       {/* Mobile: Single column stack */}

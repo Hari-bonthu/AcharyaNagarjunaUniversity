@@ -15,8 +15,7 @@ export const Route = createFileRoute("/jubilee")({
       { property: "og:title", content: "Golden Jubilee 1976 – 2026 | ANU" },
       {
         property: "og:description",
-        content:
-          "Fifty years of legacy, learning, and leadership at Acharya Nagarjuna University.",
+        content: "Fifty years of legacy, learning, and leadership at Acharya Nagarjuna University.",
       },
     ],
   }),
@@ -38,7 +37,6 @@ function JubileePage() {
       }}
     >
       {/* ── Hero — the scroll unfurls right here on load ── */}
-     
 
       <section className="relative mx-auto flex max-w-6xl flex-col items-center px-6 pb-20 pt-16 text-center md:pt-24">
         <JubileeScrollHero onComplete={() => setHeroComplete(true)} />
@@ -93,10 +91,7 @@ function JubileePage() {
               >
                 {m.year}
               </p>
-              <h3
-                className="mt-1 text-lg font-semibold"
-                style={{ color: "#2a1d05" }}
-              >
+              <h3 className="mt-1 text-lg font-semibold" style={{ color: "#2a1d05" }}>
                 {m.title}
               </h3>
               <p className="mt-2 text-sm" style={{ color: "#5a4310" }}>
@@ -116,14 +111,7 @@ function JubileePage() {
 type Phase = "idle" | "expanding" | "unfurling" | "revealed";
 
 const jubileeCelebrationPieces = Array.from({ length: 64 }, (_, i) => {
-  const colors = [
-    "#111827",
-    "#1f2937",
-    "#f5d77a",
-    "#f97316",
-    "#991414",
-    "#ffedd5",
-  ];
+  const colors = ["#111827", "#1f2937", "#f5d77a", "#f97316", "#991414", "#ffedd5"];
   const shapes = ["rect", "circle", "streamer"] as const;
   return {
     id: i,
@@ -173,11 +161,7 @@ function JubileeCelebrationFall() {
               width: piece.shape === "streamer" ? piece.size * 0.55 : piece.size,
               height: piece.shape === "streamer" ? piece.size * 3.4 : piece.size * 1.35,
               borderRadius:
-                piece.shape === "circle"
-                  ? "999px"
-                  : piece.shape === "streamer"
-                    ? "999px"
-                    : "2px",
+                piece.shape === "circle" ? "999px" : piece.shape === "streamer" ? "999px" : "2px",
               background:
                 piece.shape === "streamer"
                   ? `linear-gradient(180deg, ${piece.color}, transparent)`
@@ -261,8 +245,7 @@ function JubileeScrollHero({ onComplete }: { onComplete?: () => void }) {
           height: "clamp(300px, 48vw, 520px)",
           transform: isOpen ? "scale(1)" : "scale(0.18)",
           opacity: isOpen ? 1 : 0,
-          transition:
-            "transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 700ms ease-out",
+          transition: "transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 700ms ease-out",
           position: "relative",
           zIndex: 20,
         }}
@@ -280,8 +263,8 @@ function JubileeScrollHero({ onComplete }: { onComplete?: () => void }) {
               animation: "jh-below-in 900ms cubic-bezier(0.22,1,0.36,1) 200ms both",
             }}
           >
-            Five decades of academic excellence, research, and impact. Join us as
-            we honour the legacy and reimagine the next fifty years.
+            Five decades of academic excellence, research, and impact. Join us as we honour the
+            legacy and reimagine the next fifty years.
           </p>
 
           <div
@@ -320,13 +303,7 @@ function JubileeScrollHero({ onComplete }: { onComplete?: () => void }) {
 /* ─────────────────────────────────────────────────────────────
    ScrollCanvas — the actual scroll graphic
 ───────────────────────────────────────────────────────────── */
-function ScrollCanvas({
-  unfurled,
-  showText,
-}: {
-  unfurled: boolean;
-  showText: boolean;
-}) {
+function ScrollCanvas({ unfurled, showText }: { unfurled: boolean; showText: boolean }) {
   const ROD_W = 56;
   return (
     <div className="relative h-full w-full">
@@ -353,35 +330,27 @@ function ScrollCanvas({
         {/* ── Cinematic light reflections during unfurling ── */}
         {unfurled && (
           <>
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 overflow-hidden"
-            >
+            <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
               <span
                 className="absolute -inset-y-4 w-[55%]"
                 style={{
                   left: "-60%",
                   background:
                     "linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.85) 50%, transparent 65%)",
-                  animation:
-                    "jh-shine-slow 1800ms cubic-bezier(0.22,1,0.36,1) 100ms 1 forwards",
+                  animation: "jh-shine-slow 1800ms cubic-bezier(0.22,1,0.36,1) 100ms 1 forwards",
                   mixBlendMode: "screen",
                   filter: "blur(2px)",
                 }}
               />
             </span>
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 overflow-hidden"
-            >
+            <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
               <span
                 className="absolute -inset-y-4 w-[35%]"
                 style={{
                   left: "-50%",
                   background:
                     "linear-gradient(115deg, transparent 40%, rgba(255,244,194,0.7) 50%, transparent 60%)",
-                  animation:
-                    "jh-shine-slow 2200ms cubic-bezier(0.22,1,0.36,1) 500ms 1 forwards",
+                  animation: "jh-shine-slow 2200ms cubic-bezier(0.22,1,0.36,1) 500ms 1 forwards",
                   mixBlendMode: "screen",
                   filter: "blur(6px)",
                 }}
@@ -430,8 +399,7 @@ function ScrollCanvas({
           <div
             className="mt-3 h-px w-24"
             style={{
-              background:
-                "linear-gradient(90deg, transparent, #f5d77a, transparent)",
+              background: "linear-gradient(90deg, transparent, #f5d77a, transparent)",
             }}
           />
           <p
@@ -453,10 +421,7 @@ function ScrollCanvas({
 
         {/* Ongoing glossy shimmer once revealed */}
         {showText && (
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 overflow-hidden"
-          >
+          <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
             <span
               className="absolute inset-y-0 -left-1/3 w-1/2"
               style={{
@@ -496,12 +461,44 @@ function OrnateGoldBorder() {
       viewBox={`0 0 ${W} ${H}`}
     >
       {/* ── Triple outer border ── */}
-      <rect x="18" y="18" width={W - 36} height={H - 36} fill="none" stroke="rgba(255,220,80,0.72)" strokeWidth="1.4" />
-      <rect x="26" y="26" width={W - 52} height={H - 52} fill="none" stroke="rgba(200,160,40,0.4)" strokeWidth="0.7" />
-      <rect x="34" y="34" width={W - 68} height={H - 68} fill="none" stroke="rgba(255,220,80,0.55)" strokeWidth="0.9" />
+      <rect
+        x="18"
+        y="18"
+        width={W - 36}
+        height={H - 36}
+        fill="none"
+        stroke="rgba(255,220,80,0.72)"
+        strokeWidth="1.4"
+      />
+      <rect
+        x="26"
+        y="26"
+        width={W - 52}
+        height={H - 52}
+        fill="none"
+        stroke="rgba(200,160,40,0.4)"
+        strokeWidth="0.7"
+      />
+      <rect
+        x="34"
+        y="34"
+        width={W - 68}
+        height={H - 68}
+        fill="none"
+        stroke="rgba(255,220,80,0.55)"
+        strokeWidth="0.9"
+      />
 
       {/* ── Top palmette frieze ── */}
-      <rect x="18" y="18" width={W - 36} height={bandH} fill="rgba(0,0,0,0.2)" stroke="rgba(255,220,80,0.5)" strokeWidth="0.7" />
+      <rect
+        x="18"
+        y="18"
+        width={W - 36}
+        height={bandH}
+        fill="rgba(0,0,0,0.2)"
+        stroke="rgba(255,220,80,0.5)"
+        strokeWidth="0.7"
+      />
       {Array.from({ length: archCount }, (_, i) => {
         const x = 34 + i * archW;
         return (
@@ -515,11 +512,25 @@ function OrnateGoldBorder() {
         );
       })}
       {Array.from({ length: archCount }, (_, i) => (
-        <circle key={`td${i}`} cx={34 + i * archW + archW / 2} cy={31} r={2.2} fill="rgba(255,220,80,0.75)" />
+        <circle
+          key={`td${i}`}
+          cx={34 + i * archW + archW / 2}
+          cy={31}
+          r={2.2}
+          fill="rgba(255,220,80,0.75)"
+        />
       ))}
 
       {/* ── Bottom palmette frieze ── */}
-      <rect x="18" y={H - 18 - bandH} width={W - 36} height={bandH} fill="rgba(0,0,0,0.2)" stroke="rgba(255,220,80,0.5)" strokeWidth="0.7" />
+      <rect
+        x="18"
+        y={H - 18 - bandH}
+        width={W - 36}
+        height={bandH}
+        fill="rgba(0,0,0,0.2)"
+        stroke="rgba(255,220,80,0.5)"
+        strokeWidth="0.7"
+      />
       {Array.from({ length: archCount }, (_, i) => {
         const x = 34 + i * archW;
         return (
@@ -533,11 +544,25 @@ function OrnateGoldBorder() {
         );
       })}
       {Array.from({ length: archCount }, (_, i) => (
-        <circle key={`bd${i}`} cx={34 + i * archW + archW / 2} cy={H - 31} r={2.2} fill="rgba(255,220,80,0.75)" />
+        <circle
+          key={`bd${i}`}
+          cx={34 + i * archW + archW / 2}
+          cy={H - 31}
+          r={2.2}
+          fill="rgba(255,220,80,0.75)"
+        />
       ))}
 
       {/* ── Left column frieze ── */}
-      <rect x="18" y="18" width={bandH} height={H - 36} fill="rgba(0,0,0,0.2)" stroke="rgba(255,220,80,0.5)" strokeWidth="0.7" />
+      <rect
+        x="18"
+        y="18"
+        width={bandH}
+        height={H - 36}
+        fill="rgba(0,0,0,0.2)"
+        stroke="rgba(255,220,80,0.5)"
+        strokeWidth="0.7"
+      />
       {Array.from({ length: 14 }, (_, i) => {
         const y = 62 + i * 32;
         return (
@@ -555,7 +580,15 @@ function OrnateGoldBorder() {
       ))}
 
       {/* ── Right column frieze ── */}
-      <rect x={W - 18 - bandH} y="18" width={bandH} height={H - 36} fill="rgba(0,0,0,0.2)" stroke="rgba(255,220,80,0.5)" strokeWidth="0.7" />
+      <rect
+        x={W - 18 - bandH}
+        y="18"
+        width={bandH}
+        height={H - 36}
+        fill="rgba(0,0,0,0.2)"
+        stroke="rgba(255,220,80,0.5)"
+        strokeWidth="0.7"
+      />
       {Array.from({ length: 14 }, (_, i) => {
         const y = 62 + i * 32;
         return (
@@ -573,16 +606,46 @@ function OrnateGoldBorder() {
       ))}
 
       {/* ── Inner dashed rope border ── */}
-      <rect x="68" y="68" width={W - 136} height={H - 136} fill="none" stroke="rgba(255,200,50,0.38)" strokeWidth="0.6" strokeDasharray="3 3" rx="2" />
+      <rect
+        x="68"
+        y="68"
+        width={W - 136}
+        height={H - 136}
+        fill="none"
+        stroke="rgba(255,200,50,0.38)"
+        strokeWidth="0.6"
+        strokeDasharray="3 3"
+        rx="2"
+      />
 
       {/* ── Corner rosette medallions ── */}
-      {([
-        [18, 18], [W - 62, 18], [18, H - 62], [W - 62, H - 62],
-      ] as [number, number][]).map(([ox, oy], idx) => (
+      {(
+        [
+          [18, 18],
+          [W - 62, 18],
+          [18, H - 62],
+          [W - 62, H - 62],
+        ] as [number, number][]
+      ).map(([ox, oy], idx) => (
         <g key={idx} transform={`translate(${ox + 22},${oy + 22})`}>
-          <circle r="18" fill="rgba(100,65,8,0.65)" stroke="rgba(255,220,80,0.9)" strokeWidth="1.2" />
-          <circle r="12" fill="rgba(160,110,18,0.4)" stroke="rgba(255,220,80,0.7)" strokeWidth="0.7" />
-          <circle r="5.5" fill="rgba(255,210,60,0.65)" stroke="rgba(255,235,110,0.95)" strokeWidth="0.6" />
+          <circle
+            r="18"
+            fill="rgba(100,65,8,0.65)"
+            stroke="rgba(255,220,80,0.9)"
+            strokeWidth="1.2"
+          />
+          <circle
+            r="12"
+            fill="rgba(160,110,18,0.4)"
+            stroke="rgba(255,220,80,0.7)"
+            strokeWidth="0.7"
+          />
+          <circle
+            r="5.5"
+            fill="rgba(255,210,60,0.65)"
+            stroke="rgba(255,235,110,0.95)"
+            strokeWidth="0.6"
+          />
           {Array.from({ length: 8 }, (_, p) => {
             const a = (p * Math.PI) / 4;
             return (
@@ -600,14 +663,24 @@ function OrnateGoldBorder() {
       ))}
 
       {/* ── Top-center heraldic crown ── */}
-      <g transform={`translate(${W / 2},18)`} stroke="rgba(255,220,80,0.92)" fill="rgba(255,210,60,0.28)" strokeWidth="0.9">
+      <g
+        transform={`translate(${W / 2},18)`}
+        stroke="rgba(255,220,80,0.92)"
+        fill="rgba(255,210,60,0.28)"
+        strokeWidth="0.9"
+      >
         <path d="M-38 44 L-24 14 L-38 24 L0 4 L38 24 L24 14 L38 44 Z" />
         <circle cx="0" cy="28" r="5.5" fill="rgba(255,215,60,0.7)" />
         <line x1="-38" y1="44" x2="38" y2="44" stroke="rgba(255,220,80,0.85)" strokeWidth="1.2" />
       </g>
 
       {/* ── Bottom-center fleur-de-lis ── */}
-      <g transform={`translate(${W / 2},${H - 62})`} stroke="rgba(255,220,80,0.92)" fill="rgba(255,210,60,0.28)" strokeWidth="0.9">
+      <g
+        transform={`translate(${W / 2},${H - 62})`}
+        stroke="rgba(255,220,80,0.92)"
+        fill="rgba(255,210,60,0.28)"
+        strokeWidth="0.9"
+      >
         <path d="M-38 0 L-24 30 L-38 20 L0 40 L38 20 L24 30 L38 0 Z" />
         <circle cx="0" cy="16" r="5.5" fill="rgba(255,215,60,0.7)" />
         <line x1="-38" y1="0" x2="38" y2="0" stroke="rgba(255,220,80,0.85)" strokeWidth="1.2" />
@@ -685,8 +758,7 @@ function OrnateRod({
           overflow: "hidden",
           background:
             "linear-gradient(90deg,#1e1000 0%,#5a3e0a 10%,#a87420 22%,#ddb030 35%,#ffe870 50%,#ddb030 65%,#a87420 78%,#5a3e0a 90%,#1e1000 100%)",
-          boxShadow:
-            "0 0 0 1px rgba(255,240,180,0.3), inset 0 0 14px rgba(80,50,5,0.45)",
+          boxShadow: "0 0 0 1px rgba(255,240,180,0.3), inset 0 0 14px rgba(80,50,5,0.45)",
         }}
       >
         {/* Wood-grain SVG */}
@@ -697,18 +769,61 @@ function OrnateRod({
           viewBox={`0 0 ${bodyW} ${rodH}`}
           style={{ position: "absolute", top: 0, left: 0, opacity: 0.52 }}
         >
-          <path d={`M4 0 Q6 80 4 160 Q3 240 5 320 Q6 400 4 480 Q3 560 5 ${rodH}`} fill="none" stroke="rgba(30,14,0,0.5)" strokeWidth="0.9" />
-          <path d={`M9 0 Q11 100 9 200 Q8 300 10 400 Q11 500 9 ${rodH}`} fill="none" stroke="rgba(255,190,60,0.28)" strokeWidth="0.6" />
-          <path d={`M${bodyW / 2 - 2} 0 Q${bodyW / 2} 120 ${bodyW / 2 - 2} 240 Q${bodyW / 2 - 3} 360 ${bodyW / 2 - 1} 480 Q${bodyW / 2} 540 ${bodyW / 2 - 2} ${rodH}`} fill="none" stroke="rgba(30,14,0,0.4)" strokeWidth="0.8" />
-          <path d={`M${bodyW - 8} 0 Q${bodyW - 6} 90 ${bodyW - 8} 180 Q${bodyW - 9} 270 ${bodyW - 7} 360 Q${bodyW - 6} 450 ${bodyW - 8} ${rodH}`} fill="none" stroke="rgba(30,14,0,0.35)" strokeWidth="0.7" />
+          <path
+            d={`M4 0 Q6 80 4 160 Q3 240 5 320 Q6 400 4 480 Q3 560 5 ${rodH}`}
+            fill="none"
+            stroke="rgba(30,14,0,0.5)"
+            strokeWidth="0.9"
+          />
+          <path
+            d={`M9 0 Q11 100 9 200 Q8 300 10 400 Q11 500 9 ${rodH}`}
+            fill="none"
+            stroke="rgba(255,190,60,0.28)"
+            strokeWidth="0.6"
+          />
+          <path
+            d={`M${bodyW / 2 - 2} 0 Q${bodyW / 2} 120 ${bodyW / 2 - 2} 240 Q${bodyW / 2 - 3} 360 ${bodyW / 2 - 1} 480 Q${bodyW / 2} 540 ${bodyW / 2 - 2} ${rodH}`}
+            fill="none"
+            stroke="rgba(30,14,0,0.4)"
+            strokeWidth="0.8"
+          />
+          <path
+            d={`M${bodyW - 8} 0 Q${bodyW - 6} 90 ${bodyW - 8} 180 Q${bodyW - 9} 270 ${bodyW - 7} 360 Q${bodyW - 6} 450 ${bodyW - 8} ${rodH}`}
+            fill="none"
+            stroke="rgba(30,14,0,0.35)"
+            strokeWidth="0.7"
+          />
           {/* Embossed gold band rings */}
           {[16, 32, 50, 68, 84].map((pct) => {
             const y = (pct / 100) * rodH;
             return (
               <g key={pct}>
-                <ellipse cx={bodyW / 2} cy={y} rx={bodyW / 2} ry={3.8} fill="none" stroke="rgba(18,10,0,0.62)" strokeWidth="2.4" />
-                <ellipse cx={bodyW / 2} cy={y - 1.2} rx={bodyW / 2} ry={3.8} fill="none" stroke="rgba(255,225,90,0.7)" strokeWidth="1.1" />
-                <ellipse cx={bodyW / 2} cy={y + 0.8} rx={bodyW / 2 - 2} ry={2.2} fill="rgba(255,200,60,0.14)" stroke="none" />
+                <ellipse
+                  cx={bodyW / 2}
+                  cy={y}
+                  rx={bodyW / 2}
+                  ry={3.8}
+                  fill="none"
+                  stroke="rgba(18,10,0,0.62)"
+                  strokeWidth="2.4"
+                />
+                <ellipse
+                  cx={bodyW / 2}
+                  cy={y - 1.2}
+                  rx={bodyW / 2}
+                  ry={3.8}
+                  fill="none"
+                  stroke="rgba(255,225,90,0.7)"
+                  strokeWidth="1.1"
+                />
+                <ellipse
+                  cx={bodyW / 2}
+                  cy={y + 0.8}
+                  rx={bodyW / 2 - 2}
+                  ry={2.2}
+                  fill="rgba(255,200,60,0.14)"
+                  stroke="none"
+                />
               </g>
             );
           })}

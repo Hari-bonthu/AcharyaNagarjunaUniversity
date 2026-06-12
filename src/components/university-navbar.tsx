@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { ChevronDown, Menu, X, Search, Phone, Mail, ArrowRight } from "lucide-react";
 import emblem from "@/assets/university-emblem.png";
 
@@ -21,8 +21,41 @@ type MenuItem = {
 };
 
 const pendingPage = (section: string, page: string) => {
+  if (section === "about") {
+    if (page === "overview" || page === "profile") {
+      return "/aboutprofile";
+    }
+    if (page === "history") {
+      return "/history";
+    }
+    if (page === "jubilee") {
+      return "/jubilee";
+    }
+    return `/about/${encodeURIComponent(page)}`;
+  }
   if (section === "admissions") {
     return `/admissions/${encodeURIComponent(page)}`;
+  }
+  if (section === "academics") {
+    return `/academics/${encodeURIComponent(page)}`;
+  }
+  if (section === "student-services") {
+    return `/student-services/${encodeURIComponent(page)}`;
+  }
+  if (section === "employee-services") {
+    return `/employee-services/${encodeURIComponent(page)}`;
+  }
+  if (section === "campus-life") {
+    return `/campus-life/${encodeURIComponent(page)}`;
+  }
+  if (section === "rankings") {
+    return `/rankings/${encodeURIComponent(page)}`;
+  }
+  if (section === "research") {
+    return `/research/${encodeURIComponent(page)}`;
+  }
+  if (section === "programs") {
+    return `/programs/${encodeURIComponent(page)}`;
   }
   return `/pages/${section}?page=${encodeURIComponent(page)}`;
 };
@@ -379,27 +412,37 @@ const MENU: MenuItem[] = [
     },
     columns: [
       {
-        title: "POLICIES",
+        title: "HR & ADMINISTRATION",
         items: [
-          { label: "IT Policy", href: "#" },
-          { label: "Green Policy", href: "#" },
-          { label: "Plastic Free Policy", href: "#" },
+          { label: "Overview", href: pendingPage("employee-services", "overview") },
+          { label: "HR & Payroll", href: pendingPage("employee-services", "hr-payroll") },
+          { label: "Leave Management", href: pendingPage("employee-services", "leave-management") },
+          { label: "Service Records", href: pendingPage("employee-services", "service-records") },
         ],
       },
       {
-        title: "REGULATIONS",
+        title: "WELFARE & DEVELOPMENT",
         items: [
-          { label: "Ordinances & Orders", href: "#" },
-          { label: "Statutory Bodies", href: "#" },
+          { label: "Health & Welfare", href: pendingPage("employee-services", "health-welfare") },
+          {
+            label: "Professional Development",
+            href: pendingPage("employee-services", "professional-development"),
+          },
+          {
+            label: "Retirees & Pensioners",
+            href: pendingPage("employee-services", "retirees-pensioners"),
+          },
         ],
       },
       {
-        title: "QUICK LINKS",
+        title: "SUPPORT & PORTALS",
         items: [
-          { label: "Faculty Portal", href: "#" },
-          { label: "Employee Portal", href: "#" },
-          { label: "Pensioner Details", href: "#" },
-          { label: "Holiday List", href: "#" },
+          { label: "Employee Portal", href: pendingPage("employee-services", "employee-portal") },
+          {
+            label: "Staff Grievance Cell",
+            href: pendingPage("employee-services", "staff-grievance-cell"),
+          },
+          { label: "Downloads & Forms", href: pendingPage("employee-services", "downloads") },
         ],
       },
     ],
@@ -414,6 +457,45 @@ export function UniversityNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number | null>(null);
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchableItems = useMemo(() => {
+    const items: { label: string; href: string; category: string; subtitle?: string }[] = [];
+    MENU.forEach((menu) => {
+      menu.columns.forEach((col) => {
+        col.items.forEach((item) => {
+          const href =
+            item.href === "#" ? pendingPage(toSlug(menu.label), toSlug(item.label)) : item.href;
+          items.push({
+            label: item.label,
+            href,
+            category: menu.label,
+            subtitle: col.title,
+          });
+        });
+      });
+    });
+    // Add specific common pages
+    items.push(
+      { label: "Home", href: "/", category: "General" },
+      { label: "University Profile", href: "/aboutprofile", category: "About" },
+      { label: "Golden Jubilee Scroll", href: "/jubilee", category: "About" },
+      { label: "History", href: "/history", category: "About" },
+    );
+    return items;
+  }, []);
+
+  const filteredResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase();
+    return searchableItems.filter(
+      (item) =>
+        item.label.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
+        item.subtitle?.toLowerCase().includes(q),
+    );
+  }, [searchQuery, searchableItems]);
 
   // Close on outside click / Escape
   useEffect(() => {
@@ -439,10 +521,23 @@ export function UniversityNavbar() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 80);
+    const onScroll = () => {
+      if (navRef.current) {
+        const offset = navRef.current.offsetTop;
+        if (offset > 0) {
+          setIsScrolled(window.scrollY >= offset);
+          return;
+        }
+      }
+      setIsScrolled(window.scrollY > 260);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const openMenu = (i: number) => {
@@ -473,18 +568,20 @@ export function UniversityNavbar() {
         }}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 lg:px-8">
-          {isScrolled && (
-            <a
-              href="/"
-              className="hidden shrink-0 items-center gap-3 py-2 lg:flex"
-              aria-label="Acharya Nagarjuna University Home"
-            >
-              <img src={emblem} alt="ANU emblem" className="h-14 w-14 object-contain" />
-              <span className="text-sm font-semibold tracking-wide text-white/95">
-                Acharya Nagarjuna University
-              </span>
-            </a>
-          )}
+          <a
+            href="/"
+            className={`hidden shrink-0 items-center gap-3 py-2 lg:flex transition-all duration-500 ease-in-out origin-left ${
+              isScrolled
+                ? "opacity-100 max-w-[400px] scale-100"
+                : "opacity-0 max-w-0 scale-95 overflow-hidden pointer-events-none"
+            }`}
+            aria-label="Acharya Nagarjuna University Home"
+          >
+            <img src={emblem} alt="ANU emblem" className="h-14 w-14 object-contain shrink-0" />
+            <span className="text-sm font-semibold tracking-wide text-white/95 whitespace-nowrap">
+              Acharya Nagarjuna University
+            </span>
+          </a>
 
           {/* Desktop nav */}
           <nav aria-label="Main" className="hidden lg:block flex-1">
@@ -538,7 +635,12 @@ export function UniversityNavbar() {
             <button
               type="button"
               aria-label="Search"
-              onClick={() => setSearchOpen((v) => !v)}
+              onClick={() =>
+                setSearchOpen((v) => {
+                  if (v) setSearchQuery("");
+                  return !v;
+                })
+              }
               className="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-white/10"
             >
               <Search className="h-4 w-4" />
@@ -546,18 +648,20 @@ export function UniversityNavbar() {
           </div>
 
           {/* Mobile toggle */}
-          {isScrolled && (
-            <a
-              href="/"
-              className="flex items-center gap-2 py-2 lg:hidden"
-              aria-label="Acharya Nagarjuna University Home"
-            >
-              <img src={emblem} alt="ANU emblem" className="h-13 w-13 object-contain" />
-              <span className="text-sm font-bold tracking-[0.05em] text-[color:var(--utility-bar-accent)]">
-                Acharya Nagarjuna University
-              </span>
-            </a>
-          )}
+          <a
+            href="/"
+            className={`flex items-center gap-2 py-2 lg:hidden transition-all duration-500 ease-in-out origin-left ${
+              isScrolled
+                ? "opacity-100 max-w-[300px] scale-100"
+                : "opacity-0 max-w-0 scale-95 overflow-hidden pointer-events-none"
+            }`}
+            aria-label="Acharya Nagarjuna University Home"
+          >
+            <img src={emblem} alt="ANU emblem" className="h-13 w-13 object-contain shrink-0" />
+            <span className="text-sm font-bold tracking-[0.05em] text-[color:var(--utility-bar-accent)] whitespace-nowrap">
+              Acharya Nagarjuna University
+            </span>
+          </a>
 
           <button
             type="button"
@@ -572,21 +676,104 @@ export function UniversityNavbar() {
 
         {/* Search panel */}
         {searchOpen && (
-          <div className="border-t border-border bg-background">
-            <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-8 py-4">
-              <Search className="h-4 w-4 text-muted-foreground" />
-              <input
-                autoFocus
-                type="search"
-                placeholder="Search programs, departments, notifications…"
-                className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-              />
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground"
-              >
-                Close
-              </button>
+          <div className="border-t border-border bg-background shadow-lg max-h-[60vh] overflow-y-auto transition-all duration-300">
+            <div className="mx-auto max-w-[1400px] px-8 py-4">
+              <div className="flex items-center gap-3 border-b border-border pb-3">
+                <Search className="h-4 w-4 text-muted-foreground" />
+                <input
+                  autoFocus
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search programs, departments, notifications…"
+                  className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                />
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSearchOpen(false);
+                  }}
+                  className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground"
+                >
+                  Close
+                </button>
+              </div>
+
+              {/* Results */}
+              <div className="mt-4">
+                {searchQuery.trim() === "" ? (
+                  <div>
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                      Popular Links
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { label: "Fee Structure", href: "/admissions/fee-structure" },
+                        { label: "UG Programs", href: "/programs/ug-programs" },
+                        { label: "Hostels", href: "/campus-life/hostel" },
+                        {
+                          label: "Exam Notifications",
+                          href: "/student-services/exam-notifications",
+                        },
+                        { label: "Results", href: "/student-services/results" },
+                        { label: "R&D Cell", href: "/research/r-and-d-cell" },
+                      ].map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          onClick={() => {
+                            setSearchQuery("");
+                            setSearchOpen(false);
+                          }}
+                          className="rounded-full bg-muted/60 px-3.5 py-1.5 text-xs text-foreground/80 hover:bg-muted hover:text-foreground transition"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : filteredResults.length > 0 ? (
+                  <div className="space-y-2">
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                      Matches Found ({filteredResults.length})
+                    </div>
+                    <ul className="divide-y divide-border/60">
+                      {filteredResults.slice(0, 10).map((res) => (
+                        <li key={`${res.category}-${res.label}-${res.href}`} className="py-2.5">
+                          <a
+                            href={res.href}
+                            onClick={() => {
+                              setSearchQuery("");
+                              setSearchOpen(false);
+                            }}
+                            className="flex items-center justify-between group"
+                          >
+                            <div>
+                              <span className="text-sm font-semibold text-foreground group-hover:text-[color:var(--brand)] transition-colors">
+                                {res.label}
+                              </span>
+                              {res.subtitle && (
+                                <span className="ml-2 text-xs text-muted-foreground">
+                                  in {res.subtitle}
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-xs uppercase tracking-wider text-muted-foreground bg-muted/40 px-2 py-0.5 rounded group-hover:bg-brand/10 group-hover:text-brand transition-colors">
+                              {res.category}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div className="py-6 text-center text-sm text-muted-foreground">
+                    No results found for{" "}
+                    <span className="font-semibold text-foreground">"{searchQuery}"</span>. Try
+                    searching for admissions, exam, programs, or cell.
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

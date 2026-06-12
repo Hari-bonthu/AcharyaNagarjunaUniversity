@@ -2,17 +2,16 @@ import { ArrowRight, Camera, GraduationCap, Users, BookOpen, Microscope } from "
 import bgImage from "@/assets/bgg1.jpg";
 
 const stats = [
-  { icon: GraduationCap, value: "50+",     label: "Years of Excellence" },
-  { icon: BookOpen,      value: "250+",    label: "Academic Programs"   },
-  { icon: Users,         value: "30,000+", label: "Students Empowered"  },
-  { icon: Users,         value: "500+",    label: "Faculty Members"     },
-  { icon: Microscope,    value: "100+",    label: "Research Centres"    },
+  { icon: GraduationCap, value: "50+", label: "Years of Excellence" },
+  { icon: BookOpen, value: "250+", label: "Academic Programs" },
+  { icon: Users, value: "30,000+", label: "Students Empowered" },
+  { icon: Users, value: "500+", label: "Faculty Members" },
+  { icon: Microscope, value: "100+", label: "Research Centres" },
 ];
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-[#050d1a]">
-
       {/* ── Background campus image ── */}
       <div className="absolute inset-0">
         <img
@@ -45,13 +44,18 @@ export function HeroSection() {
       <div className="absolute top-[88px] right-5 z-10 hidden md:flex flex-col items-center rounded-sm border border-white/20 bg-white/10 px-3 py-2 text-center backdrop-blur-sm shadow-xl">
         <span className="text-[10px] font-bold uppercase tracking-widest text-[#c9a84c]">NAAC</span>
         <span className="text-2xl font-black leading-none text-white">A+</span>
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-white/80">Grade</span>
-        <div className="mt-1 text-[9px] leading-tight text-white/60">Excellence in<br />Education &amp; Research</div>
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-white/80">
+          Grade
+        </span>
+        <div className="mt-1 text-[9px] leading-tight text-white/60">
+          Excellence in
+          <br />
+          Education &amp; Research
+        </div>
       </div>
 
       {/* ── Main layout ── */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 lg:px-8">
-
         {/* Hero text */}
         <div className="mt-[104px] flex-1 flex flex-col justify-center max-w-[52%]">
           <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#c9a84c]">
@@ -70,8 +74,8 @@ export function HeroSection() {
           <div className="mt-4 h-[3px] w-14 rounded-full bg-[#c9a84c]" />
 
           <p className="mt-5 max-w-sm text-[15px] leading-7 text-white/75">
-            Acharya Nagarjuna University is a hub of academic excellence, innovation
-            and holistic development.
+            Acharya Nagarjuna University is a hub of academic excellence, innovation and holistic
+            development.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -83,7 +87,7 @@ export function HeroSection() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#campus-tour"
+              href="/campus-life"
               className="group inline-flex items-center gap-2 rounded-sm border-2 border-white/40 bg-white/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm transition-all hover:border-white/70 hover:bg-white/20"
             >
               <Camera className="h-4 w-4" />
@@ -102,7 +106,6 @@ export function HeroSection() {
             lg: adds a 6th auto column for the tagline so it never overlaps
           */}
           <div className="grid grid-cols-5 lg:grid-cols-[repeat(5,1fr)_auto] items-center bg-gradient-to-r from-[#050d1a]/95 via-[#0a1628]/90 to-[#050d1a]/80 py-5 backdrop-blur-sm">
-
             {stats.map((stat, i) => {
               const Icon = stat.icon;
               return (
@@ -132,10 +135,8 @@ export function HeroSection() {
                 we build the future.
               </p>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

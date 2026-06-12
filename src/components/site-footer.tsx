@@ -26,9 +26,9 @@ type FooterContext = {
 
 const baseCommonLinks: FooterNavItem[] = [
   { label: "Admissions", href: "/admissions/overview" },
-  { label: "Exam Notifications", href: "/pages/student-services?page=exam-notifications" },
-  { label: "Results", href: "/pages/student-services?page=results" },
-  { label: "Placements", href: "/pages/student-services?page=placements" },
+  { label: "Exam Notifications", href: "/student-services/exam-notifications" },
+  { label: "Results", href: "/student-services/results" },
+  { label: "Placements", href: "/student-services/placements" },
   { label: "Contact", href: "mailto:registrar@anu.ac.in", external: true },
 ];
 
@@ -171,6 +171,114 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
     };
   }
 
+  if (pathname.startsWith("/student-services/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Student Services Application",
+      aboutText:
+        "This student-services area now works as a real application shell with task-based tabs, classified workflows and dedicated support-cell guidance.",
+      contextualTitle: "Student Service Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/student-services/overview" },
+        { label: "Exam Section", href: "/student-services/exam-section" },
+        { label: "Results", href: "/student-services/results" },
+        { label: "Downloads", href: "/student-services/downloads" },
+        { label: "Student Portal", href: "/student-services/student-portal" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/employee-services/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Employee Services Application",
+      aboutText:
+        "This employee-services area operates as a dedicated module with task-based tabs, administrative workflows and support guidance for university staff.",
+      contextualTitle: "Employee Service Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/employee-services/overview" },
+        { label: "HR & Payroll", href: "/employee-services/hr-payroll" },
+        { label: "Leave Management", href: "/employee-services/leave-management" },
+        { label: "Downloads & Forms", href: "/employee-services/downloads" },
+        { label: "Employee Portal", href: "/employee-services/employee-portal" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/campus-life/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Campus Life Application",
+      aboutText:
+        "This campus-life area now works as a real application shell with task-based tabs, classified amenities and dedicated student affairs guidance.",
+      contextualTitle: "Campus Life Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/campus-life/overview" },
+        { label: "Hostels", href: "/campus-life/hostel" },
+        { label: "Health Centre", href: "/campus-life/health-center" },
+        { label: "Sports", href: "/campus-life/sports" },
+        { label: "NSS Cell", href: "/campus-life/nss" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/rankings/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Rankings & Quality Application",
+      aboutText:
+        "This rankings and quality assurance area operates as a dedicated module displaying national rankings, NAAC status, and IQAC processes.",
+      contextualTitle: "Rankings Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/rankings/overview" },
+        { label: "NIRF", href: "/rankings/nirf" },
+        { label: "IQAC", href: "/rankings/iqac" },
+        { label: "NAAC", href: "/rankings/naac" },
+        { label: "SSR Reports", href: "/rankings/ssr" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/research/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Research & Development Application",
+      aboutText:
+        "This research area coordinates and displays active projects, doctoral studies, ethics/consultancy policies, and business incubation.",
+      contextualTitle: "Research Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/research/overview" },
+        { label: "R&D Cell", href: "/research/r-and-d-cell" },
+        { label: "Research Cell", href: "/research/research-cell" },
+        { label: "Research Policy", href: "/research/research-policy" },
+        { label: "Incubators", href: "/research/incubators" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
+  if (pathname.startsWith("/programs/")) {
+    return {
+      ...defaultContext,
+      aboutTitle: "Academic Programs Application",
+      aboutText:
+        "This programs directory details undergraduate, postgraduate, integrated, and distance education coursework offered by the university.",
+      contextualTitle: "Programs Tabs",
+      contextualLinks: [
+        { label: "Overview", href: "/programs/overview" },
+        { label: "UG Programs", href: "/programs/ug-programs" },
+        { label: "PG Programs", href: "/programs/pg-programs" },
+        { label: "Integrated", href: "/programs/integrated-programs" },
+        { label: "Distance Education", href: "/programs/distance-education-anucde" },
+      ],
+      commonLinks: baseCommonLinks,
+    };
+  }
+
   if (pathname.startsWith("/pages/")) {
     const routeSection = pathname.split("/")[2] ?? "section";
     const page = new URLSearchParams(searchStr).get("page") ?? "overview";
@@ -182,11 +290,11 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
           "This student-services area now works as a real application shell with task-based tabs, classified workflows and dedicated support-cell guidance.",
         contextualTitle: "Student Service Tabs",
         contextualLinks: [
-          { label: "Overview", href: "/pages/student-services?page=overview" },
-          { label: "Exam Section", href: "/pages/student-services?page=exam-section" },
-          { label: "Results", href: "/pages/student-services?page=results" },
-          { label: "Downloads", href: "/pages/student-services?page=downloads" },
-          { label: "Student Portal", href: "/pages/student-services?page=student-portal" },
+          { label: "Overview", href: "/student-services/overview" },
+          { label: "Exam Section", href: "/student-services/exam-section" },
+          { label: "Results", href: "/student-services/results" },
+          { label: "Downloads", href: "/student-services/downloads" },
+          { label: "Student Portal", href: "/student-services/student-portal" },
         ],
         commonLinks: baseCommonLinks,
       };
@@ -199,11 +307,79 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
           "This employee-services area operates as a dedicated module with task-based tabs, administrative workflows and support guidance for university staff.",
         contextualTitle: "Employee Service Tabs",
         contextualLinks: [
-          { label: "Overview", href: "/pages/employee-services?page=overview" },
-          { label: "HR & Payroll", href: "/pages/employee-services?page=hr-payroll" },
-          { label: "Leave Management", href: "/pages/employee-services?page=leave-management" },
-          { label: "Downloads & Forms", href: "/pages/employee-services?page=downloads" },
-          { label: "Employee Portal", href: "/pages/employee-services?page=employee-portal" },
+          { label: "Overview", href: "/employee-services/overview" },
+          { label: "HR & Payroll", href: "/employee-services/hr-payroll" },
+          { label: "Leave Management", href: "/employee-services/leave-management" },
+          { label: "Downloads & Forms", href: "/employee-services/downloads" },
+          { label: "Employee Portal", href: "/employee-services/employee-portal" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
+    if (routeSection === "campus-life") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Campus Life Application",
+        aboutText:
+          "This campus-life area now works as a real application shell with task-based tabs, classified amenities and dedicated student affairs guidance.",
+        contextualTitle: "Campus Life Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/campus-life/overview" },
+          { label: "Hostels", href: "/campus-life/hostel" },
+          { label: "Health Centre", href: "/campus-life/health-center" },
+          { label: "Sports", href: "/campus-life/sports" },
+          { label: "NSS Cell", href: "/campus-life/nss" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
+    if (routeSection === "rankings") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Rankings & Quality Application",
+        aboutText:
+          "This rankings and quality assurance area operates as a dedicated module displaying national rankings, NAAC status, and IQAC processes.",
+        contextualTitle: "Rankings Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/rankings/overview" },
+          { label: "NIRF", href: "/rankings/nirf" },
+          { label: "IQAC", href: "/rankings/iqac" },
+          { label: "NAAC", href: "/rankings/naac" },
+          { label: "SSR Reports", href: "/rankings/ssr" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
+    if (routeSection === "research") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Research & Development Application",
+        aboutText:
+          "This research area coordinates and displays active projects, doctoral studies, ethics/consultancy policies, and business incubation.",
+        contextualTitle: "Research Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/research/overview" },
+          { label: "R&D Cell", href: "/research/r-and-d-cell" },
+          { label: "Research Cell", href: "/research/research-cell" },
+          { label: "Research Policy", href: "/research/research-policy" },
+          { label: "Incubators", href: "/research/incubators" },
+        ],
+        commonLinks: baseCommonLinks,
+      };
+    }
+    if (routeSection === "programs") {
+      return {
+        ...defaultContext,
+        aboutTitle: "Academic Programs Application",
+        aboutText:
+          "This programs directory details undergraduate, postgraduate, integrated, and distance education coursework offered by the university.",
+        contextualTitle: "Programs Tabs",
+        contextualLinks: [
+          { label: "Overview", href: "/programs/overview" },
+          { label: "UG Programs", href: "/programs/ug-programs" },
+          { label: "PG Programs", href: "/programs/pg-programs" },
+          { label: "Integrated", href: "/programs/integrated-programs" },
+          { label: "Distance Education", href: "/programs/distance-education-anucde" },
         ],
         commonLinks: baseCommonLinks,
       };
@@ -216,7 +392,7 @@ function getFooterContext(pathname: string, searchStr: string): FooterContext {
       contextualLinks: [
         { label: "Section Overview", href: `/pages/${routeSection}?page=overview` },
         { label: "Admissions", href: "/admissions/overview" },
-        { label: "Student Services", href: "/pages/student-services?page=overview" },
+        { label: "Student Services", href: "/student-services/overview" },
         { label: "Academics", href: "/pages/academics?page=overview" },
         { label: "University Home", href: "/" },
       ],

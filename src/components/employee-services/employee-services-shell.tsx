@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { ChevronRight } from "lucide-react";
-import { employeeServiceTabs } from "@/data/employee-services-app";
+import { employeeServiceTabs, getEmployeeServiceTab } from "@/data/employee-services-app";
 
 export function EmployeeServicesShell({
   pageId,
@@ -11,9 +11,8 @@ export function EmployeeServicesShell({
   pageId: string;
   children: React.ReactNode;
 }) {
-  const activeTab =
-    employeeServiceTabs.find((tab) => tab.key === pageId) ??
-    employeeServiceTabs[0];
+  const activeTab = getEmployeeServiceTab(pageId);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
@@ -21,15 +20,15 @@ export function EmployeeServicesShell({
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
         :root {
-          --ink: #0f172a;
-          --ink-mid: #1e293b;
-          --corporate: #0284c7;
-          --corporate-light: #38bdf8;
-          --parchment: #f8fafc;
-          --parchment-dark: #f1f5f9;
-          --cream: #ffffff;
-          --rule: #e2e8f0;
-          --muted: #475569;
+          --ink: #12213a;
+          --ink-mid: #1e3558;
+          --gold: #b8860b;
+          --gold-light: #d4a017;
+          --parchment: #faf7f2;
+          --parchment-dark: #f0ebe0;
+          --cream: #f5f0e8;
+          --rule: #d9d0bf;
+          --muted: #6b6352;
         }
 
         .employee-root {
@@ -45,7 +44,7 @@ export function EmployeeServicesShell({
 
         .employee-masthead {
           background-color: var(--ink);
-          background-image: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+          background-image: linear-gradient(135deg, #0a1628 0%, #12213a 50%, #1a3060 100%);
           position: relative;
           overflow: hidden;
         }
@@ -53,21 +52,21 @@ export function EmployeeServicesShell({
         .employee-masthead::before {
           content: 'EMPLOYEE';
           position: absolute;
-          right: -2rem;
+          right: -1rem;
           top: 50%;
           transform: translateY(-50%);
           font-family: 'Playfair Display', serif;
-          font-size: 14rem;
+          font-size: clamp(4rem, 10vw, 8rem);
           font-weight: 700;
-          color: rgba(56,189,248,0.05);
+          color: rgba(184,134,11,0.05);
           line-height: 1;
           pointer-events: none;
           user-select: none;
         }
 
-        .corporate-rule {
+        .gold-rule {
           height: 3px;
-          background: linear-gradient(90deg, transparent, var(--corporate), var(--corporate-light), var(--corporate), transparent);
+          background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
         }
 
         .sidebar-menu {
@@ -107,28 +106,29 @@ export function EmployeeServicesShell({
         }
 
         .sidebar-link[data-active="true"] .sidebar-icon {
-          color: var(--corporate-light);
+          color: var(--gold-light);
         }
       `}</style>
 
-      <div className="employee-root pb-24">
-        <div className="employee-masthead py-16 text-center text-white lg:py-24">
+      <div className="employee-root pb-12">
+        <div className="employee-masthead py-8 text-center text-white lg:py-12">
           <div className="relative z-10 mx-auto max-w-4xl px-6">
-            <h1 className="font-playfair text-4xl font-bold tracking-tight md:text-6xl">
+            <h1 className="font-playfair text-3xl font-bold tracking-tight md:text-5xl">
               Employee Services
             </h1>
-            <p className="font-garamond mx-auto mt-6 max-w-2xl text-lg italic tracking-wide text-[var(--corporate-light)] md:text-xl">
-              "Supporting our faculty and staff with streamlined administration, professional development, and welfare services."
+            <p className="font-garamond mx-auto mt-6 max-w-2xl text-lg italic tracking-wide text-[var(--gold-light)] md:text-xl">
+              "Supporting our faculty and staff with streamlined administration, professional
+              development, and welfare services."
             </p>
           </div>
         </div>
-        <div className="corporate-rule" />
+        <div className="gold-rule" />
 
         <div className="mx-auto max-w-[1400px] px-6 py-6 lg:px-8">
           <BreadcrumbTrail
             items={[
               { label: "Home", href: "/" },
-{ label: "Employee Services", href: "/employee-services" as any },
+              { label: "Employee Services", href: "/employee-services" as any },
               { label: activeTab.shortTitle },
             ]}
           />
@@ -136,24 +136,34 @@ export function EmployeeServicesShell({
 
         <div className="mx-auto max-w-[1400px] px-6 py-8 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[300px_1fr]">
-            <aside>
+            <aside className="w-full lg:w-auto">
               <div className="lg:sticky lg:top-24">
-                <nav
-                  className="sidebar-menu"
-                  aria-label="Employee Services Navigation"
-                >
-                  <div className="bg-[var(--parchment-dark)] px-6 py-4 border-b border-[var(--rule)]">
+                <nav className="sidebar-menu" aria-label="Employee Services Navigation">
+                  <button
+                    type="button"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="w-full flex items-center justify-between bg-[var(--parchment-dark)] px-6 py-4 border-b border-[var(--rule)] text-left focus:outline-none"
+                  >
                     <h3 className="font-playfair text-lg font-bold text-[var(--ink)]">
                       Service Directory
                     </h3>
-                  </div>
-                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2 lg:hidden">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[var(--gold)] bg-white border border-[var(--rule)] px-2.5 py-1 rounded">
+                        {activeTab.shortTitle}
+                      </span>
+                      <ChevronRight
+                        className={`h-4 w-4 transition-transform duration-200 text-[var(--gold)] ${isMenuOpen ? "rotate-90" : ""}`}
+                      />
+                    </div>
+                  </button>
+                  <div className={`${isMenuOpen ? "flex" : "hidden"} lg:flex flex-col`}>
                     {employeeServiceTabs.map((item) => (
                       <Link
                         key={item.key}
                         to={`/employee-services/${item.key}` as any}
                         className="sidebar-link"
-                        data-active={pageId === item.key}
+                        data-active={activeTab.key === item.key}
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {item.shortTitle}
                         <ChevronRight className="sidebar-icon h-4 w-4 opacity-50" />
@@ -164,7 +174,7 @@ export function EmployeeServicesShell({
               </div>
             </aside>
 
-            <main className="min-w-0" id="employee-services-content">
+            <main className="min-w-0 pb-8" id="employee-services-content">
               {children}
             </main>
           </div>
@@ -173,5 +183,3 @@ export function EmployeeServicesShell({
     </>
   );
 }
-
-

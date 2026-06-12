@@ -63,7 +63,10 @@ export function FaqSection() {
   }, [query, active]);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-[oklch(0.985_0.005_250)] py-20 lg:py-24">
+    <section
+      id="faq"
+      className="relative overflow-hidden bg-[oklch(0.985_0.005_250)] py-20 lg:py-24"
+    >
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[360px_1fr] lg:gap-16 lg:px-8">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <span className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.32_0.12_260)]/20 bg-white px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[oklch(0.32_0.12_260)]">
@@ -74,8 +77,8 @@ export function FaqSection() {
             Get every answer, right here.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Search the most common questions about admissions, academics and campus life - or reach out to our team
-            directly.
+            Search the most common questions about admissions, academics and campus life - or reach
+            out to our team directly.
           </p>
 
           <div className="mt-8 space-y-3">
@@ -87,8 +90,12 @@ export function FaqSection() {
                 <Mail className="h-5 w-5" aria-hidden />
               </span>
               <span className="flex-1">
-                <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</span>
-                <span className="block text-sm font-medium text-foreground">registrar@anu.ac.in</span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Email
+                </span>
+                <span className="block text-sm font-medium text-foreground">
+                  registrar@anu.ac.in
+                </span>
               </span>
             </a>
             <a
@@ -99,19 +106,23 @@ export function FaqSection() {
                 <Phone className="h-5 w-5" aria-hidden />
               </span>
               <span className="flex-1">
-                <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">Call</span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Call
+                </span>
                 <span className="block text-sm font-medium text-foreground">+91 863 234 6114</span>
               </span>
             </a>
             <a
-              href="#"
+              href="/admissions/helpdesk"
               className="group flex items-center gap-3 rounded-xl border border-[oklch(0.32_0.12_260)]/20 bg-[oklch(0.32_0.12_260)] p-4 text-white transition hover:bg-[oklch(0.28_0.1_265)]"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/15 text-white">
                 <MessageSquare className="h-5 w-5" aria-hidden />
               </span>
               <span className="flex-1">
-                <span className="block text-xs font-medium uppercase tracking-wider text-white/70">Live chat</span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-white/70">
+                  Live chat
+                </span>
                 <span className="block text-sm font-medium">Talk to a counsellor</span>
               </span>
             </a>
@@ -120,7 +131,10 @@ export function FaqSection() {
 
         <div>
           <div className="relative">
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" aria-hidden />
+            <Search
+              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground"
+              aria-hidden
+            />
             <input
               type="search"
               value={query}

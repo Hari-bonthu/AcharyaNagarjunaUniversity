@@ -1,8 +1,8 @@
-﻿import React from "react";
+import React, { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail";
 import { ChevronRight } from "lucide-react";
-import { studentServiceTabs } from "@/data/student-services-app";
+import { studentServiceTabs, getStudentServiceTab } from "@/data/student-services-app";
 
 export function StudentServicesShell({
   pageId,
@@ -11,7 +11,8 @@ export function StudentServicesShell({
   pageId: string;
   children: React.ReactNode;
 }) {
-  const activeTab = studentServiceTabs.find((tab) => tab.key === pageId) ?? studentServiceTabs[0];
+  const activeTab = getStudentServiceTab(pageId);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
@@ -52,11 +53,11 @@ export function StudentServicesShell({
         .services-masthead::before {
           content: 'SERVICES';
           position: absolute;
-          right: -2rem;
+          right: -1rem;
           top: 50%;
           transform: translateY(-50%);
           font-family: 'Playfair Display', serif;
-          font-size: 14rem;
+          font-size: clamp(4rem, 10vw, 8rem);
           font-weight: 700;
           color: rgba(184,134,11,0.05);
           line-height: 1;
@@ -111,14 +112,15 @@ export function StudentServicesShell({
         }
       `}</style>
 
-      <div className="services-root pb-24">
-        <div className="services-masthead py-16 text-center text-white lg:py-24">
+      <div className="services-root pb-12">
+        <div className="services-masthead py-8 text-center text-white lg:py-12">
           <div className="relative z-10 mx-auto max-w-4xl px-6">
-            <h1 className="font-playfair text-4xl font-bold tracking-tight md:text-6xl">
+            <h1 className="font-playfair text-3xl font-bold tracking-tight md:text-5xl">
               Student Services
             </h1>
             <p className="font-garamond mx-auto mt-6 max-w-2xl text-lg italic tracking-wide text-[var(--gold-light)] md:text-xl">
-              "Providing centralized support for academic continuity, welfare, and institutional services."
+              "Providing centralized support for academic continuity, welfare, and institutional
+              services."
             </p>
           </div>
         </div>
@@ -136,19 +138,34 @@ export function StudentServicesShell({
 
         <div className="mx-auto max-w-[1400px] px-6 py-8 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[300px_1fr]">
-            <aside>
+            <aside className="w-full lg:w-auto">
               <div className="lg:sticky lg:top-24">
                 <nav className="sidebar-menu" aria-label="Services Navigation">
-                  <div className="bg-[var(--parchment-dark)] px-6 py-4 border-b border-[var(--rule)]">
-                    <h3 className="font-playfair text-lg font-bold text-[var(--ink)]">Service Directory</h3>
-                  </div>
-                  <div className="flex flex-col">
+                  <button
+                    type="button"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="w-full flex items-center justify-between bg-[var(--parchment-dark)] px-6 py-4 border-b border-[var(--rule)] text-left focus:outline-none"
+                  >
+                    <h3 className="font-playfair text-lg font-bold text-[var(--ink)]">
+                      Service Directory
+                    </h3>
+                    <div className="flex items-center gap-2 lg:hidden">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[var(--gold)] bg-white border border-[var(--rule)] px-2.5 py-1 rounded">
+                        {activeTab.shortTitle}
+                      </span>
+                      <ChevronRight
+                        className={`h-4 w-4 transition-transform duration-200 text-[var(--gold)] ${isMenuOpen ? "rotate-90" : ""}`}
+                      />
+                    </div>
+                  </button>
+                  <div className={`${isMenuOpen ? "flex" : "hidden"} lg:flex flex-col`}>
                     {studentServiceTabs.map((item) => (
                       <Link
                         key={item.key}
                         to={`/student-services/${item.key}` as any}
                         className="sidebar-link"
-                        data-active={pageId === item.key}
+                        data-active={activeTab.key === item.key}
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {item.shortTitle}
                         <ChevronRight className="sidebar-icon h-4 w-4 opacity-50" />
@@ -159,22 +176,31 @@ export function StudentServicesShell({
               </div>
             </aside>
 
-            <main className="min-w-0" id="services-content">
+            <main className="min-w-0 pb-8" id="services-content">
               {children}
 
-              <div className="mt-16 rounded border border-[var(--gold)]/30 bg-[var(--gold)]/5 p-8">
+              <div className="mt-8 rounded border border-[var(--gold)]/30 bg-[var(--gold)]/5 p-8">
                 <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
                   <div>
-                    <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">University Helpdesk</h3>
+                    <h3 className="font-playfair text-2xl font-bold text-[var(--ink)]">
+                      University Helpdesk
+                    </h3>
                     <p className="font-serif mt-2 text-lg text-[var(--muted)]">
-                      Need further assistance? Our dedicated support channels are here to help you navigate services.
+                      Need further assistance? Our dedicated support channels are here to help you
+                      navigate services.
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-col items-center gap-4 sm:flex-row md:items-end">
-                    <a href="tel:+918632346114" className="flex items-center gap-2 rounded border border-[var(--rule)] bg-white px-6 py-3 font-serif text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--parchment)] hover:text-[var(--gold)]">
+                    <a
+                      href="tel:+918632346114"
+                      className="flex items-center gap-2 rounded border border-[var(--rule)] bg-white px-6 py-3 font-serif text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--parchment)] hover:text-[var(--gold)]"
+                    >
                       Call Support
                     </a>
-                    <a href="mailto:registrar@anu.ac.in" className="flex items-center gap-2 rounded bg-[var(--ink)] px-6 py-3 font-serif text-sm font-semibold text-white transition hover:bg-[var(--ink-mid)]">
+                    <a
+                      href="mailto:registrar@anu.ac.in"
+                      className="flex items-center gap-2 rounded bg-[var(--ink)] px-6 py-3 font-serif text-sm font-semibold text-white transition hover:bg-[var(--ink-mid)]"
+                    >
                       Email Us
                     </a>
                   </div>

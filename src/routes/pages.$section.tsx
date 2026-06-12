@@ -3,6 +3,10 @@ import { Building2, Clock3, Mail, Phone } from "lucide-react";
 import { getPublishedPage } from "@/content/page-registry";
 import { StudentServicesApp } from "@/components/student-services/student-services-app";
 import { EmployeeServicesApp } from "@/components/employee-services/employee-services-app";
+import { CampusLifeApp } from "@/components/campus-life/campus-life-app";
+import { RankingsApp } from "@/components/rankings/rankings-app";
+import { ResearchApp } from "@/components/research/research-app";
+import { ProgramsApp } from "@/components/programs/programs-app";
 import {
   BreadcrumbsBlock,
   PageHero,
@@ -19,6 +23,14 @@ import {
   employeeServicePageAliases,
   type EmployeeServiceTabKey,
 } from "@/data/employee-services-app";
+import {
+  getCampusLifeTab,
+  campusLifePageAliases,
+  type CampusLifeTabKey,
+} from "@/data/campus-life-app";
+import { getRankingsTab, rankingsPageAliases, type RankingsTabKey } from "@/data/rankings-app";
+import { getResearchTab, researchPageAliases, type ResearchTabKey } from "@/data/research-app";
+import { getProgramsTab, programsPageAliases, type ProgramsTabKey } from "@/data/programs-app";
 
 type PlaceholderSearch = {
   page?: string;
@@ -29,6 +41,10 @@ const pageAliasMap: Record<string, string> = {
   "downloads-forms": "downloads",
   ...studentServicePageAliases,
   ...employeeServicePageAliases,
+  ...campusLifePageAliases,
+  ...rankingsPageAliases,
+  ...researchPageAliases,
+  ...programsPageAliases,
 };
 
 function normalizeSlug(input: string) {
@@ -47,18 +63,82 @@ function resolvePage(page?: string) {
 }
 
 export const Route = createFileRoute("/pages/$section")({
-  beforeLoad: ({ params, search }) => {
-    if (params.section === "student-services") {
-      throw redirect({ to: "/student-services/$pageId", params: { pageId: search.page || "overview" } });
-    }
-    if (params.section === "employee-services") {
-      throw redirect({ to: "/employee-services/$pageId", params: { pageId: search.page || "overview" } });
-    }
-  },
   validateSearch: (search: Record<string, unknown>): PlaceholderSearch => ({
     page: typeof search.page === "string" ? search.page : undefined,
   }),
   beforeLoad: ({ params, search }) => {
+    if (params.section === "about") {
+      const resolved = resolvePage(search.page);
+      if (resolved === "overview" || resolved === "profile") {
+        throw redirect({
+          to: "/aboutprofile",
+        });
+      }
+      if (resolved === "history") {
+        throw redirect({
+          to: "/history",
+        });
+      }
+      if (resolved === "jubilee") {
+        throw redirect({
+          to: "/jubilee",
+        });
+      }
+      throw redirect({
+        to: "/about/$pageId",
+        params: { pageId: resolved },
+      });
+    }
+
+    if (params.section === "student-services") {
+      throw redirect({
+        to: "/student-services/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "employee-services") {
+      throw redirect({
+        to: "/employee-services/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "campus-life") {
+      throw redirect({
+        to: "/campus-life/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "rankings") {
+      throw redirect({
+        to: "/rankings/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "research") {
+      throw redirect({
+        to: "/research/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "programs") {
+      throw redirect({
+        to: "/programs/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "admissions") {
+      throw redirect({
+        to: "/admissions/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+    if (params.section === "academics") {
+      throw redirect({
+        to: "/academics/$pageId",
+        params: { pageId: search.page || "overview" },
+      });
+    }
+
     const normalizedSection = normalizeSlug(params.section);
     const normalizedPage = resolvePage(search.page);
 
@@ -230,6 +310,78 @@ function EmployeeServicesPage({ page }: { page: string }) {
   );
 }
 
+function CampusLifePage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getCampusLifeTab(page);
+
+  return (
+    <CampusLifeApp
+      page={currentTab.key}
+      onPageChange={(nextPage: CampusLifeTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "campus-life" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
+function RankingsPage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getRankingsTab(page);
+
+  return (
+    <RankingsApp
+      page={currentTab.key}
+      onPageChange={(nextPage: RankingsTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "rankings" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
+function ResearchPage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getResearchTab(page);
+
+  return (
+    <ResearchApp
+      page={currentTab.key}
+      onPageChange={(nextPage: ResearchTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "research" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
+function ProgramsPage({ page }: { page: string }) {
+  const navigate = useNavigate({ from: "/pages/$section" });
+  const currentTab = getProgramsTab(page);
+
+  return (
+    <ProgramsApp
+      page={currentTab.key}
+      onPageChange={(nextPage: ProgramsTabKey) => {
+        navigate({
+          to: "/pages/$section",
+          params: { section: "programs" },
+          search: { page: nextPage },
+        });
+      }}
+    />
+  );
+}
+
 function SectionPage() {
   const { section } = Route.useParams();
   const { page } = Route.useSearch();
@@ -241,6 +393,22 @@ function SectionPage() {
 
   if (section === "employee-services") {
     return <EmployeeServicesPage page={resolvedPage} />;
+  }
+
+  if (section === "campus-life") {
+    return <CampusLifePage page={resolvedPage} />;
+  }
+
+  if (section === "rankings") {
+    return <RankingsPage page={resolvedPage} />;
+  }
+
+  if (section === "research") {
+    return <ResearchPage page={resolvedPage} />;
+  }
+
+  if (section === "programs") {
+    return <ProgramsPage page={resolvedPage} />;
   }
 
   const published = getPublishedPage(section, resolvedPage);

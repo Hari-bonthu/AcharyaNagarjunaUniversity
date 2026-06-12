@@ -3,11 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SectionShell } from "./section-shell";
 import type { ResearchFocusItem } from "./department-data";
 
-export function ResearchFocusSection({
-  items,
-}: {
-  items: ResearchFocusItem[];
-}) {
+export function ResearchFocusSection({ items }: { items: ResearchFocusItem[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   if (!items.length) return null;
@@ -34,8 +30,8 @@ export function ResearchFocusSection({
     >
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <p className="max-w-3xl text-sm leading-6 text-slate-600">
-          Faculty-led research areas that open opportunities for postgraduate
-          work, doctoral study, publications, and interdisciplinary projects.
+          Faculty-led research areas that open opportunities for postgraduate work, doctoral study,
+          publications, and interdisciplinary projects.
         </p>
 
         <div className="flex gap-2">
@@ -88,16 +84,12 @@ export function ResearchFocusSection({
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {item.text}
-                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
                 </div>
 
                 <div className="mt-6 border-t border-slate-200 pt-4">
                   <p className="text-sm leading-6 text-slate-600">
-                    <span className="font-semibold text-slate-900">
-                      {item.lead}
-                    </span>
+                    <span className="font-semibold text-slate-900">{item.lead}</span>
                     <span className="mx-2 text-slate-300">•</span>
                     {item.projects}
                   </p>

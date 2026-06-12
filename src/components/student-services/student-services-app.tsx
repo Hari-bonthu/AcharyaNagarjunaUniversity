@@ -16,10 +16,26 @@ export function StudentServicesApp({
   const heroStats = useMemo(() => {
     const metrics = activeTab.metrics ?? [];
     return [
-      { value: metrics[0]?.value ?? "—", label: metrics[0]?.label ?? "Key focus", note: metrics[0]?.note ?? "" },
-      { value: metrics[1]?.value ?? "—", label: metrics[1]?.label ?? "Primary owner", note: metrics[1]?.note ?? "" },
-      { value: metrics[2]?.value ?? "—", label: metrics[2]?.label ?? "Best timing", note: metrics[2]?.note ?? "" },
-      { value: activeTab.shortTitle, label: "Current view", note: activeTab.badge ? `Badge: ${activeTab.badge}` : "Student-facing tab" },
+      {
+        value: metrics[0]?.value ?? "—",
+        label: metrics[0]?.label ?? "Key focus",
+        note: metrics[0]?.note ?? "",
+      },
+      {
+        value: metrics[1]?.value ?? "—",
+        label: metrics[1]?.label ?? "Primary owner",
+        note: metrics[1]?.note ?? "",
+      },
+      {
+        value: metrics[2]?.value ?? "—",
+        label: metrics[2]?.label ?? "Best timing",
+        note: metrics[2]?.note ?? "",
+      },
+      {
+        value: activeTab.shortTitle,
+        label: "Current view",
+        note: activeTab.badge ? `Badge: ${activeTab.badge}` : "Student-facing tab",
+      },
     ];
   }, [activeTab]);
 
@@ -39,12 +55,11 @@ export function StudentServicesApp({
 
         .stu-page-root {
           position: relative;
-          padding-bottom: 3.5rem;
+          padding-bottom: 0.5rem;
         }
 
         .stu-page-bg {
           background-color: var(--parchment);
-          min-height: 100%;
         }
 
         .stu-hero {
@@ -297,9 +312,7 @@ export function StudentServicesApp({
               Student Services
             </p>
 
-            <h1 className="stu-hero-title mt-3">
-              {activeTab.title}
-            </h1>
+            <h1 className="stu-hero-title mt-3">{activeTab.title}</h1>
 
             <p className="stu-hero-desc">{activeTab.description}</p>
 
@@ -343,7 +356,105 @@ export function StudentServicesApp({
         </section>
 
         {/* Identity + Pillars */}
-        <section className="mb-10">
-          <p className="stu-section-label">Guiding Principles</p>
-          <h2 className="stu-section-heading">
+        {activeTab.key === "overview" && (
+          <section className="mb-14">
+            <p className="stu-section-label">Guiding Principles</p>
+            <h2 className="stu-section-heading">
+              Centralized Care &amp; <em>Student Welfare</em>
+            </h2>
+            <div className="stu-divider-rule">
+              <span>✦</span>
+            </div>
 
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+              {/* Identity prose */}
+              <div className="stu-identity-card">
+                <div className="stu-identity-prose">
+                  <p>
+                    Acharya Nagarjuna University coordinates student services to support your
+                    academic journey from admission to graduation. The university provides unified
+                    guidance for examinations, certificates, career development, and institutional
+                    support systems.
+                  </p>
+                  <p>
+                    We aim to reduce administrative friction and ensure transparent workflows,
+                    letting you focus on your study, research, and campus participation.
+                  </p>
+                  <p>
+                    Whether you are verifying exam notifications, checking results, applying for
+                    duplicate certificates, or contacting student welfare cells, this hub outlines
+                    the necessary steps, requirements, and escalation guidance.
+                  </p>
+                  <blockquote
+                    style={{
+                      marginTop: "1.25rem",
+                      paddingLeft: "1.25rem",
+                      borderLeft: "3px solid var(--gold)",
+                      fontFamily: "'EB Garamond', serif",
+                      fontStyle: "italic",
+                      fontSize: "1rem",
+                      lineHeight: 1.75,
+                      color: "var(--ink-mid)",
+                    }}
+                  >
+                    "Centralized support built on transparent processes and academic
+                    responsibility."
+                  </blockquote>
+                </div>
+              </div>
+
+              {/* Pillars */}
+              <div className="stu-pillars-card">
+                <p
+                  style={{
+                    fontFamily: "'Source Serif 4', serif",
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "rgba(184,134,11,0.85)",
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  Service Vision
+                </p>
+                <h3 className="stu-pillars-title">Core Anchors</h3>
+                <div style={{ marginTop: "1.25rem" }}>
+                  <div className="stu-pillars-item">
+                    <span className="stu-pillars-icon">◈</span>
+                    <h3>Academic Integrity</h3>
+                    <p>
+                      Fair examinations, transparent results evaluation, and verified institutional
+                      records.
+                    </p>
+                  </div>
+                  <div className="stu-pillars-item">
+                    <span className="stu-pillars-icon">✦</span>
+                    <h3>Access & Speed</h3>
+                    <p>
+                      Digital portal integration, clear request forms, and reliable turnaround
+                      expectations.
+                    </p>
+                  </div>
+                  <div className="stu-pillars-item">
+                    <span className="stu-pillars-icon">❖</span>
+                    <h3>Welfare & Redressal</h3>
+                    <p>
+                      Dedicated cells for anti-ragging, women safety, grievance redressal, and
+                      inclusive aid.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Tab-Specific Content */}
+        <section className="mb-10">
+          <StudentServiceContent tab={activeTab} />
+        </section>
+      </div>
+    </>
+  );
+}

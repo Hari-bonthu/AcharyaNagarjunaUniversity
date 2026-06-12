@@ -101,7 +101,7 @@ function HistoryPage() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     items.forEach((el) => {
       el.style.opacity = "0";
@@ -400,15 +400,9 @@ function HistoryPage() {
       `}</style>
 
       <div className="history-root">
-        <BreadcrumbTrail
-          items={[
-            { label: "Home", href: "/" },
-            { label: "History" },
-          ]}
-        />
+        <BreadcrumbTrail items={[{ label: "Home", href: "/" }, { label: "History" }]} />
 
         <main className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
-
           {/* ── Masthead ── */}
           <section className="masthead rounded-sm overflow-hidden mb-10">
             <div className="masthead-rule" />
@@ -427,8 +421,10 @@ function HistoryPage() {
                   maxWidth: "36rem",
                 }}
               >
-                From Ancient<br />
-                <em style={{ fontWeight: 400 }}>Inquiry</em> to Living<br />
+                From Ancient
+                <br />
+                <em style={{ fontWeight: 400 }}>Inquiry</em> to Living
+                <br />
                 University
               </h1>
               <p
@@ -441,8 +437,8 @@ function HistoryPage() {
                   maxWidth: "34rem",
                 }}
               >
-                Six chapters. Two millennia of intellectual lineage. One institution 
-                that honours its roots by refusing to stand still.
+                Six chapters. Two millennia of intellectual lineage. One institution that honours
+                its roots by refusing to stand still.
               </p>
             </div>
             <div className="masthead-rule" />
@@ -454,7 +450,9 @@ function HistoryPage() {
             <h2 className="section-heading">
               A <em>Chronicle</em> in Full
             </h2>
-            <div className="divider-rule"><span>✦</span></div>
+            <div className="divider-rule">
+              <span>✦</span>
+            </div>
 
             <div className="relative">
               <div className="timeline-spine" />
@@ -464,7 +462,14 @@ function HistoryPage() {
                     <div className="timeline-node" style={{ animationDelay: `${i * 0.1}s` }} />
                     <div className="chapter-card">
                       <span className="chapter-numeral">{chapter.numeral}</span>
-                      <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline", flexWrap: "wrap" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "1.5rem",
+                          alignItems: "baseline",
+                          flexWrap: "wrap",
+                        }}
+                      >
                         <p className="era-tag">{chapter.era}</p>
                       </div>
                       <p className="year-display">{chapter.year}</p>
@@ -481,10 +486,20 @@ function HistoryPage() {
           {/* ── Outcomes ── */}
           <section className="mb-10">
             <p className="section-label">Long-term Outcomes</p>
-            <h2 className="section-heading">What This <em>Journey</em> Built</h2>
-            <div className="divider-rule"><span>◈</span></div>
+            <h2 className="section-heading">
+              What This <em>Journey</em> Built
+            </h2>
+            <div className="divider-rule">
+              <span>◈</span>
+            </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.25rem" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: "1.25rem",
+              }}
+            >
               {outcomes.map((o) => (
                 <div className="outcome-card" key={o.title}>
                   <span className="outcome-glyph">{o.glyph}</span>
@@ -523,15 +538,14 @@ function HistoryPage() {
                 maxWidth: "30rem",
               }}
             >
-              Step into the About Profile for leadership, strategic anchors and the full institutional overview.
+              Step into the About Profile for leadership, strategic anchors and the full
+              institutional overview.
             </p>
             <Link to="/aboutprofile" className="cta-link" style={{ marginTop: "1.5rem" }}>
               Open About Profile →
             </Link>
           </section>
-
         </main>
-        
       </div>
     </>
   );

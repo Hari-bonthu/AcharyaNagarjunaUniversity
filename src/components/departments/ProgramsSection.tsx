@@ -25,18 +25,14 @@ export function ProgramsSection({ programs }: { programs: ProgramItem[] }) {
               </span>
             </div>
 
-            <h3 className="mt-4 text-lg font-bold leading-6 text-slate-900">
-              {program.name}
-            </h3>
+            <h3 className="mt-4 text-lg font-bold leading-6 text-slate-900">{program.name}</h3>
 
             <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-[oklch(0.97_0.035_45)] px-3 py-1.5 text-xs font-semibold text-[oklch(0.5_0.14_45)]">
               <Clock3 className="h-3.5 w-3.5" />
               {program.duration}
             </div>
 
-            <p className="mt-4 text-sm leading-6 text-slate-600">
-              {program.description}
-            </p>
+            <p className="mt-4 text-sm leading-6 text-slate-600">{program.description}</p>
           </article>
         ))}
       </div>

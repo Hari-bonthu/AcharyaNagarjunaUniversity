@@ -8,7 +8,7 @@ export function GoldenJubileeScroll({ variant = "fixed" }: { variant?: "fixed" |
       className={
         variant === "fixed"
           ? "group fixed right-4 top-4 z-[60] md:right-6 md:top-6"
-          : "group relative inline-flex"
+          : "group relative inline-flex mx-auto"
       }
     >
       <ScrollBadge />
@@ -63,14 +63,20 @@ function ScrollBadge() {
         >
           GOLDEN JUBILEE
         </span>
-        <span className="text-[8px] font-medium tracking-[0.35em] md:text-[9px]" style={{ color: "#4a3206" }}>
+        <span
+          className="text-[8px] font-medium tracking-[0.35em] md:text-[9px]"
+          style={{ color: "#4a3206" }}
+        >
           1976 - 2026
         </span>
       </span>
 
       <RodCurl side="right" height={48} />
 
-      <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
+      >
         <span
           className="absolute inset-y-0 -left-1/3 w-1/2"
           style={{
@@ -115,8 +121,7 @@ function RodCurl({ side, height }: { side: "left" | "right"; height: number }) {
         aria-hidden
         className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2"
         style={{
-          background:
-            "linear-gradient(180deg,transparent,rgba(255,255,255,0.6),transparent)",
+          background: "linear-gradient(180deg,transparent,rgba(255,255,255,0.6),transparent)",
           mixBlendMode: "screen",
         }}
       />

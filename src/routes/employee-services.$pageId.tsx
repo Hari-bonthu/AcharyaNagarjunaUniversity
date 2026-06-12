@@ -1,8 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { EmployeeServicesShell } from "@/components/employee-services/employee-services-shell";
-import {
-  EmployeeServicesApp,
-} from "@/components/employee-services/employee-services-app";
+import { EmployeeServicesApp } from "@/components/employee-services/employee-services-app";
 import type { EmployeeServiceTabKey } from "@/data/employee-services-app";
 
 export const Route = createFileRoute("/employee-services/$pageId")({
@@ -25,4 +23,3 @@ function EmployeeServicesPageComponent() {
     </EmployeeServicesShell>
   );
 }
-

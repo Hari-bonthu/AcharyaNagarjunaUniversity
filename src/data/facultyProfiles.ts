@@ -51,7 +51,11 @@ export const facultyProfiles: FacultyProfile[] = [
     contact: {
       email: "ramachandra.rao@anu.ac.in",
       phone: "+91 863 234 6201",
-      addressLines: ["Room 204, Computer Science Block", "Acharya Nagarjuna University", "Nagarjuna Nagar, Guntur"],
+      addressLines: [
+        "Room 204, Computer Science Block",
+        "Acharya Nagarjuna University",
+        "Nagarjuna Nagar, Guntur",
+      ],
     },
     summary: [
       "Prof. V. Ramachandra Rao is a dummy faculty profile created for navigation and design review.",
@@ -62,7 +66,12 @@ export const facultyProfiles: FacultyProfile[] = [
       university: "Acharya Nagarjuna University",
       year: "2006",
     },
-    researchInterests: ["Distributed systems", "Algorithms", "Software engineering", "Cloud platforms"],
+    researchInterests: [
+      "Distributed systems",
+      "Algorithms",
+      "Software engineering",
+      "Cloud platforms",
+    ],
     administrativeExperience: [
       "Served as department timetable coordinator for postgraduate programmes.",
       "Coordinated laboratory modernization and student project review committees.",
@@ -75,7 +84,10 @@ export const facultyProfiles: FacultyProfile[] = [
       "Dummy journal paper on scalable scheduling techniques in distributed environments.",
       "Dummy conference paper on software quality practices in academic project studios.",
     ],
-    memberships: ["Member, Computer Society academic chapter", "Member, university curriculum review committee"],
+    memberships: [
+      "Member, Computer Society academic chapter",
+      "Member, university curriculum review committee",
+    ],
     professionalActivities: [
       "Organized workshops on cloud computing and research methodology.",
       "Delivered invited lectures for postgraduate bridge courses.",
@@ -98,7 +110,11 @@ export const facultyProfiles: FacultyProfile[] = [
     contact: {
       email: "lakshmi.narayana@anu.ac.in",
       phone: "+91 863 234 6202",
-      addressLines: ["Room 208, Computer Science Block", "Acharya Nagarjuna University", "Nagarjuna Nagar, Guntur"],
+      addressLines: [
+        "Room 208, Computer Science Block",
+        "Acharya Nagarjuna University",
+        "Nagarjuna Nagar, Guntur",
+      ],
     },
     summary: [
       "Dr. P. Lakshmi Narayana is a dummy profile focused on data-driven learning and research mentoring.",
@@ -109,7 +125,12 @@ export const facultyProfiles: FacultyProfile[] = [
       university: "Andhra University",
       year: "2011",
     },
-    researchInterests: ["Data mining", "Machine learning", "Educational analytics", "Database systems"],
+    researchInterests: [
+      "Data mining",
+      "Machine learning",
+      "Educational analytics",
+      "Database systems",
+    ],
     administrativeExperience: [
       "Coordinated departmental seminar series and student internship documentation.",
       "Supported curriculum mapping for analytics-focused electives.",
@@ -145,7 +166,11 @@ export const facultyProfiles: FacultyProfile[] = [
     contact: {
       email: "anitha.devi@anu.ac.in",
       phone: "+91 863 234 6203",
-      addressLines: ["Room 212, Computer Science Block", "Acharya Nagarjuna University", "Nagarjuna Nagar, Guntur"],
+      addressLines: [
+        "Room 212, Computer Science Block",
+        "Acharya Nagarjuna University",
+        "Nagarjuna Nagar, Guntur",
+      ],
     },
     summary: [
       "Dr. K. Anitha Devi is a dummy faculty member used for the department-to-profile flow.",
@@ -156,7 +181,12 @@ export const facultyProfiles: FacultyProfile[] = [
       university: "Jawaharlal Nehru Technological University",
       year: "2015",
     },
-    researchInterests: ["Computer networks", "Cloud computing", "Cyber security", "Internet technologies"],
+    researchInterests: [
+      "Computer networks",
+      "Cloud computing",
+      "Cyber security",
+      "Internet technologies",
+    ],
     administrativeExperience: [
       "Handled lab scheduling and internal assessment coordination.",
       "Supported department admissions counselling for postgraduate students.",
@@ -199,11 +229,15 @@ export const facultyProfiles: FacultyProfile[] = [
       "The content is sample-only and intended to validate the profile layout across departments.",
     ],
     researchInterests: ["Molecular biology", "Bioinformatics", "Microbial biotechnology"],
-    administrativeExperience: ["Coordinated practical examination logistics for laboratory courses."],
+    administrativeExperience: [
+      "Coordinated practical examination logistics for laboratory courses.",
+    ],
     achievements: ["Supported student poster presentations in regional science events."],
     publications: ["Dummy journal paper on microbial screening methods for applied biotechnology."],
     memberships: ["Member, life sciences academic forum"],
-    professionalActivities: ["Conducted lab orientation sessions for incoming postgraduate students."],
+    professionalActivities: [
+      "Conducted lab orientation sessions for incoming postgraduate students.",
+    ],
   },
   {
     name: "Dr. M. Padmavathi",
@@ -252,14 +286,20 @@ export const facultyProfiles: FacultyProfile[] = [
     contact: {
       email: "venkateswara.rao@anu.ac.in",
       phone: "+91 863 234 6220",
-      addressLines: ["Instrumentation Lab Complex", "ANU College of Sciences", "Nagarjuna Nagar, Guntur"],
+      addressLines: [
+        "Instrumentation Lab Complex",
+        "ANU College of Sciences",
+        "Nagarjuna Nagar, Guntur",
+      ],
     },
     summary: [
       "Dr. T. Venkateswara Rao is a dummy profile for instrumentation and electronics faculty.",
       "The profile supports the same navigation and content structure as other faculty pages.",
     ],
     researchInterests: ["Embedded systems", "Sensors", "Instrumentation", "Signal processing"],
-    administrativeExperience: ["Coordinated equipment maintenance schedules for teaching laboratories."],
+    administrativeExperience: [
+      "Coordinated equipment maintenance schedules for teaching laboratories.",
+    ],
     achievements: ["Mentored students in embedded systems prototype demonstrations."],
     publications: ["Dummy journal paper on sensor-based measurement systems."],
     memberships: ["Member, instrumentation society academic chapter"],

@@ -15,11 +15,14 @@ const facultyImages = import.meta.glob("../assets/faculty/*.{jpg,jpeg,png,webp}"
   import: "default",
 }) as Record<string, string>;
 
-const imageByFileName = Object.entries(facultyImages).reduce<Record<string, string>>((acc, [path, src]) => {
-  const fileName = path.split("/").pop();
-  if (fileName) acc[fileName] = src;
-  return acc;
-}, {});
+const imageByFileName = Object.entries(facultyImages).reduce<Record<string, string>>(
+  (acc, [path, src]) => {
+    const fileName = path.split("/").pop();
+    if (fileName) acc[fileName] = src;
+    return acc;
+  },
+  {},
+);
 
 const facultyMembers: FacultyMember[] = facultyProfiles
   .map((profile) => ({
@@ -54,17 +57,17 @@ function Faculty() {
   return (
     <div className="min-h-screen bg-[#f7f7f7]">
       <main>
-        <BreadcrumbTrail
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Faculty" },
-          ]}
-        />
+        <BreadcrumbTrail items={[{ label: "Home", href: "/" }, { label: "Faculty" }]} />
 
         <section className="mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-300 pb-4">
-            <h1 className="text-4xl font-bold tracking-tight text-[#0f2345] md:text-5xl">Featured Faculty</h1>
-            <Link to="/faculty" className="text-lg text-[#0f2345] transition-colors hover:text-[#0d3b66]">
+            <h1 className="text-4xl font-bold tracking-tight text-[#0f2345] md:text-5xl">
+              Featured Faculty
+            </h1>
+            <Link
+              to="/faculty"
+              className="text-lg text-[#0f2345] transition-colors hover:text-[#0d3b66]"
+            >
               View all faculty
             </Link>
           </div>
@@ -89,7 +92,9 @@ function Faculty() {
                   </Link>
                 </div>
 
-                <h2 className="mt-4 text-2xl font-semibold leading-snug text-[#0d1f3f]">{member.name}</h2>
+                <h2 className="mt-4 text-2xl font-semibold leading-snug text-[#0d1f3f]">
+                  {member.name}
+                </h2>
                 <p className="text-sm text-slate-600">{member.designation}</p>
                 <p className="mt-auto pt-1 text-xs text-slate-500">{member.department}</p>
               </article>

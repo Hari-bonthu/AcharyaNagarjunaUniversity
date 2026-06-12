@@ -4,6 +4,7 @@ import { CollegeSection } from "@/components/college-section";
 import { FaqSection } from "@/components/faq-section";
 import { StatsSection } from "@/components/stats-section";
 import { NotificationsSection, WelcomeSection } from "@/components/welcome-section";
+
 import {
   Carousel,
   CarouselContent,
@@ -21,12 +22,15 @@ const bannerImages = Object.entries(
     query: "?url",
   }),
 )
-  .sort(([a], [b]) =>
-    a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }),
-  )
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
   .map(([path, src]) => ({
     src: src as string,
-    alt: `Acharya Nagarjuna University banner ${path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? ""}`,
+    alt: `Acharya Nagarjuna University banner ${
+      path
+        .split("/")
+        .pop()
+        ?.replace(/\.[^.]+$/, "") ?? ""
+    }`,
   }));
 
 export const Route = createFileRoute("/")({
@@ -38,10 +42,13 @@ function Index() {
     <div className="min-h-screen bg-background">
       <div className="w-full overflow-hidden border-y border-border bg-[oklch(0.98_0.005_250)]">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-6 py-2 text-sm">
-          <span className="rounded bg-[oklch(0.72_0.18_145)] px-2 py-0.5 text-xs font-bold text-white">NEW</span>
+          <span className="rounded bg-[oklch(0.72_0.18_145)] px-2 py-0.5 text-xs font-bold text-white">
+            NEW
+          </span>
           <p className="truncate text-foreground">
-            Advertisement for the post of Research Assistant and Field Investigator for ICSSR funded Major Research
-            Project 2026-2027 &nbsp; || &nbsp; EXAMINATION SCHEDULE OF M.PHIL PART-1 / PRE Ph.D EXAMINATION JULY 2026.
+            Advertisement for the post of Research Assistant and Field Investigator for ICSSR funded
+            Major Research Project 2026-2027 &nbsp; || &nbsp; EXAMINATION SCHEDULE OF M.PHIL PART-1
+            / PRE Ph.D EXAMINATION JULY 2026.
           </p>
         </div>
       </div>
@@ -73,7 +80,10 @@ function BannerCarousel() {
   }, [api]);
 
   return (
-    <section aria-label="University banners" className="w-full overflow-hidden border-b border-border bg-[oklch(0.12_0.03_260)]">
+    <section
+      aria-label="University banners"
+      className="w-full overflow-hidden border-b border-border bg-[oklch(0.12_0.03_260)]"
+    >
       <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
         <CarouselContent className="-ml-0">
           {bannerImages.map((banner, index) => (

@@ -10,7 +10,13 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { icon: Award, value: 66, label: "Patents", caption: "Granted to faculty & researchers", suffix: "" },
+  {
+    icon: Award,
+    value: 66,
+    label: "Patents",
+    caption: "Granted to faculty & researchers",
+    suffix: "",
+  },
   {
     icon: FlaskConical,
     value: 200,
@@ -18,7 +24,13 @@ const stats: Stat[] = [
     label: "Research Projects",
     caption: "Funded by ICSSR, DST, UGC & industry",
   },
-  { icon: Trophy, value: 112, label: "National Ranks", caption: "Academic & sports achievements", suffix: "" },
+  {
+    icon: Trophy,
+    value: 112,
+    label: "National Ranks",
+    caption: "Academic & sports achievements",
+    suffix: "",
+  },
   {
     icon: BookOpen,
     value: 15000,
@@ -64,7 +76,9 @@ function StatCard({ stat, inView, index }: { stat: Stat; inView: boolean; index:
         <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-[oklch(0.72_0.18_45)]/30 bg-[oklch(0.72_0.18_45)]/10 text-[oklch(0.78_0.17_45)]">
           <Icon className="h-5 w-5" aria-hidden />
         </span>
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          {stat.label}
+        </span>
       </div>
 
       <div className="relative mt-6 flex min-h-[64px] items-baseline justify-center gap-1">
@@ -89,7 +103,9 @@ export function StatsSection() {
 
   useEffect(() => {
     if (!ref.current) return;
-    const obs = new IntersectionObserver(([entry]) => entry.isIntersecting && setInView(true), { threshold: 0.25 });
+    const obs = new IntersectionObserver(([entry]) => entry.isIntersecting && setInView(true), {
+      threshold: 0.25,
+    });
     obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -106,8 +122,8 @@ export function StatsSection() {
             Five decades of impact, measured in milestones
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            From pioneering research to national recognition - a snapshot of what Acharya Nagarjuna University
-            delivers, year after year.
+            From pioneering research to national recognition - a snapshot of what Acharya Nagarjuna
+            University delivers, year after year.
           </p>
         </div>
 

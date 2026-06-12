@@ -24,7 +24,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   overview: validatePageContent({
     meta: {
       title: "Student Services Overview | Acharya Nagarjuna University",
-      description: "Central student services hub for examinations, results, forms, placements and student portal access.",
+      description:
+        "Central student services hub for examinations, results, forms, placements and student portal access.",
       keywords: ["ANU student services", "exam notifications", "results", "forms", "placements"],
       owner: "Student Services Cell, ANU",
       lastUpdated: "June 1, 2026",
@@ -74,19 +75,23 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         items: [
           {
             title: "Exam Notifications",
-            description: "Latest schedules, hall-ticket timelines and circulars related to semester and supplementary examinations.",
+            description:
+              "Latest schedules, hall-ticket timelines and circulars related to semester and supplementary examinations.",
           },
           {
             title: "Results",
-            description: "Result release windows, revaluation guidance and post-result process information.",
+            description:
+              "Result release windows, revaluation guidance and post-result process information.",
           },
           {
             title: "Downloads",
-            description: "Student forms, request templates and official document formats required by service workflows.",
+            description:
+              "Student forms, request templates and official document formats required by service workflows.",
           },
           {
             title: "Placements",
-            description: "Placement activity stream, eligibility support and internship/career orientation pathways.",
+            description:
+              "Placement activity stream, eligibility support and internship/career orientation pathways.",
           },
         ],
       },
@@ -98,17 +103,20 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
           {
             period: "Pre-Examination",
             title: "Notification & Registration",
-            description: "Exam circulars and registration windows are published with deadline checkpoints.",
+            description:
+              "Exam circulars and registration windows are published with deadline checkpoints.",
           },
           {
             period: "Examination Week",
             title: "Hall Ticket & Exam Conduct",
-            description: "Hall ticket timelines, examination support notices and centre-level updates are shared.",
+            description:
+              "Hall ticket timelines, examination support notices and centre-level updates are shared.",
           },
           {
             period: "Post Examination",
             title: "Results & Requests",
-            description: "Result publication, revaluation request windows and mark memo support are activated.",
+            description:
+              "Result publication, revaluation request windows and mark memo support are activated.",
           },
         ],
       },
@@ -118,7 +126,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   "exam-notifications": validatePageContent({
     meta: {
       title: "Exam Notifications | Acharya Nagarjuna University",
-      description: "Official examination notices, timetable updates and hall-ticket related announcements.",
+      description:
+        "Official examination notices, timetable updates and hall-ticket related announcements.",
       keywords: ["ANU exam notifications", "timetable", "hall ticket", "exam schedule"],
       owner: "Examination Section, ANU",
       lastUpdated: "June 1, 2026",
@@ -161,18 +170,21 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
           {
             date: "May 2026",
             title: "Semester End Examination Schedule (UG/PG)",
-            details: "Revised timetable publication cycle for main semester examinations across constituent colleges.",
+            details:
+              "Revised timetable publication cycle for main semester examinations across constituent colleges.",
             href: "/pages/student-services?page=downloads",
           },
           {
             date: "May 2026",
             title: "Hall Ticket Availability Window",
-            details: "Hall tickets are published section-wise after fee clearance and registration verification.",
+            details:
+              "Hall tickets are published section-wise after fee clearance and registration verification.",
           },
           {
             date: "April 2026",
             title: "Supplementary Examination Circular",
-            details: "Notification includes registration timeline, fee schedule and subject paper mapping.",
+            details:
+              "Notification includes registration timeline, fee schedule and subject paper mapping.",
           },
         ],
       },
@@ -202,7 +214,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   results: validatePageContent({
     meta: {
       title: "Results | Acharya Nagarjuna University",
-      description: "Result publication guidance, revaluation workflow and marksheet support for students.",
+      description:
+        "Result publication guidance, revaluation workflow and marksheet support for students.",
       keywords: ["ANU results", "revaluation", "marks memo", "exam result"],
       owner: "Examination Section, ANU",
       lastUpdated: "June 1, 2026",
@@ -245,12 +258,14 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
           {
             date: "June 2026",
             title: "UG/PG Result Publication Window",
-            details: "Results are released in programme batches after tabulation and verification closure.",
+            details:
+              "Results are released in programme batches after tabulation and verification closure.",
           },
           {
             date: "June 2026",
             title: "Mark Memo Issue Advisory",
-            details: "Digital memos are available first; physical issue schedule follows college-level communication.",
+            details:
+              "Digital memos are available first; physical issue schedule follows college-level communication.",
           },
         ],
       },
@@ -262,17 +277,20 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
           {
             period: "Step 1",
             title: "Result Announcement",
-            description: "Students verify marks and identify subjects for revaluation or recounting.",
+            description:
+              "Students verify marks and identify subjects for revaluation or recounting.",
           },
           {
             period: "Step 2",
             title: "Application Submission",
-            description: "Submit revaluation request within notified deadline with required fee and documents.",
+            description:
+              "Submit revaluation request within notified deadline with required fee and documents.",
           },
           {
             period: "Step 3",
             title: "Revaluation Outcome",
-            description: "Revaluation outcomes are released through official channels and reflected in final memo updates.",
+            description:
+              "Revaluation outcomes are released through official channels and reflected in final memo updates.",
           },
         ],
       },
@@ -283,15 +301,18 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         items: [
           {
             question: "Where are official results announced?",
-            answer: "Results are announced through official university channels and verified department communications.",
+            answer:
+              "Results are announced through official university channels and verified department communications.",
           },
           {
             question: "Can I apply for revaluation for multiple subjects?",
-            answer: "Yes, subject to eligibility and timelines announced in the specific result notification.",
+            answer:
+              "Yes, subject to eligibility and timelines announced in the specific result notification.",
           },
           {
             question: "How do I correct details in a memo?",
-            answer: "Use the official correction request process through examination and department helpdesks.",
+            answer:
+              "Use the official correction request process through examination and department helpdesks.",
           },
         ],
       },
@@ -301,7 +322,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   downloads: validatePageContent({
     meta: {
       title: "Student Downloads | Acharya Nagarjuna University",
-      description: "Official student forms, request templates and document downloads for examination and service workflows.",
+      description:
+        "Official student forms, request templates and document downloads for examination and service workflows.",
       keywords: ["ANU downloads", "student forms", "application forms", "exam forms"],
       owner: "Student Services Cell, ANU",
       lastUpdated: "June 1, 2026",
@@ -340,10 +362,30 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         type: "downloads",
         title: "Download Centre",
         items: [
-          { name: "Revaluation Application Form", format: "PDF", href: "/pages/student-services?page=results", note: "Use within notified window" },
-          { name: "Duplicate Mark Memo Request", format: "PDF", href: "/pages/student-services?page=results", note: "Attach identity proof" },
-          { name: "Bonafide Certificate Request", format: "PDF", href: "/pages/student-services?page=student-portal", note: "Submit through department" },
-          { name: "Migration Certificate Request", format: "PDF", href: "/pages/student-services?page=student-portal", note: "For external admission use" },
+          {
+            name: "Revaluation Application Form",
+            format: "PDF",
+            href: "/pages/student-services?page=results",
+            note: "Use within notified window",
+          },
+          {
+            name: "Duplicate Mark Memo Request",
+            format: "PDF",
+            href: "/pages/student-services?page=results",
+            note: "Attach identity proof",
+          },
+          {
+            name: "Bonafide Certificate Request",
+            format: "PDF",
+            href: "/pages/student-services?page=student-portal",
+            note: "Submit through department",
+          },
+          {
+            name: "Migration Certificate Request",
+            format: "PDF",
+            href: "/pages/student-services?page=student-portal",
+            note: "For external admission use",
+          },
         ],
       },
       {
@@ -353,15 +395,18 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         items: [
           {
             title: "Step 1: Identify Form",
-            description: "Choose the exact form based on service requirement and programme category.",
+            description:
+              "Choose the exact form based on service requirement and programme category.",
           },
           {
             title: "Step 2: Verify Attachments",
-            description: "Prepare mandatory annexures such as ID proof, fee receipt and prior memo copies.",
+            description:
+              "Prepare mandatory annexures such as ID proof, fee receipt and prior memo copies.",
           },
           {
             title: "Step 3: Submit Through Correct Channel",
-            description: "Submit through department office, examination section counter or official portal as applicable.",
+            description:
+              "Submit through department office, examination section counter or official portal as applicable.",
           },
         ],
       },
@@ -371,7 +416,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   placements: validatePageContent({
     meta: {
       title: "Placements | Acharya Nagarjuna University",
-      description: "Placement support, internship pathways and career readiness services for ANU students.",
+      description:
+        "Placement support, internship pathways and career readiness services for ANU students.",
       keywords: ["ANU placements", "career support", "internships", "campus recruitment"],
       owner: "Career & Placement Cell, ANU",
       lastUpdated: "June 1, 2026",
@@ -422,15 +468,18 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         items: [
           {
             title: "Resume and Profile Clinics",
-            description: "Guided review sessions to align resumes with sector expectations and role requirements.",
+            description:
+              "Guided review sessions to align resumes with sector expectations and role requirements.",
           },
           {
             title: "Aptitude and Interview Preparation",
-            description: "Structured preparation sessions covering aptitude, communication and interview simulations.",
+            description:
+              "Structured preparation sessions covering aptitude, communication and interview simulations.",
           },
           {
             title: "Internship and Project Pathway",
-            description: "Support for identifying internships and project opportunities aligned to academic specialization.",
+            description:
+              "Support for identifying internships and project opportunities aligned to academic specialization.",
           },
         ],
       },
@@ -440,7 +489,11 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         title: "Placement Cycle Touchpoints",
         columns: ["Phase", "Typical Window", "Activity"],
         rows: [
-          ["Pre-Placement Orientation", "Start of semester", "Eligibility briefing and registration"],
+          [
+            "Pre-Placement Orientation",
+            "Start of semester",
+            "Eligibility briefing and registration",
+          ],
           ["Skill Readiness Sessions", "Mid semester", "Aptitude and interview preparation"],
           ["Recruitment Drives", "As notified", "Company engagement and candidate selection"],
         ],
@@ -451,7 +504,8 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
   "student-portal": validatePageContent({
     meta: {
       title: "Student Portal Services | Acharya Nagarjuna University",
-      description: "Portal-linked student service access including records, requests, and status tracking guidance.",
+      description:
+        "Portal-linked student service access including records, requests, and status tracking guidance.",
       keywords: ["ANU student portal", "student login", "service requests", "records access"],
       owner: "e-Governance Cell, ANU",
       lastUpdated: "June 1, 2026",
@@ -506,11 +560,13 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
           },
           {
             title: "Request Tracking",
-            description: "Track service requests and status progression for submitted student applications.",
+            description:
+              "Track service requests and status progression for submitted student applications.",
           },
           {
             title: "Notice and Alert Access",
-            description: "Access service-related updates aligned to examinations, documents and process milestones.",
+            description:
+              "Access service-related updates aligned to examinations, documents and process milestones.",
           },
         ],
       },
@@ -521,15 +577,18 @@ const pages: Record<StudentServicesPageKey, PageContent> = {
         items: [
           {
             question: "Whom should I contact for credential issues?",
-            answer: "Please contact the designated support channels listed below with student identification details.",
+            answer:
+              "Please contact the designated support channels listed below with student identification details.",
           },
           {
             question: "Can I track all requests online?",
-            answer: "Most standard requests support status tracking; some processes may require additional in-person verification.",
+            answer:
+              "Most standard requests support status tracking; some processes may require additional in-person verification.",
           },
           {
             question: "Are portal notices considered official?",
-            answer: "Yes, when published through official university channels and corresponding department communications.",
+            answer:
+              "Yes, when published through official university channels and corresponding department communications.",
           },
         ],
       },
