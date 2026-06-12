@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 export const ADMISSIONS_MENU = [
   { id: "overview", label: "Admissions Overview" },
   { id: "why-choose-us", label: "Why Choose Us" },
-  { id: "academic-calendar", label: "Academic Calenfar" },
+  { id: "academic-calendar", label: "Academic Calendar" },
   { id: "fee-structure", label: "Fee Structure" },
   { id: "scholarships", label: "Scholarships" },
   { id: "how-to-apply", label: "How to Apply" },
@@ -14,6 +14,7 @@ export const ADMISSIONS_MENU = [
   { id: "affiliated-colleges", label: "Affiliated Colleges" },
   { id: "helpdesk", label: "Admission Helpdesk" },
   { id: "faqs", label: "Admissions FAQ" },
+  { id: "brochure", label: "Brochure Downloads" },
 ];
 
 export function AdmissionsShell({

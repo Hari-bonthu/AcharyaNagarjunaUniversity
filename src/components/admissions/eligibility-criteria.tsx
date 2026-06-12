@@ -6,42 +6,53 @@ export function EligibilityCriteria() {
     {
       course: "B.Tech (Bachelor of Technology)",
       specializations: "CSE, AI & ML, Data Science, Cyber Security, ECE, EEE, Mechanical, Civil",
-      qualification: "Passed 10+2 (Intermediate) examination with Physics, Chemistry, and Mathematics (PCM) as core subjects.",
-      minMarks: "Minimum 45% aggregate marks (40% for reserved categories SC/ST/BC) in PCM subjects.",
+      qualification:
+        "Passed 10+2 (Intermediate) examination with Physics, Chemistry, and Mathematics (PCM) as core subjects.",
+      minMarks:
+        "Minimum 45% aggregate marks (40% for reserved categories SC/ST/BC) in PCM subjects.",
       pathway: "Qualifying rank in AP EAPCET entrance exam followed by web counseling.",
     },
     {
       course: "MBA (Master of Business Administration)",
-      specializations: "General, Finance, HR, Marketing, International Business, Hospital Administration",
-      qualification: "Bachelor's degree of minimum 3 years duration in any discipline (except BFA/BOL). Must have studied Mathematics at 10th or 12th level.",
-      minMarks: "Minimum 50% aggregate marks (45% for SC/ST/BC categories) in the qualifying degree.",
+      specializations:
+        "General, Finance, HR, Marketing, International Business, Hospital Administration",
+      qualification:
+        "Bachelor's degree of minimum 3 years duration in any discipline (except BFA/BOL). Must have studied Mathematics at 10th or 12th level.",
+      minMarks:
+        "Minimum 50% aggregate marks (45% for SC/ST/BC categories) in the qualifying degree.",
       pathway: "Valid rank in AP ICET entrance exam.",
     },
     {
       course: "MCA (Master of Computer Applications)",
       specializations: "Software Development, Systems Management, Computing Technologies",
-      qualification: "Bachelor's degree of minimum 3 years duration in any discipline. Must have studied Mathematics at 10+2 or graduation level.",
-      minMarks: "Minimum 50% aggregate marks (45% for SC/ST/BC categories) in the qualifying degree.",
+      qualification:
+        "Bachelor's degree of minimum 3 years duration in any discipline. Must have studied Mathematics at 10+2 or graduation level.",
+      minMarks:
+        "Minimum 50% aggregate marks (45% for SC/ST/BC categories) in the qualifying degree.",
       pathway: "Valid rank in AP ICET entrance exam.",
     },
     {
       course: "B.Pharmacy (Bachelor of Pharmacy)",
       specializations: "Pharmaceutical Chemistry, Pharmaceutics, Pharmacology, Analysis",
-      qualification: "Passed 10+2 examination with Physics, Chemistry, and Mathematics or Biology (PCM/PCB) from a recognized board.",
+      qualification:
+        "Passed 10+2 examination with Physics, Chemistry, and Mathematics or Biology (PCM/PCB) from a recognized board.",
       minMarks: "Passed qualifying 10+2 board exam with core science subjects.",
       pathway: "Valid rank in AP EAPCET science stream counseling.",
     },
     {
       course: "B.Arch (Bachelor of Architecture)",
       specializations: "Architecture Design, Town Planning, Built Environment",
-      qualification: "Passed 10+2 examination with Physics, Chemistry, and Mathematics as mandatory subjects.",
+      qualification:
+        "Passed 10+2 examination with Physics, Chemistry, and Mathematics as mandatory subjects.",
       minMarks: "Minimum 50% aggregate marks in the qualifying examination.",
       pathway: "Valid NATA score or rank in JEE Main Paper-II.",
     },
     {
       course: "M.Sc (Master of Science)",
-      specializations: "Physics, Chemistry, Mathematics, Statistics, Biotechnology, Botany, Zoology, Environmental Science",
-      qualification: "B.Sc degree in relevant subjects (e.g. Physics & Maths for M.Sc Physics; Chemistry for M.Sc Chemistry).",
+      specializations:
+        "Physics, Chemistry, Mathematics, Statistics, Biotechnology, Botany, Zoology, Environmental Science",
+      qualification:
+        "B.Sc degree in relevant subjects (e.g. Physics & Maths for M.Sc Physics; Chemistry for M.Sc Chemistry).",
       minMarks: "Minimum 50% marks in the relevant B.Sc major/optional subjects.",
       pathway: "Valid rank in APPGCET state counseling.",
     },
@@ -59,8 +70,8 @@ export function EligibilityCriteria() {
           <p className="font-serif text-lg leading-relaxed text-[#4a4235]">
             Admissions to various constituent colleges at Acharya Nagarjuna University follow
             statutory guidelines set by the Government of Andhra Pradesh and the UGC. Please check
-            the specific academic requirements and entrance test requirements for your chosen
-            course below.
+            the specific academic requirements and entrance test requirements for your chosen course
+            below.
           </p>
         </div>
       </section>

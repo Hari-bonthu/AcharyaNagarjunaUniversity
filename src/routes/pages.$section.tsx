@@ -7,12 +7,8 @@ import { CampusLifeApp } from "@/components/campus-life/campus-life-app";
 import { RankingsApp } from "@/components/rankings/rankings-app";
 import { ResearchApp } from "@/components/research/research-app";
 import { ProgramsApp } from "@/components/programs/programs-app";
-import {
-  BreadcrumbsBlock,
-  PageHero,
-  PageSections,
-  SideNavigation,
-} from "@/components/content/page-blocks";
+import BreadcrumbTrail from "@/components/BreadcrumbTrail";
+import { PageHero, PageSections, SideNavigation } from "@/components/content/page-blocks";
 import {
   getStudentServiceTab,
   studentServicePageAliases,
@@ -166,7 +162,10 @@ function PlaceholderPage({ section, page }: { section: string; page: string }) {
   const pageLabel = page ? toReadable(page) : "Overview";
 
   return (
-    <main className="min-h-[70vh] bg-[oklch(0.985_0.005_250)]">
+    <main className="min-h-[70vh] anu-page-root">
+      <BreadcrumbTrail
+        items={[{ label: "Home", href: "/" }, { label: sectionLabel }, { label: pageLabel }]}
+      />
       <section className="border-b border-border bg-white">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-14">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
@@ -263,8 +262,8 @@ function PublishedPage({ section, page }: { section: string; page: string }) {
   const { content } = published;
 
   return (
-    <main className="min-h-[70vh] bg-[oklch(0.985_0.005_250)] pb-12">
-      <BreadcrumbsBlock content={content} />
+    <main className="min-h-[70vh] anu-page-root pb-24">
+      <BreadcrumbTrail items={content.breadcrumbs} />
       <PageHero content={content} />
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-10 lg:grid-cols-[1.55fr_1fr] lg:px-8">
         <PageSections sections={content.sections} />

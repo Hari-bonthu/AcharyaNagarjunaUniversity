@@ -72,7 +72,9 @@ export function WhyChooseUs() {
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-playfair text-xl font-bold text-[var(--ink)]">{item.title}</h3>
+                  <h3 className="font-playfair text-xl font-bold text-[var(--ink)]">
+                    {item.title}
+                  </h3>
                   <p className="font-serif mt-2 text-sm leading-relaxed text-[var(--muted)]">
                     {item.description}
                   </p>
