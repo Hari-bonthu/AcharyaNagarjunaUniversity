@@ -33,12 +33,12 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ANU Website" },
       { name: "description", content: "Representation of the ANU culture and idealogy." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Acharya Nagarjuna University" },
       { property: "og:title", content: "ANU Website" },
       { property: "og:description", content: "Representation of the ANU culture and idealogy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@ANU" },
     ],
     links: [
       {
